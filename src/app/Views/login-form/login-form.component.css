@@ -1,0 +1,22 @@
+.modal{
+  background: rgba(0,0,0,0.6);
+}
+.formlogin{
+  margin-top: 2%;
+}
+/*.modal-content {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+}
+
+.backdrop {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.1);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}*/

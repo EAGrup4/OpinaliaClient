@@ -1,16 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule, NgModel} from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './Views/navbar/navbar.component';
+import { LoginFormComponent } from './Views/login-form/login-form.component';
+import { TableUsersComponent } from './Views/table-users/table-users.component';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {HttpClientModule} from '@angular/common/http';
+import {ModalModule} from 'angular2-modal';
+import {routing} from './app.routes';
+import {FooterComponent} from './Views/footer/footer.component';
+import {PrincipalComponent} from './Views/principal/principal.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, NavbarComponent, LoginFormComponent, TableUsersComponent, FooterComponent, PrincipalComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    NgbModule.forRoot(),
+    ModalModule.forRoot(),
+    HttpClientModule,
+    routing
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ LoginFormComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule);

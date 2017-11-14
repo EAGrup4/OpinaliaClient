@@ -1,0 +1,89 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" routerLink="/"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+      <ul class="nav navbar-nav">
+        <li class="dropdown mega-dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Productos</a>
+          <div class="dropdown-menu mega-dropdown-menu">
+            <div class="container-fluid">
+                <ul class="nav-list list-inline">
+                    <li><a href="#"><img src="/assets/images/ordinador2.png" width="10%" height="10%"/><span>Sobremesa</span></a></li>
+                    <li><a href="#"><img src="/assets/images/portatil2.png" width="10%" height="10%" /><span>Portatiles</span></a></li>
+                    <li><a href="#"><img src="/assets/images/tablet2.png" width="10%" height="10%" /><span>Tablets</span></a></li>
+                    <li><a href="#"><img src="/assets/images/mobil2.png" width="10%" height="10%" /><span>Mobiles</span></a></li>
+                    <li><a href="#"><img src="/assets/images/accesoris2.png" width="10%" height="10%" /><span>Accesorios</span></a></li>
+                </ul>
+            </div>
+          </div>
+        </li>
+        <li class="dropdown mega-dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Marcas</a>
+          <div class="dropdown-menu mega-dropdown-menu">
+            <div class="container-fluid">
+                <ul class="nav-list list-inline">
+                  <li><a href="#"><img src="/assets/images/marcas/apple2.png" width="25%" height="25%" /><span>Apple</span></a></li>
+                  <li><a href="#"><img src="/assets/images/marcas/samsung2.png" width="25%" height="25%" /><span>Samsung</span></a></li>
+                  <li><a href="#"><img src="/assets/images/marcas/lg2.png" width="25%" height="25%" /><span>Lg</span></a></li>
+                  <li><a href="#"><img src="/assets/images/marcas/asus.png" width="25%" height="25%" /><span>Asus</span></a></li>
+                  <li><a href="#"><img src="/assets/images/marcas/hp.png" width="25%" height="25%" /><span>Hp</span></a></li>
+                </ul>
+            </div>
+          </div>
+        </li>
+        <li class="dropdown mega-dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ranking</a>
+          <div class="dropdown-menu mega-dropdown-menu">
+            <div class="container-fluid">
+                <ul class="nav-list list-inline">
+                  <li><a href="#"><img src="/assets/images/ordinador2.png" width="10%" height="10%"/><span>Sobremesa</span></a></li>
+                  <li><a href="#"><img src="/assets/images/portatil2.png" width="10%" height="10%" /><span>Portatiles</span></a></li>
+                  <li><a href="#"><img src="/assets/images/tablet2.png" width="10%" height="10%" /><span>Tablets</span></a></li>
+                  <li><a href="#"><img src="/assets/images/mobil2.png" width="10%" height="10%" /><span>Mobiles</span></a></li>
+                  <li><a href="#"><img src="/assets/images/accesoris2.png" width="10%" height="10%" /><span>Accesorios</span></a></li>
+                </ul>
+            </div>
+          </div>
+        </li>
+        <li><a href="#" class="dropdown-toggle">Contacto</a></li>
+        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/table-users">Admin</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="" class="login" routerLink="/login-form"><span class="glyphicon glyphicon-user"></span> Entrar</a></li>
+      </ul>
+      <!--<form class="navbar-form navbar-right" role="search" id="navBarSearchForm">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Busca el producto/marca que desee">
+        </div>
+        <button type="submit" class="btn btn-default">Buscar</button>
+      </form>-->
+
+        <div class="row">
+          <div class="col-lg-3 col-md-3 pull-right">
+            <div class="">
+              <div class="custom-search">
+                <input type="text" class="form-control" placeholder="Busca el producto/marca que desee">
+              </div>
+            </div>
+          </div>
+        </div>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<!--<div>
+  <img src="/assets/images/port2.jpg" width="100%" height="100%"/>
+</div>-->
+<app-principal></app-principal>
+<router-outlet></router-outlet>
+<app-footer></app-footer>

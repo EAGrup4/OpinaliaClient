@@ -1,0 +1,98 @@
+<div id="login-overlay" class="modal-dialog custom-modal-container">
+  <p *ngFor="let alert of alerts" id="alertType">
+    <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+  </p>
+  <div class="modal-content custom-modal-header">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" (click)="closeForm()"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+      <h4 class="modal-title" id="myModalLabel">Entrar en tu sesión de Opinalia</h4>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="well">
+            <form id="loginForm" method="POST" action="/login/" novalidate="novalidate">
+              <div class="form-group">
+                <label for="email" class="control-label">Correo</label>
+                <input type="text" class="form-control" id="email" name="email" value="" required="" title="Introduzca su correo" placeholder="exemplo@gmail.com" #email>
+                <span class="help-block"></span>
+              </div>
+              <div class="form-group">
+                <label for="password" class="control-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" value="" required="" title="Introduzca su contraseña" #password>
+                <span class="help-block"></span>
+              </div>
+              <div id="loginErrorMsg" class="alert alert-error hide">Error en correo o contraseña</div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="remember" id="remember"> Recordar Contraseña
+                </label>
+              </div>
+              <button type="submit" class="btn btn-success btn-block" (click)="enterUser(email.value, password.value)">Entrar</button>
+              <a class="btn btn-default btn-block">Ayuda para entrar</a>
+            </form>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <form id="registerForm" method="POST" action="/login/" novalidate="novalidate">
+            <div class="form-group">
+              <label for="username2" class="control-label">Nombre de usuario:</label>
+              <input type="text" class="form-control" id="username2" name="username2" value="" required="" title="Introduzca su nombre de usuario" placeholder="Exemple" #username2>
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+              <label for="email2" class="control-label">Correo</label>
+              <input type="text" class="form-control" id="email2" name="email2" value="" required="" title="Introduzca su correo" placeholder="exemplo@gmail.com" #email2>
+              <span class="help-block"></span>
+            </div>
+            <div class="form-group">
+              <label for="password2" class="control-label">Contraseña</label>
+              <input type="password" class="form-control" id="password2" name="password" value="" required="" title="Introduzca su contraseña" #password2>
+              <span class="help-block"></span>
+            </div>
+          <p><a class="btn btn-info btn-block" (click)="addUser(username2.value, email2.value, password2.value)">Registrar</a></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="/src/assets/images/logoblack.png">
+      <h1>Registrarse con:</h1>
+      <a class="btn btn-block btn-social btn-facebook">
+        <span class="fa fa-facebook"></span> Sign in with Facebook
+      </a>
+      <a class="btn btn-block btn-social btn-google">
+        <span class="fa fa-google"></span> Sign in with Google
+      </a>
+    </div>
+    <div class="col-sm-4">
+    <h1>Entrar:</h1>
+      <form>
+        <div class="formlogin">
+          <label for="Nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" required ngModel='model.name' name="name" placeholder=".col-xs-3">
+        </div>
+        <div class="formlogin">
+          <label for="Contraseña">Contraseña</label>
+          <input type="text" class="form-control"  placeholder=".col-lg-3" id="contraseña" required ngModel="model.password" name="password">
+        </div>
+        <div class="formlogin">
+          <button type="submit" class="btn btn-default">Entrar</button>
+        </div>
+      </form>
+      <div>
+        <h2>Model:</h2>
+        {{ currentUser }}
+      </div>
+      <div class="formlogin">
+        <button type="button" class="btn btn-primary">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>-->

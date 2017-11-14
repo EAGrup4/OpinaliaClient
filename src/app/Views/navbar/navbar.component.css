@@ -1,0 +1,151 @@
+.nav{
+  font-family: 'Quick-sand', sans-serif;
+}
+.navbar-brand {
+  width: 110px;
+  height: 50px;
+  background: url('../../../assets/images/logowhite.png') no-repeat center center;
+  background-size: 100%;
+}
+
+@media (min-width:945px){
+  .navbar > .container .navbar-brand,
+  .navbar > .container-fluid .navbar-brand {
+    margin-left: 55px;
+    margin-right: 70px;
+    margin-top: 1px;
+  }
+}
+
+@media (max-width:945px){
+  .navbar > .container .navbar-brand,
+  .navbar > .container-fluid .navbar-brand {
+    margin-left: 30px;
+    margin-top: 1px;
+  }
+}
+
+@media screen and (max-width: 1205px){
+  .row {
+    display: none;
+  }
+}
+
+@media (max-width:850px){
+  .dropdown-toggle{
+    text-align: center;
+  }
+  #admin{
+    display: none;
+  }
+}
+
+.nav-tabs {
+  display: inline-block;
+  border-bottom: none;
+  padding-top: 15px;
+  font-weight: bold;
+}
+.nav-tabs > li > a,
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus,
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  border: none;
+  border-radius: 0;
+}
+
+.nav-list > li > a:hover { text-decoration: none; }
+.nav-list > li > a > span {
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.mega-dropdown {
+  position: static !important;
+}
+.mega-dropdown-menu {
+  /*padding: 20px 15px 15px;*/
+  text-align: center;
+  width: 100%;
+}
+
+
+.navbar-default{
+  background-color: #232323;
+  margin: 0;
+}
+.nav li a {
+  color: #464646;
+}
+.name{
+  color: #a2a2a2;
+}
+.name:hover{
+  color: rgba(0, 0, 0, 0.78);
+}
+.nav.navbar-nav a:hover {
+  color: rgba(70, 70, 70, 0.54);
+}
+
+.name{
+  margin-top: 13%;
+}
+li{
+  font-size: medium;
+  font-weight: 400;
+  font-family: 'Quick-sand', sans-serif;
+}
+
+.dropdown-menu{
+  background-color: rgba(247, 247, 247, 0.9);
+}
+.dropdown-toggle{
+  color: rgba(0, 0, 0, 0.78);
+  font-size: large;
+  margin-right: 1em;
+}
+.navbar-default .navbar-nav > li > a{
+  background-color: #232323;
+  color: #ffffff;
+}
+.navbar-nav .navbar-right{
+  padding-left: 5%;
+}
+
+#navBarSearchForm input[type=text]{width:250px !important;}
+
+.button-search{
+  margin-right: 2%;
+}
+
+.userlogo{
+  padding-top: 5px;
+  margin-left: 55px;
+  margin-right: 40px;
+}
+
+
+
+.custom-search input {
+  background: rgba(255, 255, 255, 1) url("https://image.flaticon.com/icons/svg/126/126474.svg") no-repeat scroll right center / 30px 18px;
+  padding-right: 20px;
+  margin-top: 7.9px;
+  transition: all 0.8s ease 0s;
+  width: 30px;
+  float:right;
+}
+
+.custom-search input:focus {
+  width: 100%;
+}
+
+.bg-black {
+  background: #999 none repeat scroll 0 0;
+  display: inline-block;
+  padding: 3% 2%;
+  width: 100%;
+}
+
