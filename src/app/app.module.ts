@@ -8,7 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Views/navbar/navbar.component';
 import { LoginFormComponent } from './Views/login-form/login-form.component';
-import { TableUsersComponent } from './Views/table-users/table-users.component';
+import { TableUsersComponent } from './Views/adminPage/table-users/table-users.component';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {HttpClientModule} from '@angular/common/http';
 import {ModalModule} from 'angular2-modal';
@@ -17,11 +17,20 @@ import {FooterComponent} from './Views/footer/footer.component';
 import {PrincipalComponent} from './Views/principal/principal.component';
 import {ProductsComponent} from './Views/products/products.component';
 import {ProductDetailComponent} from './Views/product-detail/product-detail.component';
-
+import {WebStorageModule} from 'angular2-localstorage';
+import {TableProductsComponent} from './Views/adminPage/table-products/table-products.component';
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, LoginFormComponent, TableUsersComponent, FooterComponent, PrincipalComponent, ProductsComponent, ProductDetailComponent
+    AppComponent,
+    NavbarComponent,
+    LoginFormComponent,
+    TableUsersComponent,
+    TableProductsComponent,
+    FooterComponent,
+    PrincipalComponent,
+    ProductsComponent,
+    ProductDetailComponent,
   ],
   imports: [
     BrowserModule,

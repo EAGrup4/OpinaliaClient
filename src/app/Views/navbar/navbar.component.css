@@ -8,7 +8,7 @@
   background-size: 100%;
 }
 
-@media (min-width:945px){
+@media (min-width:1000px){
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
     margin-left: 55px;
@@ -17,7 +17,7 @@
   }
 }
 
-@media (max-width:945px){
+@media (max-width:1000px){
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
     margin-left: 30px;
@@ -25,13 +25,13 @@
   }
 }
 
-@media screen and (max-width: 1205px){
+@media screen and (max-width: 1300px){
   .row {
     display: none;
   }
 }
 
-@media (max-width:850px){
+@media (max-width:890px){
   .dropdown-toggle{
     text-align: center;
   }
@@ -149,3 +149,6 @@ li{
   width: 100%;
 }
 
+#userButton{
+  border: none;
+}

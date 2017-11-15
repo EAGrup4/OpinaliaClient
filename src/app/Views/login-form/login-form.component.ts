@@ -3,9 +3,9 @@ import { User } from '../../classes/user.model';
 import { UserService } from '../../services/user.service';
 import {CloseGuard, DialogRef, ModalComponent} from 'angular2-modal';
 import {BSModalContext} from 'angular2-modal/plugins/bootstrap';
-import {IAlert} from '../table-users/table-users.component';
-
-
+import {IAlert} from '../adminPage/table-users/table-users.component';
+import {LocalStorage, SessionStorage} from 'angular2-localstorage';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -21,7 +21,7 @@ export class LoginFormComponent {
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
   }
 
@@ -50,6 +50,7 @@ export class LoginFormComponent {
             type: 'success',
             message: 'Usuario Registrado!',
           });
+          sessionStorage.setItem('user', JSON.stringify(data));
         }
       }
     );

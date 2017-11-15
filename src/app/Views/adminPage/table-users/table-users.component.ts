@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
-import {UserService} from '../../services/user.service';
-import {User} from '../../classes/user.model';
+import {UserService} from '../../../services/user.service';
+import {User} from '../../../classes/user.model';
 import {Subject} from 'rxjs/Subject';
 
 

@@ -1,4 +1,5 @@
 <div class="container">
+  <h1>Usuarios:</h1>
   <button class="btn btn-lg" (click)="showUsers()">ACTUALIZAR</button>
   <p *ngFor="let alert of alerts" id="alertType">
     <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
@@ -79,4 +80,5 @@
   </div>
 </div>
 
+<app-table-products></app-table-products>
 
