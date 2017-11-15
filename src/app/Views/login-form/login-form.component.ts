@@ -59,8 +59,25 @@ export class LoginFormComponent {
     this.user.email = email;
     this.user.password = password;
     console.log(this.user);
-    this.userService.addUser(this.user).subscribe(
-      (data) => console.log(data)
+    this.userService.loginUser(this.user).subscribe(
+      (data) => {
+        console.log(data);
+        // this.error = data.name; ARREGLAR SI SE PRODUCE ALGUN ERROR
+        if (this.error === 'CastError') {
+          this.alerts.push({
+            id: 2,
+            type: 'danger',
+            message: 'Error al loguear usuario',
+          });
+        } else {
+          this.alerts.push({
+            id: 1,
+            type: 'success',
+            message: 'Usuario logueado!',
+          });
+          sessionStorage.setItem('user', JSON.stringify(data));
+        }
+      }
     );
   }
   closeForm() {
