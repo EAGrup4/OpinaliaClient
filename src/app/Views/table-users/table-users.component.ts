@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {UserService} from '../../services/user.service';
-import {Product} from '../../classes/user.model';
+import {User} from '../../classes/user.model';
 import {Subject} from 'rxjs/Subject';
 
 
@@ -11,7 +11,7 @@ import {Subject} from 'rxjs/Subject';
   providers: [UserService],
 })
 export class TableUsersComponent {
-  users = new Product('', '', '', '', false, '');
+  users = new User('', '', '', '', false, '');
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();

@@ -5,7 +5,7 @@ import { Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { Product } from '../classes/user.model';
+import { User } from '../classes/user.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 
@@ -13,7 +13,7 @@ import 'rxjs/add/operator/catch';
 export class UserService {
   url = '/api/users';
   constructor(private http: Http) {}
-  addUser(user: Product): Observable<Response> {
+  addUser(user: User): Observable<Response> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.url + '/add', user, options)
@@ -34,7 +34,7 @@ export class UserService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-  modifyUser(user: Product) {
+  modifyUser(user: User) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(user._id);

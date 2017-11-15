@@ -5,13 +5,14 @@ import { Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { Product } from '../classes/user.model';
+import { User } from '../classes/user.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
+import {Product} from '../classes/product.model';
 
 @Injectable()
-export class UserService {
-  url = '/api/product';
+export class ProductService {
+  url = '/api/products';
 
   constructor(private http: Http) {
   }

@@ -15,11 +15,13 @@ import {ModalModule} from 'angular2-modal';
 import {routing} from './app.routes';
 import {FooterComponent} from './Views/footer/footer.component';
 import {PrincipalComponent} from './Views/principal/principal.component';
+import {ProductsComponent} from './Views/products/products.component';
+import {ProductDetailComponent} from './Views/product-detail/product-detail.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, NavbarComponent, LoginFormComponent, TableUsersComponent, FooterComponent, PrincipalComponent
+    AppComponent, NavbarComponent, LoginFormComponent, TableUsersComponent, FooterComponent, PrincipalComponent, ProductsComponent, ProductDetailComponent
   ],
   imports: [
     BrowserModule,

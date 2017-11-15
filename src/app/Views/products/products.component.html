@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Productos:</h1>
+  <div class="row">
+    <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product" [routerLink]="['/products', prod._id]">
+      <div class="productMark">
+        <h1>7</h1>
+      </div>
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="40%" height="40%">
+      </div>
+      <div class="productName">
+        <h3>{{ prod.name }}</h3>
+      </div>
+      <div class="productSubname">
+        <h4>{{ prod.category }} - {{ prod.company }} </h4>
+      </div>
+    </div>
+  </div>
+</div>

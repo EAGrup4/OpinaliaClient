@@ -1,5 +1,5 @@
 import {Component, Input, NgModule, OnInit, ViewChild} from '@angular/core';
-import { Product } from '../../classes/user.model';
+import { User } from '../../classes/user.model';
 import { UserService } from '../../services/user.service';
 import {CloseGuard, DialogRef, ModalComponent} from 'angular2-modal';
 import {BSModalContext} from 'angular2-modal/plugins/bootstrap';
@@ -16,7 +16,7 @@ import {IAlert} from '../table-users/table-users.component';
 
 export class LoginFormComponent {
   public loginformShow = false;
-  user = new Product('', '', '', '', false, '');
+  user = new User('', '', '', '', false, '');
   error: string;
   @Input()
   public alerts: Array<IAlert> = [];
