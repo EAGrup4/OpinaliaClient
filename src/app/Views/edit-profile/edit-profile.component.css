@@ -5,3 +5,29 @@
 #editForm{
   padding-top: 30px;
 }
+.clickable{
+  cursor: pointer;
+}
+.pull-heading{
+  background-color: #464646;
+}
+.panel-heading div {
+  margin-top: -18px;
+  font-size: 15px;
+}
+.panel-heading div span{
+  margin-left:5px;
+}
+.panel-body{
+  display: none;
+}
+
+.modal{
+  background: rgba(0,0,0,0.6);
+}
+#editForm{
+  margin:3%;
+}
+#alertType{
+  margin-top: 1em;
+}
