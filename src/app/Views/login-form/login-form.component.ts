@@ -4,7 +4,6 @@ import { UserService } from '../../services/user.service';
 import {CloseGuard, DialogRef, ModalComponent} from 'angular2-modal';
 import {BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {IAlert} from '../adminPage/table-users/table-users.component';
-import {LocalStorage, SessionStorage} from 'angular2-localstorage';
 import {Router} from '@angular/router';
 
 @Component({
@@ -51,6 +50,8 @@ export class LoginFormComponent {
             message: 'Usuario Registrado!',
           });
           sessionStorage.setItem('user', JSON.stringify(data));
+          this.router.navigate(['']);
+          window.location.reload();
         }
       }
     );
@@ -61,23 +62,27 @@ export class LoginFormComponent {
     console.log(this.user);
     this.userService.loginUser(this.user).subscribe(
       (data) => {
+        console.log('entraar');
         console.log(data);
         // this.error = data.name; ARREGLAR SI SE PRODUCE ALGUN ERROR
-        if (this.error === 'CastError') {
-          this.alerts.push({
-            id: 2,
-            type: 'danger',
-            message: 'Error al loguear usuario',
-          });
-        } else {
+          sessionStorage.clear();
           this.alerts.push({
             id: 1,
             type: 'success',
             message: 'Usuario logueado!',
           });
-          sessionStorage.setItem('user', JSON.stringify(data));
-        }
-      }
+          sessionStorage.setItem('user', JSON.stringify(data[0]));
+          this.router.navigate(['']);
+          window.location.reload();
+      },
+    (err) => {
+      console.log(err);
+      this.alerts.push({
+        id: 2,
+        type: 'danger',
+        message: 'Usuario no logueado!',
+      });
+    }
     );
   }
   closeForm() {

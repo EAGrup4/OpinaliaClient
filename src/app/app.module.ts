@@ -17,8 +17,8 @@ import {FooterComponent} from './Views/footer/footer.component';
 import {PrincipalComponent} from './Views/principal/principal.component';
 import {ProductsComponent} from './Views/products/products.component';
 import {ProductDetailComponent} from './Views/product-detail/product-detail.component';
-import {WebStorageModule} from 'angular2-localstorage';
 import {TableProductsComponent} from './Views/adminPage/table-products/table-products.component';
+import {EditProfileComponent} from './Views/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import {TableProductsComponent} from './Views/adminPage/table-products/table-pro
     PrincipalComponent,
     ProductsComponent,
     ProductDetailComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

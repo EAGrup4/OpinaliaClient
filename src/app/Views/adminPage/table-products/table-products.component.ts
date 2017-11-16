@@ -24,6 +24,13 @@ export class TableProductsComponent {
   product: any;
   error: string;
   id: string;
+  ngOnInit() {
+    this.productService.getProduct().subscribe(
+      (data) => {
+        this.product = data;
+        console.log(data);
+      });
+  }
   showProducts() {
     this.productService.getProduct().subscribe(
       (data) => {

@@ -1,6 +1,5 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
         <span class="sr-only">Toggle navigation</span>
@@ -11,7 +10,6 @@
       <a class="navbar-brand" routerLink=""></a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
       <ul class="nav navbar-nav">
         <li class="dropdown mega-dropdown active">
@@ -28,7 +26,10 @@
             </div>
           </div>-->
         </li>
-        <li class="dropdown mega-dropdown active">
+       <!--<li class="dropdown mega-dropdown active">
+=======
+        <!--<li class="dropdown mega-dropdown active">
+>>>>>>> a330ac0e0b0cb0259fcef41f30c2b7ae2735d0d4
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Marcas</a>
           <div class="dropdown-menu mega-dropdown-menu">
             <div class="container-fluid">
@@ -41,8 +42,9 @@
                 </ul>
             </div>
           </div>
-        </li>
-        <li class="dropdown mega-dropdown active">
+<<
+        </li>-->
+        <!--<li class="dropdown mega-dropdown active">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ranking</a>
           <div class="dropdown-menu mega-dropdown-menu">
             <div class="container-fluid">
@@ -56,14 +58,15 @@
             </div>
           </div>
         </li>
-        <li><a href="#" class="dropdown-toggle">Contacto</a></li>
-        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/table-users">Admin</a></li>
+        <li><a href="#" class="dropdown-toggle">Contacto</a></li>-->
+        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin" *ngIf="showAdmin">Administrador</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="" class="login" routerLink="/login-form" *ngIf="showEnter"><span class="glyphicon glyphicon-user"></span> Entrar</a></li>
         <li>
           <a *ngIf="!showEnter" class="btn btn-primary dropdown-toggle" id="userButton" type="button" data-toggle="dropdown">{{ this.user.name }}  <span class="caret"></span></a>
           <ul class="dropdown-menu">
+            <li><a (click)="editProfile()">Editar Usuario</a></li>
             <li><a href="#" (click)="leaveSession()"  routerLink="">Salir</a></li>
           </ul>
         </li>
@@ -75,7 +78,7 @@
         <button type="submit" class="btn btn-default">Buscar</button>
       </form>-->
 
-        <div class="row">
+        <!--<div class="row">
           <div class="col-lg-3 col-md-3 pull-right">
             <div class="">
               <div class="custom-search">
@@ -83,7 +86,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
