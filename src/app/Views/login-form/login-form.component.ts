@@ -4,7 +4,6 @@ import { UserService } from '../../services/user.service';
 import {CloseGuard, DialogRef, ModalComponent} from 'angular2-modal';
 import {BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {IAlert} from '../adminPage/table-users/table-users.component';
-import {LocalStorage, SessionStorage} from 'angular2-localstorage';
 import {Router} from '@angular/router';
 
 @Component({

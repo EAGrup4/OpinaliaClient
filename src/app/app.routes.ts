@@ -8,6 +8,9 @@ import {EditProfileComponent} from './Views/edit-profile/edit-profile.component'
 
 const routes: Routes = [
   {
+    path: '', component: ProductsComponent
+  },
+  {
     path: 'login-form', component: LoginFormComponent
   },
   {

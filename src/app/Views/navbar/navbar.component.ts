@@ -4,7 +4,6 @@ import {Browser} from 'selenium-webdriver';
 import {Product} from '../../classes/product.model';
 import {ProductService} from '../../services/product.service';
 import {Router} from '@angular/router';
-import {LocalStorage, SessionStorage} from 'angular2-localstorage';
 import {User} from '../../classes/user.model';
 
 @Component({
