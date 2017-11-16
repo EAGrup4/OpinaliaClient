@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   savedUser = sessionStorage.getItem('user');
   showEnter = true;
   router: Router;
+  showAdmin = false;
   constructor(_router: Router) {
     this.router = _router;
   }
@@ -28,6 +29,10 @@ export class NavbarComponent implements OnInit {
     if (this.user != null) {
       this.showEnter = false;
       console.log(this.user);
+      if (this.user.admin === true) {
+        console.log(this.user.admin);
+        this.showAdmin = true;
+      }
     }
   }
   leaveSession() {

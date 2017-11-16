@@ -28,7 +28,7 @@
             </div>
           </div>-->
         </li>
-        <li class="dropdown mega-dropdown active">
+        <!--<li class="dropdown mega-dropdown active">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Marcas</a>
           <div class="dropdown-menu mega-dropdown-menu">
             <div class="container-fluid">
@@ -56,8 +56,8 @@
             </div>
           </div>
         </li>
-        <li><a href="#" class="dropdown-toggle">Contacto</a></li>
-        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin">Admin</a></li>
+        <li><a href="#" class="dropdown-toggle">Contacto</a></li>-->
+        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin" *ngIf="showAdmin">Admin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="" class="login" routerLink="/login-form" *ngIf="showEnter"><span class="glyphicon glyphicon-user"></span> Entrar</a></li>

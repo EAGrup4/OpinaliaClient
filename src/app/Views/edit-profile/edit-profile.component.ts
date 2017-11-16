@@ -46,6 +46,17 @@ export class EditProfileComponent implements OnInit {
         window.location.reload();
       });
   }
+  deleteUser() {
+    this.users._id = this.id;
+    console.log(this.id);
+    this.userService.deleteUser(this.users._id).subscribe(
+      (data) => {
+        console.log(data);
+        sessionStorage.clear();
+        this.router.navigate(['']);
+        window.location.reload();
+      });
+  }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);

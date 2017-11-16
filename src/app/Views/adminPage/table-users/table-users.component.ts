@@ -1,8 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../classes/user.model';
 import {Subject} from 'rxjs/Subject';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-table-users',
@@ -10,18 +10,25 @@ import {Subject} from 'rxjs/Subject';
   styleUrls: ['./table-users.component.css'],
   providers: [UserService],
 })
-export class TableUsersComponent {
+export class TableUsersComponent implements OnInit{
   users = new User('', '', '', '', false, '');
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();
   private backup: Array<IAlert>;
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
   }
   user: any;
   error: string;
   id: string;
+  ngOnInit() {
+    this.userService.getUser().subscribe(
+      (data) => {
+        this.user = data;
+        console.log(data);
+      });
+  }
   showUsers() {
     this.userService.getUser().subscribe(
       (data) => {
