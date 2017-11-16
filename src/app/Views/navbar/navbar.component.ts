@@ -17,6 +17,7 @@ import {User} from '../../classes/user.model';
 export class NavbarComponent implements OnInit {
   user = new User('', '', '', '', false, '');
   savedUser = sessionStorage.getItem('user');
+  isAdmin = false;
   showEnter = true;
   router: Router;
   showAdmin = false;
