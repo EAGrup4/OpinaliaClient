@@ -11,6 +11,7 @@ import {ProductService} from '../../services/product.service';
 })
 
 export class ProductsComponent implements OnInit {
+  prodClicked = new Product('', '', '', [], [], [], '');
   prod = new Product('', '', '', [], [], [], '');
   product: any;
   products: any;
