@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../../classes/product.model';
 import {Subject} from 'rxjs/Subject';
 import {ProductService} from '../../../services/product.service';
@@ -12,7 +12,7 @@ import {IAlert} from '../table-users/table-users.component';
   providers: [ProductService],
 })
 
-export class TableProductsComponent {
+export class TableProductsComponent implements OnInit{
   products = new Product('', '', '', [], [], [], '');
   @Input()
   public alerts: Array<IAlert> = [];
@@ -24,6 +24,7 @@ export class TableProductsComponent {
   product: any;
   error: string;
   id: string;
+
   showProducts() {
     this.productService.getProduct().subscribe(
       (data) => {
