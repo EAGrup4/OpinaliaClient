@@ -57,13 +57,14 @@
           </div>
         </li>
         <li><a href="#" class="dropdown-toggle">Contacto</a></li>
-        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/table-users">Admin</a></li>
+        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin">Admin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="" class="login" routerLink="/login-form" *ngIf="showEnter"><span class="glyphicon glyphicon-user"></span> Entrar</a></li>
         <li>
           <a *ngIf="!showEnter" class="btn btn-primary dropdown-toggle" id="userButton" type="button" data-toggle="dropdown">{{ this.user.name }}  <span class="caret"></span></a>
           <ul class="dropdown-menu">
+            <li><a (click)="editProfile()">Editar Usuario</a></li>
             <li><a href="#" (click)="leaveSession()"  routerLink="">Salir</a></li>
           </ul>
         </li>

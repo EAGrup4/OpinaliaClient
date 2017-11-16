@@ -19,16 +19,24 @@ export class NavbarComponent implements OnInit {
   user = new User('', '', '', '', false, '');
   savedUser = sessionStorage.getItem('user');
   showEnter = true;
+  router: Router;
+  constructor(_router: Router) {
+    this.router = _router;
+  }
   ngOnInit() {
     this.user = JSON.parse(this.savedUser);
-    console.log(this.user);
     if (this.user != null) {
       this.showEnter = false;
-      console.log('SavedName: ' + this.user.name);
+      console.log(this.user);
     }
   }
   leaveSession() {
     sessionStorage.clear();
+    window.location.reload();
+  }
+  editProfile() {
+    sessionStorage.setItem('id', this.user._id);
+    this.router.navigate(['edit-profile']);
   }
 }
 
