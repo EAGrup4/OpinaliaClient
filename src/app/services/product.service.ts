@@ -9,6 +9,7 @@ import { User } from '../classes/user.model';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import {Product} from '../classes/product.model';
+import {Ratings} from '../classes/ratings.model';
 
 @Injectable()
 export class ProductService {
@@ -36,7 +37,7 @@ export class ProductService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     // ...using get request
-    return this.http.get(this.url + '/:productName' + name, options)
+    return this.http.get(this.url + '/' + name, options)
     // ...and calling .json() on the response to return data
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
@@ -51,6 +52,14 @@ export class ProductService {
     const options = new RequestOptions({ headers: headers });
     console.log(product._id);
     return this.http.post(this.url + '/' + product._id, product, options)
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  sendComment(rating: Ratings, productId) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    console.log(productId);
+    return this.http.post(this.url + '/rating/' + productId, rating, options)
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

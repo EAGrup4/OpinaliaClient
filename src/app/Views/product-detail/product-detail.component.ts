@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnChanges} from '@angular/core';
 import {Product} from '../../classes/product.model';
 import {ProductService} from '../../services/product.service';
+import {Ratings} from '../../classes/ratings.model';
+import {User} from '../../classes/user.model';
 
 @Component({
   moduleId: module.id,
@@ -10,25 +12,39 @@ import {ProductService} from '../../services/product.service';
   providers: [ProductService]
 })
 
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, OnChanges {
   @Input () prodSelected = new Product('', '', '', [], [], [], '');
   prod = new Product('', '', '', [], [], [], '');
+  user = new User('', '', '', '', false, '');
+  rating = new Ratings('', '', 0);
   product: any;
   products: any;
   id: String;
   constructor(private productService: ProductService) {}
-
   ngOnInit() {
-    if (this.prodSelected !== this.prod) {
-      console.log(this.prodSelected);
-      this.productService.getProductByName(this.prodSelected.name).subscribe(// ng -g component name
-        (data) => {
-          this.product = data;
-          console.log(data);
-        });
-    }
+  }
+
+  ngOnChanges() {
+    this.prod = this.prodSelected;
+    console.log(this.prod);
+    this.productService.getProductByName(this.prod.name).subscribe(// ng -g component name
+      (data) => {
+        this.product = data;
+        console.log('AAAAA: ' + data);
+      });
   }
   passID(id: string) {
     this.id = id;
+  }
+  sendComment(comment: string, mark: number) {
+    this.user = JSON.parse(sessionStorage.getItem('user'));
+    this.rating.userId = this.user._id;
+    this.rating.comment = comment;
+    this.rating.mark = mark;
+    console.log('id: ' + this.rating.userId + 'Comment: ' + comment + 'mark: ' + mark);
+    this.productService.sendComment(this.rating, this.prod._id).subscribe(// ng -g component name
+      (data) => {
+        console.log(data);
+      });
   }
 }

@@ -24,4 +24,8 @@ export class ProductsComponent implements OnInit {
         console.log(data);
       });
   }
+  productClicked(prod: Product) {
+    this.prodClicked = prod;
+    console.log(this.prodClicked);
+  }
 }

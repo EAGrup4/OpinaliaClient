@@ -1,15 +1,13 @@
 <div class="box-shadow" *ngFor="let prod of product">
-  <img src="../../../assets/images/productos/mobiles/lg.png" class="productImageStyle"><!--Aqui seria product.images-->
-
   <div class="container">
-    <h1 class="Title">Detalle Producto: {{ prod.name }}</h1>
+    <h1 class="Title">{{ prod.name }}</h1>
     <div class="row">
       <div class="col-6 col-sm-3 formProduct">
         <div class="productMark">
           <h2></h2>
         </div>
         <div class="productSubname">
-          <h3>Categoria: {{ prod.category }} - Compañía: {{ prod.company }} </h3>
+          <h3>Categoria: {{ prod.category }}  Compañía: {{ prod.company }} </h3>
         </div>
         <div class="productSubname">
           <h3>{{ prod.specifications }}</h3>
@@ -17,11 +15,11 @@
         <div class="productSubname">
           <h3>{{ prod.components }}</h3>
         </div>
+        <button class="btn btn-lg" data-toggle="modal" data-target="#myModal5">OPINAR</button>
       </div>
     </div>
-    <p data-placement="top" data-toggle="tooltip" title="AddComent"><button class="btn btn-primary btn-xs" data-title="AddComent" data-toggle="modal" data-target="#myModal" (click)="passID(products._id)"><span class="glyphicon glyphicon-pencil"></span></button></p>
     <!-- Modal -->
-    <div class="modal fade" id="myModa" role="dialog">
+    <div class="modal fade" id="myModal5" role="dialog">
       <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content" id="moodal">
@@ -35,8 +33,22 @@
               <input type="text" class="form-control" id="comment" name="comment" value="" required="" title="Introduzca su comentario" placeholder="Comment" #comment>
               <span class="help-block"></span>
             </div>
+            Opinar:   <select name="OS" #mark>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
           </form>
           <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="sendComment(comment.value, mark.value)">Opinar</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
         </div>
