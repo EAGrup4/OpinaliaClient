@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="row">
-    <h1>Información del producto</h1>
+    <h1 *ngIf="prodClicked.name != ''">Información del producto</h1>
     <app-product-detail [prodSelected]="prodClicked"></app-product-detail>
   </div>
 </div>

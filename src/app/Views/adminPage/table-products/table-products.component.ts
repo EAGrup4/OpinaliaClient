@@ -12,8 +12,8 @@ import {IAlert} from '../table-users/table-users.component';
   providers: [ProductService],
 })
 
-export class TableProductsComponent implements OnInit{
-  products = new Product('', '', '', [], [], [], '');
+export class TableProductsComponent implements OnInit {
+  products = new Product('', '', '', [], [], null, '');
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();

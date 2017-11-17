@@ -14,8 +14,8 @@ import {Router} from '@angular/router';
 })
 
 export class ProductDetailComponent implements OnInit, OnChanges {
-  @Input () prodSelected = new Product('', '', '', [], [], [], '');
-  prod = new Product('', '', '', [], [], [], '');
+  @Input () prodSelected = new Product('', '', '', [], [], null, '');
+  prod = new Product('', '', '', [], [], null, '');
   user = new User('', '', '', '', false, '');
   rating = new Ratings('', '', 0);
   product: any;
@@ -46,8 +46,9 @@ export class ProductDetailComponent implements OnInit, OnChanges {
       this.rating.userId = this.user._id;
       this.rating.comment = comment;
       this.rating.mark = mark;
-      console.log('id: ' + this.rating.userId + 'Comment: ' + comment + 'mark: ' + mark);
-      this.productService.sendComment(this.rating, this.prod._id).subscribe(// ng -g component name
+      this.prod.ratings = this.rating;
+      console.log(this.prod.ratings);
+      this.productService.sendComment(this.prod, this.prod._id).subscribe(// ng -g component name
         (data) => {
           console.log(data);
         });

@@ -55,11 +55,11 @@ export class ProductService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-  sendComment(rating: Ratings, productId) {
+  sendComment(product: Product, productId) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(productId);
-    return this.http.post(this.url + '/rating/' + productId, rating, options)
+    return this.http.post(this.url + '/rating/' + productId, product, options)
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
