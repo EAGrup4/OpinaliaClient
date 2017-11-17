@@ -58,19 +58,20 @@ export class TableUsersComponent {
       (data) => {
         console.log(data);
         this.error = data.name;
-        if (this.error === 'CastError') {
-          this.alerts.push({
-            id: 2,
-            type: 'danger',
-            message: 'Error al editar usuario',
-          });
-        } else {
+          this.alerts.pop();
           this.alerts.push({
             id: 1,
             type: 'success',
             message: 'Usuario modificado!',
           });
-        }
+      }, (err) => {
+        console.log(err);
+        this.alerts.pop();
+        this.alerts.push({
+          id: 2,
+          type: 'danger',
+          message: 'No se ha podido modificar el usuario!',
+        });
       });
   }
   changeAdmin(id: string, name: string, email: string, admin: boolean) {

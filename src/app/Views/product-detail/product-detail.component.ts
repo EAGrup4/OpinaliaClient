@@ -3,6 +3,7 @@ import {Product} from '../../classes/product.model';
 import {ProductService} from '../../services/product.service';
 import {Ratings} from '../../classes/ratings.model';
 import {User} from '../../classes/user.model';
+import {Router} from '@angular/router';
 
 @Component({
   moduleId: module.id,
@@ -20,6 +21,9 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   product: any;
   products: any;
   id: String;
+  @Input()
+  public alerts: Array<IAlert> = [];
+  private backup: Array<IAlert>;
   constructor(private productService: ProductService) {}
   ngOnInit() {
   }
@@ -30,7 +34,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     this.productService.getProductByName(this.prod.name).subscribe(// ng -g component name
       (data) => {
         this.product = data;
-        console.log('AAAAA: ' + data);
+        console.log(data);
       });
   }
   passID(id: string) {
@@ -38,13 +42,31 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   }
   sendComment(comment: string, mark: number) {
     this.user = JSON.parse(sessionStorage.getItem('user'));
-    this.rating.userId = this.user._id;
-    this.rating.comment = comment;
-    this.rating.mark = mark;
-    console.log('id: ' + this.rating.userId + 'Comment: ' + comment + 'mark: ' + mark);
-    this.productService.sendComment(this.rating, this.prod._id).subscribe(// ng -g component name
-      (data) => {
-        console.log(data);
+    if (this.user !== null) {
+      this.rating.userId = this.user._id;
+      this.rating.comment = comment;
+      this.rating.mark = mark;
+      console.log('id: ' + this.rating.userId + 'Comment: ' + comment + 'mark: ' + mark);
+      this.productService.sendComment(this.rating, this.prod._id).subscribe(// ng -g component name
+        (data) => {
+          console.log(data);
+        });
+    } else {
+      this.alerts.pop();
+      this.alerts.push({
+        id: 2,
+        type: 'danger',
+        message: 'PARA PODER OPINAR TIENES QUE ENTRAR EN TU CUENTA DE OPINALIA',
       });
+    }
   }
+  public closeAlert(alert: IAlert) {
+    const index: number = this.alerts.indexOf(alert);
+    this.alerts.splice(index, 1);
+  }
+}
+export interface IAlert {
+  id: number;
+  type: string;
+  message: string;
 }

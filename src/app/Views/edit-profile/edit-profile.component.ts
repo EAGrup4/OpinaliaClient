@@ -36,6 +36,7 @@ export class EditProfileComponent implements OnInit {
     this.userService.modifyUser(this.users).subscribe(
       (data) => {
         console.log(data);
+        this.alerts.pop();
         this.alerts.push({
           id: 1,
           type: 'success',
@@ -44,6 +45,15 @@ export class EditProfileComponent implements OnInit {
         sessionStorage.setItem('user', JSON.stringify(data));
         this.router.navigate(['']);
         window.location.reload();
+      },
+      (err) => {
+        console.log(err);
+        this.alerts.pop();
+        this.alerts.push({
+          id: 2,
+          type: 'danger',
+          message: 'No se ha podido modificar el usuario!',
+        });
       });
   }
   deleteUser() {
@@ -55,6 +65,15 @@ export class EditProfileComponent implements OnInit {
         sessionStorage.clear();
         this.router.navigate(['']);
         window.location.reload();
+      },
+      (err) => {
+        console.log(err);
+        this.alerts.pop();
+        this.alerts.push({
+          id: 2,
+          type: 'danger',
+          message: 'No se ha podido eliminar el usuario!',
+        });
       });
   }
   public closeAlert(alert: IAlert) {

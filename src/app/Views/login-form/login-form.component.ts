@@ -36,23 +36,24 @@ export class LoginFormComponent {
     this.userService.addUser(this.user).subscribe(
       (data) => {
         console.log(data);
-        // this.error = data.name; ARREGLAR SI SE PRODUCE ALGUN ERROR
-        if (this.error === 'CastError') {
-          this.alerts.push({
-            id: 2,
-            type: 'danger',
-            message: 'Error al registrar usuario',
-          });
-        } else {
-          this.alerts.push({
-            id: 1,
-            type: 'success',
-            message: 'Usuario Registrado!',
-          });
-          sessionStorage.setItem('user', JSON.stringify(data));
-          this.router.navigate(['']);
-          window.location.reload();
-        }
+        this.alerts.pop();
+        this.alerts.push({
+          id: 1,
+          type: 'success',
+          message: 'Usuario Registrado!',
+        });
+        sessionStorage.setItem('user', JSON.stringify(data));
+        this.router.navigate(['']);
+        window.location.reload();
+      },
+      (err) => {
+        console.log(err);
+        this.alerts.pop();
+        this.alerts.push({
+          id: 2,
+          type: 'danger',
+          message: 'No se ha podido registrar!',
+        });
       }
     );
   }
@@ -64,23 +65,24 @@ export class LoginFormComponent {
       (data) => {
         console.log('entraar');
         console.log(data);
-        // this.error = data.name; ARREGLAR SI SE PRODUCE ALGUN ERROR
-          sessionStorage.clear();
-          this.alerts.push({
-            id: 1,
-            type: 'success',
-            message: 'Usuario logueado!',
-          });
-          sessionStorage.setItem('user', JSON.stringify(data[0]));
-          this.router.navigate(['']);
-          window.location.reload();
+        sessionStorage.clear();
+        this.alerts.pop();
+        this.alerts.push({
+          id: 1,
+          type: 'success',
+          message: 'Usuario logueado!',
+        });
+        sessionStorage.setItem('user', JSON.stringify(data[0]));
+        this.router.navigate(['']);
+        window.location.reload();
       },
     (err) => {
       console.log(err);
+      this.alerts.pop();
       this.alerts.push({
         id: 2,
         type: 'danger',
-        message: 'Usuario no logueado!',
+        message: 'Error al loguear!',
       });
     }
     );

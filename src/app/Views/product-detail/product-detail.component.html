@@ -1,3 +1,6 @@
+<p *ngFor="let alert of alerts" id="alertType">
+  <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+</p>
 <div class="box-shadow" *ngFor="let prod of product">
   <div class="container">
     <h1 class="Title">{{ prod.name }}</h1>

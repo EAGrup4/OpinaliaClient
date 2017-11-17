@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../../classes/product.model';
 import {Subject} from 'rxjs/Subject';
 import {ProductService} from '../../../services/product.service';
@@ -12,7 +12,7 @@ import {IAlert} from '../table-users/table-users.component';
   providers: [ProductService],
 })
 
-export class TableProductsComponent {
+export class TableProductsComponent implements OnInit{
   products = new Product('', '', '', [], [], [], '');
   @Input()
   public alerts: Array<IAlert> = [];
@@ -60,19 +60,20 @@ export class TableProductsComponent {
       (data) => {
         console.log(data);
         this.error = data.name;
-        if (this.error === 'CastError') {
-          this.alerts.push({
-            id: 2,
-            type: 'danger',
-            message: 'Error al modificar producto',
-          });
-        } else {
-          this.alerts.push({
-            id: 1,
-            type: 'success',
-            message: 'Producto Modificado!',
-          });
-        }
+        this.alerts.push({
+          id: 1,
+          type: 'success',
+          message: 'Producto Modificado!',
+        });
+        },
+      (err) => {
+        console.log(err);
+        this.alerts.pop();
+        this.alerts.push({
+          id: 2,
+          type: 'danger',
+          message: 'No se ha podido modificar el producto!',
+        });
       });
   }
   addProduct(name: string, category: string, company: string, id: string) {
