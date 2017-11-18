@@ -24,6 +24,7 @@ export class TableProductsComponent implements OnInit {
   product: any;
   error: string;
   id: string;
+  index: number;
   ngOnInit() {
     this.productService.getProduct().subscribe(
       (data) => {
@@ -38,13 +39,18 @@ export class TableProductsComponent implements OnInit {
         console.log(data);
       });
   }
-  deleteUsers(id: string, index: number) {
+  passIndex(id: string, name: string, i: number) {
+    this.products._id = id;
+    this.products.name = name;
+    this.index = i;
+  }
+  deleteUsers(id: string) {
     this.products._id = id;
     console.log(id);
     this.productService.deleteProduct(id).subscribe(
       (data) => {
         console.log(data);
-        this.product.splice(index, 1);
+        this.product.splice(this.index, 1);
       });
   }
   passID(id: string) {

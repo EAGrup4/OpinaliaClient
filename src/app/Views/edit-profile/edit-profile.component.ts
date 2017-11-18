@@ -27,6 +27,20 @@ export class EditProfileComponent implements OnInit {
   ngOnInit() {
     this.id = sessionStorage.getItem('id');
   }
+  passUser(name: string, email: string, password: string, password22: string) {
+    if (password === password22) {
+      this.users.email = email;
+      this.users.name = name;
+      this.users.password = password;
+    } else {
+      this.alerts.pop();
+      this.alerts.push({
+        id: 2,
+        type: 'danger',
+        message: 'Las contraseñas no coinciden!',
+      });
+    }
+  }
   modifyUsers(name: string, email: string, password: string) {
     this.users.email = email;
     this.users.name = name;

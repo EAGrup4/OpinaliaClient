@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../classes/user.model';
 import {Subject} from 'rxjs/Subject';
@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./table-users.component.css'],
   providers: [UserService],
 })
-export class TableUsersComponent {
+export class TableUsersComponent implements OnInit{
   users = new User('', '', '', '', false, '');
   @Input()
   public alerts: Array<IAlert> = [];
@@ -22,6 +22,7 @@ export class TableUsersComponent {
   user: any;
   error: string;
   id: string;
+  index: number;
   ngOnInit() {
     this.userService.getUser().subscribe(
       (data) => {
@@ -36,18 +37,24 @@ export class TableUsersComponent {
         console.log(data);
       });
   }
-  deleteUsers(id: string, index: number) {
+  passIndex(id: string, name: string, i: number) {
+    this.users._id = id;
+    this.users.name = name;
+    this.index = i;
+  }
+  deleteUsers(id: string) {
     this.users._id = id;
     console.log(id);
     this.userService.deleteUser(id).subscribe(
       (data) => {
         console.log(data);
-        this.user.splice(index, 1);
+        this.user.splice(this.index, 1);
       });
   }
   passID(id: string) {
     this.id = id;
   }
+
   modifyUsers(name: string, email: string, password: string) {
     this.users.email = email;
     this.users.name = name;

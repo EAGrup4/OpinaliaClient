@@ -39,7 +39,7 @@
             <td>{{ products.category }}</td>
             <td>{{ products.company }}</td>
             <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#myModal3" (click)="passID(products._id, i)"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" (click)="deleteUsers(products._id, i)" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+            <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete2" (click)="passIndex(products._id, products.name, i)" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
           </tr>
           </tbody>
         </table>
@@ -53,7 +53,7 @@
       <div class="modal-content" id="moodal">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Añadir producto</h4>
+          <h4 class="modal-title">Editar producto</h4>
         </div>
         <form id="editForm" method="POST" action="/login/" novalidate="novalidate">
           <div class="form-group">
@@ -86,7 +86,7 @@
       <div class="modal-content" id="mooodal">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Editar</h4>
+          <h4 class="modal-title">Añadir Producto</h4>
         </div>
         <form id="editForm2" method="POST" action="/login/" novalidate="novalidate">
           <div class="form-group">
@@ -107,6 +107,21 @@
           <p><a class="btn btn-info btn-block" (click)="addProduct(name2.value, category2.value, company2.value)" data-dismiss="modal">Añadir Producto</a></p>
         </form>
         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="delete2" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">¿Seguro que quieres borrar el producto: {{ this.products.name }}?</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteUsers(products._id)">Si, Borrar!</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

@@ -50,7 +50,12 @@
               <input type="password" class="form-control" id="password2" name="password" value="" required="" title="Introduzca su contraseña" #password2>
               <span class="help-block"></span>
             </div>
-          <p><a class="btn btn-info btn-block" (click)="addUser(username2.value, email2.value, password2.value)">Registrar</a></p>
+            <div class="form-group">
+              <label for="password22" class="control-label">Confirmar Contraseña</label>
+              <input type="password" class="form-control" id="password22" name="password" value="" required="" title="Introduzca su contraseña" #password22>
+              <span class="help-block"></span>
+            </div>
+          <p><a class="btn btn-info btn-block" (click)="addUser(username2.value, email2.value, password2.value, password22.value)">Registrar</a></p>
           </form>
         </div>
       </div>

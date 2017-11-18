@@ -27,35 +27,44 @@ export class LoginFormComponent {
   get currentUser(){
     return JSON.stringify(this.user);
   }
-  addUser(name: string, email: string, password: string, id: string) {
+  addUser(name: string, email: string, password: string, password2: string, id: string) {
     this.user.email = email;
     this.user.name = name;
     this.user.password = password;
     this.user._id = id;
     console.log(this.user);
-    this.userService.addUser(this.user).subscribe(
-      (data) => {
-        console.log(data);
-        this.alerts.pop();
-        this.alerts.push({
-          id: 1,
-          type: 'success',
-          message: 'Usuario Registrado!',
-        });
-        sessionStorage.setItem('user', JSON.stringify(data));
-        this.router.navigate(['']);
-        window.location.reload();
-      },
-      (err) => {
-        console.log(err);
-        this.alerts.pop();
-        this.alerts.push({
-          id: 2,
-          type: 'danger',
-          message: 'No se ha podido registrar!',
-        });
-      }
-    );
+    if (password === password2) {
+      this.userService.addUser(this.user).subscribe(
+        (data) => {
+          console.log(data);
+          this.alerts.pop();
+          this.alerts.push({
+            id: 1,
+            type: 'success',
+            message: 'Usuario Registrado!',
+          });
+          sessionStorage.setItem('user', JSON.stringify(data));
+          this.router.navigate(['']);
+          window.location.reload();
+        },
+        (err) => {
+          console.log(err);
+          this.alerts.pop();
+          this.alerts.push({
+            id: 2,
+            type: 'danger',
+            message: 'No se ha podido registrar!',
+          });
+        }
+      );
+    } else {
+      this.alerts.pop();
+      this.alerts.push({
+        id: 2,
+        type: 'danger',
+        message: 'Las contraseñas no coinciden!',
+      });
+    }
   }
   enterUser(email: string, password: string) {
     this.user.email = email;
