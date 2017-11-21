@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Product} from '../../classes/product.model';
 import {ProductService} from '../../services/product.service';
 
@@ -16,6 +16,9 @@ export class ProductsComponent implements OnInit {
   product: any;
   products: any;
   data: any;
+  @Input()
+  public alerts: Array<IAlert> = [];
+  private backup: Array<IAlert>;
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
@@ -48,4 +51,36 @@ export class ProductsComponent implements OnInit {
         console.log(this.product);
       });
   }
+  search(text: string, category: string) {
+    console.log(text);
+    if (text === '') {
+      text = '0';
+    }
+    this.productService.searchProduct(text, category).subscribe(
+      (data) => {
+        this.alerts.pop();
+        this.product = data;
+        console.log(data);
+      },
+      (err) => {
+        this.product = null;
+        this.alerts.pop();
+        console.log(err);
+        this.alerts.push({
+          id: 2,
+          type: 'danger',
+          message: 'NO SE OBTIENEN RESULTADOS EN SU BUSQUEDA',
+        });
+      }
+    );
+  }
+  public closeAlert(alert: IAlert) {
+    const index: number = this.alerts.indexOf(alert);
+    this.alerts.splice(index, 1);
+  }
+}
+export interface IAlert {
+  id: number;
+  type: string;
+  message: string;
 }

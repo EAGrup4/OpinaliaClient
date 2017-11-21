@@ -3,12 +3,22 @@
     <form class='navbar-form'>
       <div class="col-md-1"></div>
       <div class='input-group col-md-10'>
-        <input class='form-control' type='text' name='search' placeholder='Busque el producto que desee' />
+        <input class='form-control' type='text' name='search' placeholder='Busque el producto que desee' #searcher/>
         <span class="input-group-btn">
           <button type='submit' class='btn btn-default'>
-            <span class='glyphicon glyphicon-search'></span>
+            <span class='glyphicon glyphicon-search' (click)="search(searcher.value, category.value)"></span>
           </button>
-          <button class='btn btn-default' disabled="disabled">Ordenar la busqueda por:</button>
+          <div class="form-group">
+             <select name="categoria" class="form-control" #category>
+              <option value="Todos">Todos</option>
+              <option value="Sobremesa">Sobremesa</option>
+              <option value="Portatil">Portatil</option>
+              <option value="Tablet">Tablet</option>
+              <option value="Movil">Movil</option>
+              <option value="Accesorios">Accesorios</option>
+            </select>
+          </div>
+          <button class='btn btn-default' disabled="disabled">Ordenar toda la lista de productos por:</button>
           <button class='btn btn-default'>Puntuación</button>
           <button class='btn btn-default' (click)="aplhabetOrder()">A-Z</button>
           <button class='btn btn-default'>Novedades</button>
@@ -16,6 +26,9 @@
       </div>
       <div class="col-md-1"></div>
     </form>
+  <p *ngFor="let alert of alerts" id="alertType">
+    <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+  </p>
   <div class="smallForm">
     <p>Ordenar la busqueda por:
       <button class='btn btn-default'>Puntuación</button>
