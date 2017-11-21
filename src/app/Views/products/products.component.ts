@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit {
   prod = new Product('', '', '', [], [], null, '');
   product: any;
   products: any;
+  data: any;
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
@@ -27,5 +28,24 @@ export class ProductsComponent implements OnInit {
   productClicked(prod: Product) {
     this.prodClicked = prod;
     console.log(this.prodClicked);
+  }
+  aplhabetOrder() {
+    this.productService.getProduct().subscribe(
+      (data) => {
+
+        this.data = data.sort();
+        this.data.sort(function (a, b) {
+          if (a.name > b.name) {
+            return 1;
+          }
+          if (a.name < b.name) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+        this.product = this.data;
+        console.log(this.product);
+      });
   }
 }

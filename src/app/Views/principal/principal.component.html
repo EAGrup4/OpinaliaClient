@@ -1,2 +1,51 @@
+<form class='navbar-form'>
+  <div class="col-md-3"></div>
+  <div class='input-group col-md-6'>
+    <input class='form-control' type='text' name='search' placeholder='Busque el producto que desee' />
+    <span class="input-group-btn">
+          <button type='submit' class='btn btn-default'>
+            <span class='glyphicon glyphicon-search'></span>
+          </button>
+    </span>
+  </div>
+  <div class="col-md-2"></div>
+</form>
 <div>
+  <img src="/assets/images/port2.jpg" width="100%" height="100%"/>
+</div>
+<div class="container">
+  <div class="row">
+    <h2>TOP</h2>
+    <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of product | slice:0:5">
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="60%" height="60%">
+      </div>
+      <div class="productName">
+        <h3>{{ prod.name }}</h3>
+      </div>
+      <div class="productSubname">
+        <h4>{{ prod.category }} - {{ prod.company }} </h4>
+      </div>
+    </div>
+    <div class="plusImage">
+      <img src="/assets/images/mas.jpg" width="5%" height="5%">
+    </div>
+  </div>
+  <div class="row">
+    <h2>ULTIMAS NOVEDADES</h2>
+    <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of product | slice:0:5">
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="60%" height="60%">
+      </div>
+      <div class="productName">
+        <h3>{{ prod.name }}</h3>
+      </div>
+      <div class="productSubname">
+        <h4>{{ prod.category }} - {{ prod.company }} </h4>
+      </div>
+    </div>
+    <div class="plusImage">
+      <img src="/assets/images/mas.jpg" width="5%" height="5%">
+    </div>
+  </div>
 </div>

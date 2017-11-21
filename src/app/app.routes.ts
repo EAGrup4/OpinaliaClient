@@ -5,10 +5,11 @@ import {TableUsersComponent} from './Views/adminPage/table-users/table-users.com
 import {ProductsComponent} from './Views/products/products.component';
 import {ProductDetailComponent} from './Views/product-detail/product-detail.component';
 import {EditProfileComponent} from './Views/edit-profile/edit-profile.component';
+import {PrincipalComponent} from './Views/principal/principal.component';
 
 const routes: Routes = [
   {
-    path: '', component: ProductsComponent
+    path: '', component: PrincipalComponent
   },
   {
     path: 'login-form', component: LoginFormComponent

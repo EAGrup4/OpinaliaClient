@@ -7,6 +7,8 @@
 }
 .formProduct{
   padding: 20px;
+  /*border-right: 1px solid rgba(70, 70, 70, 0.53);*/
+  margin-bottom: 20px;
 }
 .imgForm{
   margin-top: 10px;
@@ -20,4 +22,22 @@
   position: absolute;
   padding-top: 115px;
   padding-left: 200px;
+}
+#title{
+  margin-bottom: 30px;
+  text-align: center;
+}
+.navbar-form{
+  text-align:center;
+  display:inline-block;
+}
+@media screen and (min-width: 767px){
+  .smallForm {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px){
+  .navbar-form {
+    display: none;
+  }
 }
