@@ -1,6 +1,12 @@
 .nav{
   font-family: 'Quick-sand', sans-serif;
 }
+.liSizes{
+  width: 200px;
+  height: 60px;
+  margin: 0;
+  font-size: medium;
+}
 .navbar-brand {
   width: 110px;
   height: 50px;
@@ -152,3 +158,5 @@ li{
 #userButton{
   border: none;
 }
+
+

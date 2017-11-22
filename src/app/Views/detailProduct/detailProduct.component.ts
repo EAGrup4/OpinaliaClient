@@ -4,16 +4,17 @@ import {ProductService} from '../../services/product.service';
 import {Ratings} from '../../classes/ratings.model';
 import {User} from '../../classes/user.model';
 import {Router} from '@angular/router';
+import {ProductShareService} from '../../services/productShare.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-product-detail',
-  templateUrl: './product-detail.component.html',
-  styleUrls: ['./product-detail.component.css'],
-  providers: [ProductService]
+  selector: 'app-detailProduct',
+  templateUrl: './detailProduct.component.html',
+  styleUrls: ['./detailProduct.component.css'],
+  providers: [ProductService, ProductShareService]
 })
 
-export class ProductDetailComponent implements OnInit, OnChanges {
+export class DetailProductComponent implements OnInit, OnChanges {
   @Input () prodSelected = new Product('', '', '', [], [], null, '');
   prod = new Product('', '', '', [], [], null, '');
   user = new User('', '', '', '', false, '');
@@ -25,12 +26,22 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private productShareService: ProductShareService) {}
   ngOnInit() {
+    this.prod = this.productShareService.getSharedProduct();
+    console.log('PRODUCTO GUARDADO');
+    console.log(this.prod);
+    this.productService.getProductByName(this.prod.name).subscribe(
+      (data) => {
+        this.product = data;
+        /*ARREGLAR MOSTRAR LAS OPINIONES*/
+        console.log(data);
+      });
   }
 
   ngOnChanges() {
-    this.prod = this.prodSelected;
+    this.prod = this.productShareService.serviceProduct;
+    console.log(this.prod);
     this.productService.getProductByName(this.prod.name).subscribe(// ng -g component name
       (data) => {
         this.product = data;

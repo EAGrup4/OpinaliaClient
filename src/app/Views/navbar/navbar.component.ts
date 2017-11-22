@@ -5,6 +5,7 @@ import {Product} from '../../classes/product.model';
 import {ProductService} from '../../services/product.service';
 import {Router} from '@angular/router';
 import {User} from '../../classes/user.model';
+import {element} from 'protractor';
 
 @Component({
   moduleId: module.id,
@@ -21,6 +22,7 @@ export class NavbarComponent implements OnInit {
   showEnter = true;
   router: Router;
   showAdmin = false;
+  showStyle: false;
   constructor(_router: Router) {
     this.router = _router;
   }
@@ -42,6 +44,11 @@ export class NavbarComponent implements OnInit {
   editProfile() {
     sessionStorage.setItem('id', this.user._id);
     this.router.navigate(['edit-profile']);
+  }
+  getStyle() {
+    if (this.showStyle) {
+      return 'block';
+    }
   }
 }
 

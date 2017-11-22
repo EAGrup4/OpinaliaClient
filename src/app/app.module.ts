@@ -19,6 +19,12 @@ import {ProductsComponent} from './Views/products/products.component';
 import {ProductDetailComponent} from './Views/product-detail/product-detail.component';
 import {TableProductsComponent} from './Views/adminPage/table-products/table-products.component';
 import {EditProfileComponent} from './Views/edit-profile/edit-profile.component';
+import {MobileComponent} from './Views/productsTypes/mobile/mobile.component';
+import {LaptopComponent} from './Views/productsTypes/laptop/laptop.component';
+import {TabletComponent} from './Views/productsTypes/tablet/tablet.component';
+import {DesktopComponent} from './Views/productsTypes/desktop/desktop.component';
+import {AccessoriesComponent} from './Views/productsTypes/accessories/accessories.component';
+import {DetailProductComponent} from './Views/detailProduct/detailProduct.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,13 @@ import {EditProfileComponent} from './Views/edit-profile/edit-profile.component'
     PrincipalComponent,
     ProductsComponent,
     ProductDetailComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    MobileComponent,
+    LaptopComponent,
+    TabletComponent,
+    DesktopComponent,
+    AccessoriesComponent,
+    DetailProductComponent
   ],
   imports: [
     BrowserModule,

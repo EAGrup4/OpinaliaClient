@@ -1,28 +1,28 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Product} from '../../classes/product.model';
-import {ProductService} from '../../services/product.service';
-import {ProductShareService} from '../../services/productShare.service';
+import {Product} from '../../../classes/product.model';
+import {ProductService} from '../../../services/product.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css'],
-  providers: [ProductService, ProductShareService]
+  selector: 'app-tablet',
+  templateUrl: './tablet.component.html',
+  styleUrls: ['./tablet.component.css'],
+  providers: [ProductService]
 })
 
-export class ProductsComponent implements OnInit {
+export class TabletComponent implements OnInit {
   prodClicked = new Product('', '', '', [], [], null, '');
   prod = new Product('', '', '', [], [], null, '');
   product: any;
   products: any;
-  data2: any;
+  data: any;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
-  constructor(private productService: ProductService, private productShareService: ProductShareService) {}
+  constructor(private productService: ProductService) {}
+
   ngOnInit() {
-    this.productService.getProduct().subscribe(
+    this.productService.searchProductByCategory('Tablet').subscribe(
       (data) => {
         this.product = data;
         console.log(data);
@@ -31,14 +31,12 @@ export class ProductsComponent implements OnInit {
   productClicked(prod: Product) {
     this.prodClicked = prod;
     console.log(this.prodClicked);
-    this.productShareService.setSharedProduct(this.prodClicked);
   }
   aplhabetOrder() {
-    this.productService.getProduct().subscribe(
+    this.productService.searchProductByCategory('Tablet').subscribe(
       (data) => {
-
-        this.data2 = data.sort();
-        this.data2.sort(function (a, b) {
+        this.data = data.sort();
+        this.data.sort(function (a, b) {
           if (a.name > b.name) {
             return 1;
           }
@@ -48,12 +46,12 @@ export class ProductsComponent implements OnInit {
           // a must be equal to b
           return 0;
         });
-        this.product = this.data2;
+        this.product = this.data;
         console.log(this.product);
       });
   }
-  search(text: string, category: string) {
-    console.log(text);
+  search(text: string) {
+    const category = 'Tablet';
     if (text === '') {
       text = '0';
     }

@@ -12,13 +12,11 @@
         <div class="productSubname">
           <h3>Categoria: {{ prod.category }}  Compañía: {{ prod.company }} </h3>
         </div>
-        <div class="productSubname">
-          <h3>{{ prod.specifications }}</h3>
-        </div>
-        <div class="productSubname">
-          <h3>{{ prod.components }}</h3>
-        </div>
         <button class="btn btn-lg" data-toggle="modal" data-target="#myModal5">OPINAR</button>
+        <div class="productOpinions" *ngFor="let rate of product.ratings">
+          <!--<h3>{{ prod.ratings.userId.name }}:</h3>-->
+          <h4>{{ rate.comment }} {{ rate.mark }}</h4>
+        </div>
       </div>
     </div>
     <!-- Modal -->

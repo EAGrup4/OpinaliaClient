@@ -7,29 +7,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink=""></a>
+      <a class="navbar-brand" routerLink="" (click)="showStyle =  false"></a>
     </div>
-
-    <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+    <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         <li class="dropdown mega-dropdown active">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products">Productos</a>
-          <!--<div class="dropdown-menu mega-dropdown-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products" (click)="showStyle = true">Productos</a>
+          <div class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle()">
             <div class="container-fluid">
                 <ul class="nav-list list-inline">
-                    <li><a href="#"><img src="/assets/images/ordinador2.png" width="10%" height="10%"/><span>Sobremesa</span></a></li>
-                    <li><a href="#"><img src="/assets/images/portatil2.png" width="10%" height="10%" /><span>Portatiles</span></a></li>
-                    <li><a href="#"><img src="/assets/images/tablet2.png" width="10%" height="10%" /><span>Tablets</span></a></li>
-                    <li><a href="#"><img src="/assets/images/mobil2.png" width="10%" height="10%" /><span>Mobiles</span></a></li>
-                    <li><a href="#"><img src="/assets/images/accesoris2.png" width="10%" height="10%" /><span>Accesorios</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/desktop"><img src="/assets/images/ordinador2.png" width="40%" /><span>Sobremesa</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/laptop"><img src="/assets/images/portatil2.png" width="40%"/><span>Portatiles</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/tablet"><img src="/assets/images/tablet2.png" width="35%"/><span>Tablets</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/mobile"><img src="/assets/images/mobil2.png" width="35%"/><span>Moviles</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/accessories"><img src="/assets/images/accesoris2.png" width="40%" /><span>Accesorios</span></a></li>
                 </ul>
             </div>
-          </div>-->
+          </div>
         </li>
-       <!--<li class="dropdown mega-dropdown active">
-=======
-        <!--<li class="dropdown mega-dropdown active">
->>>>>>> a330ac0e0b0cb0259fcef41f30c2b7ae2735d0d4
+        <!--<li class="dropdown mega-dropdown active" (click)="showStyle =  false">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Marcas</a>
           <div class="dropdown-menu mega-dropdown-menu">
             <div class="container-fluid">
@@ -42,9 +38,8 @@
                 </ul>
             </div>
           </div>
-<<
         </li>-->
-        <!--<li class="dropdown mega-dropdown active">
+        <!--<li class="dropdown mega-dropdown active" (click)="showStyle =  false">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ranking</a>
           <div class="dropdown-menu mega-dropdown-menu">
             <div class="container-fluid">
@@ -59,10 +54,10 @@
           </div>
         </li>
         <li><a href="#" class="dropdown-toggle">Contacto</a></li>-->
-        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin" *ngIf="showAdmin">Administrador</a></li>
+        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin" *ngIf="showAdmin" (click)="showStyle =  false">Administrador</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="" class="login" routerLink="/login-form" *ngIf="showEnter"><span class="glyphicon glyphicon-user"></span> Entrar</a></li>
+        <li><a href="" class="login" routerLink="/login-form" *ngIf="showEnter" (click)="showStyle =  false"><span class="glyphicon glyphicon-user"></span> Entrar</a></li>
         <li>
           <a *ngIf="!showEnter" class="btn btn-primary dropdown-toggle" id="userButton" type="button" data-toggle="dropdown">{{ this.user.name }}  <span class="caret"></span></a>
           <ul class="dropdown-menu">

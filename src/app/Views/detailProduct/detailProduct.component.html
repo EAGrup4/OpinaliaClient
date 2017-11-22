@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row" *ngFor="let prod of product">
+    <div class="col-4">
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="20%" height="20%">
+      </div>
+    </div>
+    <div class="col-8">
+      <h1>{{ prod.name }}</h1>
+      <h3>{{ prod.category }} - {{ prod.company }}</h3>
+    </div>
+  </div>
+</div>
