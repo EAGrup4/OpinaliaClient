@@ -1,13 +1,35 @@
 <div class="container">
+  <div class="back">
+    <a class="btn btn-default" (click)="goBack()">< Atrás</a>
+  </div>
   <div class="row" *ngFor="let prod of product">
-    <div class="col-4">
-      <div class="imgForm">
-        <img src="/assets/images/predet.png" width="20%" height="20%">
+    <div class="col-md-4">
+      <div class="image">
+        <img src="/assets/images/predet.png" width="80%" height="80%">
       </div>
     </div>
-    <div class="col-8">
-      <h1>{{ prod.name }}</h1>
-      <h3>{{ prod.category }} - {{ prod.company }}</h3>
+    <div class="col-md-4">
+      <div id="text">
+        <h1>{{ prod.name }}</h1>
+        <h3>{{ prod.category }} - {{ prod.company }}</h3>
+      </div>
+    </div>
+    <div class="col-md-4 col-sm-6">
+      <div class="progress grey">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+        <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+        <div class="progress-value">75%</div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md" *ngFor="let rate of prod.ratings">
+      <h1>{{ rate.comment }}</h1>
+      <h3>{{ rate.mark }}</h3>
     </div>
   </div>
 </div>

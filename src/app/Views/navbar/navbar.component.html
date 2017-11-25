@@ -13,7 +13,7 @@
       <ul class="nav navbar-nav">
         <li class="dropdown mega-dropdown active">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products" (click)="showStyle = true">Productos</a>
-          <div class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle()">
+          <div  *ngIf="showStyle" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle()">
             <div class="container-fluid">
                 <ul class="nav-list list-inline">
                     <li class="liSizes"><a href="#" routerLink="/products/desktop"><img src="/assets/images/ordinador2.png" width="40%" /><span>Sobremesa</span></a></li>

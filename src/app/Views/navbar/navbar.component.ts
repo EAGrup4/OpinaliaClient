@@ -1,3 +1,4 @@
+///<reference path="../detailProduct/detailProduct.component.ts"/>
 import {Component, OnInit} from '@angular/core';
 import {LoginFormComponent} from '../login-form/login-form.component';
 import {Browser} from 'selenium-webdriver';
@@ -12,7 +13,7 @@ import {element} from 'protractor';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  providers: [ProductService]
+  providers: [ProductService],
 })
 
 export class NavbarComponent implements OnInit {
@@ -22,7 +23,8 @@ export class NavbarComponent implements OnInit {
   showEnter = true;
   router: Router;
   showAdmin = false;
-  showStyle: false;
+  showStyle = false;
+  subscription: any;
   constructor(_router: Router) {
     this.router = _router;
   }
@@ -48,7 +50,16 @@ export class NavbarComponent implements OnInit {
   getStyle() {
     if (this.showStyle) {
       return 'block';
+    } else {
+      return 'inline';
     }
+  }
+  disableStyle() {
+    console.log('AQUI ARRIBA');
+    this.showStyle = false;
+  }
+  ableStyle() {
+    this.showStyle = true;
   }
 }
 

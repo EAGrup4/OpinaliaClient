@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Product} from '../../../classes/product.model';
 import {ProductService} from '../../../services/product.service';
+import {NavbarComponent} from '../../navbar/navbar.component';
 
 @Component({
   moduleId: module.id,
@@ -19,7 +20,7 @@ export class MobileComponent implements OnInit {
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {}
 
   ngOnInit() {
     this.productService.searchProductByCategory('Movil').subscribe(
@@ -29,8 +30,11 @@ export class MobileComponent implements OnInit {
       });
   }
   productClicked(prod: Product) {
+    localStorage.clear();
     this.prodClicked = prod;
     console.log(this.prodClicked);
+    localStorage.setItem('product', JSON.stringify(this.prodClicked));
+    this.navbarComponent.disableStyle();
   }
   aplhabetOrder() {
     this.productService.searchProductByCategory('Movil').subscribe(

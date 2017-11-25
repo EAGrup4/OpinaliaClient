@@ -5,6 +5,8 @@ import {Ratings} from '../../classes/ratings.model';
 import {User} from '../../classes/user.model';
 import {Router} from '@angular/router';
 import {ProductShareService} from '../../services/productShare.service';
+import {Location} from '@angular/common';
+import {NavbarComponent} from '../navbar/navbar.component';
 
 @Component({
   moduleId: module.id,
@@ -14,11 +16,13 @@ import {ProductShareService} from '../../services/productShare.service';
   providers: [ProductService, ProductShareService]
 })
 
-export class DetailProductComponent implements OnInit, OnChanges {
+export class DetailProductComponent implements OnInit {
   @Input () prodSelected = new Product('', '', '', [], [], null, '');
   prod = new Product('', '', '', [], [], null, '');
   user = new User('', '', '', '', false, '');
   rating = new Ratings('', '', 0);
+  ratings: any;
+  rate: any;
   product: any;
   products: any;
   data2: any;
@@ -26,28 +30,18 @@ export class DetailProductComponent implements OnInit, OnChanges {
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
-  constructor(private productService: ProductService, private productShareService: ProductShareService) {}
+  constructor(private _location: Location, private productService: ProductService, private productShareService: ProductShareService,  private navbarComponent: NavbarComponent) {}
   ngOnInit() {
-    this.prod = this.productShareService.getSharedProduct();
-    console.log('PRODUCTO GUARDADO');
+    this.prod = JSON.parse(localStorage.getItem('product'));
     console.log(this.prod);
     this.productService.getProductByName(this.prod.name).subscribe(
       (data) => {
         this.product = data;
-        /*ARREGLAR MOSTRAR LAS OPINIONES*/
         console.log(data);
       });
   }
-
-  ngOnChanges() {
-    this.prod = this.productShareService.serviceProduct;
-    console.log(this.prod);
-    this.productService.getProductByName(this.prod.name).subscribe(// ng -g component name
-      (data) => {
-        this.product = data;
-        /*ARREGLAR MOSTRAR LAS OPINIONES*/
-        console.log(data);
-      });
+  goBack() {
+    this._location.back();
   }
   passID(id: string) {
     this.id = id;

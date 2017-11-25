@@ -9,9 +9,10 @@ import {Product} from '../../classes/product.model';
   styleUrls: ['./principal.component.css'],
 })
 
-export class PrincipalComponent implements OnInit{
+export class PrincipalComponent implements OnInit {
   product: any;
   products: any;
+  prodClicked = new Product('', '', '', [], [], null, '');
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
@@ -20,5 +21,11 @@ export class PrincipalComponent implements OnInit{
         this.product = data;
         console.log(data);
       });
+  }
+  productClicked(prod: Product) {
+    localStorage.clear();
+    this.prodClicked = prod;
+    console.log(this.prodClicked);
+    localStorage.setItem('product', JSON.stringify(this.prodClicked));
   }
 }

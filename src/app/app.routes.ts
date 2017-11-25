@@ -45,7 +45,7 @@ const routes: Routes = [
     path: 'products/accessories', component: AccessoriesComponent
   },
   {
-    path: 'productDetail', component: DetailProductComponent, data: { product: 'this.product'}
+    path: 'productDetail', component: DetailProductComponent
   }
 ];
 export const routing = RouterModule.forRoot(routes);

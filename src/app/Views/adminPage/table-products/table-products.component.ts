@@ -4,7 +4,6 @@ import {Subject} from 'rxjs/Subject';
 import {ProductService} from '../../../services/product.service';
 import {IAlert} from '../table-users/table-users.component';
 
-
 @Component({
   selector: 'app-table-products',
   templateUrl: './table-products.component.html',
