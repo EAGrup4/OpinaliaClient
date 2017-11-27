@@ -12,8 +12,8 @@ import {NavbarComponent} from '../../navbar/navbar.component';
 })
 
 export class DesktopComponent implements OnInit {
-  prodClicked = new Product('', '', '', [], [], null, '');
-  prod = new Product('', '', '', [], [], null, '');
+  prodClicked = new Product('', '', '', [], null, [], null, '', null, null, null);
+  prod = new Product('', '', '', [], null, [], null, '', null, null, null);
   product: any;
   products: any;
   data: any;

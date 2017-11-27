@@ -14,10 +14,10 @@ import {Router} from '@angular/router';
 })
 
 export class ProductDetailComponent implements OnInit, OnChanges {
-  @Input () prodSelected = new Product('', '', '', [], [], null, '');
-  prod = new Product('', '', '', [], [], null, '');
+  @Input () prodSelected = new Product('', '', '', [], null, [], null, '', null, null, null);
+  prod = new Product('', '', '', [], null, [], null, '', null, null, null);
   user = new User('', '', '', '', false, '');
-  rating = new Ratings('', '', 0);
+  rating = new Ratings('', '', 0, null);
   product: any;
   products: any;
   data2: any;

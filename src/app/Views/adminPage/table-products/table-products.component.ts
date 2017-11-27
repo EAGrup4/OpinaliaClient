@@ -12,7 +12,7 @@ import {IAlert} from '../table-users/table-users.component';
 })
 
 export class TableProductsComponent implements OnInit {
-  products = new Product('', '', '', [], [], null, '');
+  products = new Product('', '', '', [], null, [], null, '', null, null, null);
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();

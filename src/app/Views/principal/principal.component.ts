@@ -12,7 +12,7 @@ import {Product} from '../../classes/product.model';
 export class PrincipalComponent implements OnInit {
   product: any;
   products: any;
-  prodClicked = new Product('', '', '', [], [], null, '');
+  prodClicked = new Product('', '', '', [], null, [], null, '', null, null, null);
   constructor(private productService: ProductService) {}
 
   ngOnInit() {

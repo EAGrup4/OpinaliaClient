@@ -13,11 +13,12 @@ import {NavbarComponent} from '../navbar/navbar.component';
 })
 
 export class ProductsComponent implements OnInit {
-  prodClicked = new Product('', '', '', [], [], null, '');
-  prod = new Product('', '', '', [], [], null, '');
+  prodClicked = new Product('', '', '', [], null, [], null, '', null, null, null);
+  prod = new Product('', '', '', [], null, [], null, '', null, null, null);
   product: any;
   products: any;
   data2: any;
+  avgRate: any;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;

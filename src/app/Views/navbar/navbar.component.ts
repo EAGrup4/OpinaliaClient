@@ -55,7 +55,6 @@ export class NavbarComponent implements OnInit {
     }
   }
   disableStyle() {
-    console.log('AQUI ARRIBA');
     this.showStyle = false;
   }
   ableStyle() {

@@ -3,5 +3,6 @@ export class Ratings {
     public userId: string,
     public comment: string,
     public mark: number,
+    public date: { type: Date },
   ) {}
 }
