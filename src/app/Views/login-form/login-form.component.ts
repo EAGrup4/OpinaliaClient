@@ -81,7 +81,10 @@ export class LoginFormComponent {
           type: 'success',
           message: 'Usuario logueado!',
         });
-        sessionStorage.setItem('user', JSON.stringify(data[0]));
+        let getData:any={};
+        getData=data;
+        let userTmp=getData.user;
+        sessionStorage.setItem('user', JSON.stringify(userTmp));
         this.router.navigate(['']);
         window.location.reload();
       },
