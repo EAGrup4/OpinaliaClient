@@ -24,6 +24,7 @@ export class TableProductsComponent implements OnInit {
   error: string;
   id: string;
   index: number;
+  data: any;
   ngOnInit() {
     this.productService.getProduct().subscribe(
       (data) => {
@@ -110,6 +111,66 @@ export class TableProductsComponent implements OnInit {
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);
+  }
+  sortByName() {
+    this.productService.getProduct().subscribe(
+      (data) => {
+
+        this.data = data.sort();
+        this.data.sort(function (a, b) {
+          if (a.name > b.name) {
+            return 1;
+          }
+          if (a.name < b.name) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+        this.product = this.data;
+        console.log(data);
+        console.log(this.product);
+      });
+  }
+  sortByCompany() {
+    this.productService.getProduct().subscribe(
+      (data) => {
+
+        this.data = data.sort();
+        this.data.sort(function (a, b) {
+          if (a.company > b.company) {
+            return 1;
+          }
+          if (a.company < b.company) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+        this.product = this.data;
+        console.log(data);
+        console.log(this.product);
+      });
+  }
+  sortByCategory() {
+    this.productService.getProduct().subscribe(
+      (data) => {
+
+        this.data = data.sort();
+        this.data.sort(function (a, b) {
+          if (a.category > b.category) {
+            return 1;
+          }
+          if (a.category < b.category) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+        this.product = this.data;
+        console.log(data);
+        console.log(this.product);
+      });
   }
 }
 export interface IAlert {
