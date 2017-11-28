@@ -1,5 +1,5 @@
-# OpinaliaClient
-This is the Opinalia client!
+# OpinaliaWeb
+This is the Opinalia Web Client!
 In order to run the application: npm start
 
 
