@@ -25,6 +25,7 @@ import {TabletComponent} from './Views/productsTypes/tablet/tablet.component';
 import {DesktopComponent} from './Views/productsTypes/desktop/desktop.component';
 import {AccessoriesComponent} from './Views/productsTypes/accessories/accessories.component';
 import {DetailProductComponent} from './Views/detailProduct/detailProduct.component';
+import {FilterByPipe} from "./Views/products/filter.pipe";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {DetailProductComponent} from './Views/detailProduct/detailProduct.compon
     TabletComponent,
     DesktopComponent,
     AccessoriesComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    FilterByPipe
   ],
   imports: [
     BrowserModule,

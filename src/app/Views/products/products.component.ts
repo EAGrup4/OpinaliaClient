@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
   products: any;
   data2: any;
   avgRate: any;
+  objectsFilter = {name: '', category: '', company: ''};
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
