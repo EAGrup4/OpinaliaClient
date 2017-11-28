@@ -31,6 +31,8 @@ export class ProductsComponent implements OnInit {
         this.product = data;
         console.log(data);
       });
+    this.navbarComponent.ableStyle();
+    this.navbarComponent.disableStyle2();
   }
   productClicked(prod: Product) {
     localStorage.clear();
@@ -38,6 +40,7 @@ export class ProductsComponent implements OnInit {
     console.log(this.prodClicked);
     localStorage.setItem('product', JSON.stringify(this.prodClicked));
     this.navbarComponent.disableStyle();
+    this.navbarComponent.disableStyle2();
   }
   aplhabetOrder() {
     this.productService.getProduct().subscribe(

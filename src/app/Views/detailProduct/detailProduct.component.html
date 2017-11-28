@@ -3,7 +3,7 @@
   <div class="back">
     <a class="btn btn-default" (click)="goBack()">< Atrás</a>
   </div>
-  <div class="row imageForm" *ngFor="let prod of product">
+  <div class="row imageForm">
     <div class="col-md-4">
       <div class="image">
         <img src="/assets/images/predet.png" width="80%" height="80%">
@@ -11,13 +11,13 @@
     </div>
     <div class="col-md-4 putMarginBot">
       <div id="text">
-        <h1>{{ prod.name }}</h1>
-        <h3>{{ prod.category }} - {{ prod.company }}</h3>
+        <h1>{{ this.producte.name }}</h1>
+        <h3>{{ this.producte.category }} - {{ this.producte.company }}</h3>
       </div>
     </div>
     <div class="col-md-4 col-sm-6 rating">
       <div class="averageRating">
-        {{ prod.avgRate }}
+        {{ this.producte.avgRate }}
       </div>
       <div class="rating-bar">
         <div class="progress">
@@ -28,6 +28,11 @@
       <button class="btn btn-default btn-block" (click)="scrollElement(opinion)">Escribir una opinion</button>
     </div>
   </div>
+
+
+  <p *ngFor="let alert of alerts" id="alertType">
+    <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+  </p>
   <h2 style="padding-bottom: 1%" #opinion>Escribir una opinion:</h2>
   <div class="row opinionForm">
     <div class="col-md-8 col-sm-6">
@@ -41,48 +46,48 @@
         {{this.chVal}}
       </div>
       <div class="rating-bar">
-        <input type="range" min="0" max="10" class="slider" id="myRange" [(ngModel)]="chVal">
+        <input type="range" min="0" max="10" class="slider" id="myRange" [(ngModel)]="chVal" #mark>
       </div>
     </div>
     <div class="col-sm-4 comment">
-      <label for="comentario">Comentario:</label>
-      <textarea class="form-control" rows="3" id="comentario" placeholder="Escribe aqui tu comentario"></textarea>
+      <label for="comentario2">Comentario:</label>
+      <textarea class="form-control" rows="3" id="comentario2" placeholder="Escribe aqui tu comentario" #comment></textarea>
     </div>
     <div class="col-md-4">
       <div id="ratingButton">
-          <button class="btn btn-default">Escribir una opinion</button>
+          <button class="btn btn-default" (click)="sendComments(comment.value, mark.value)">Escribir una opinion</button>
       </div>
     </div>
   </div>
     <h2 style="padding-top: 2%">Opiniones:</h2>
-    <h6 style="color: #666666">(Nº de opiniones: {{prod.numRates}})</h6>
-  <div class="row opinionsForm" *ngFor="let rating of prod.ratings | slice:7:15">
+    <h6 style="color: #666666">(Nº de opiniones: {{this.producte.numRates}})</h6>
+  <div class="row opinionsForm" *ngFor="let rates of this.producte.ratings | slice:0:5">
     <div class="col-md-6 col-sm-6">
       <div class="opinionTitle">
         <div class="writtenBy">
-          <h4>Escrita por: {{ rating.userId.name }}</h4>
+          <h4>Escrita por: {{ rates.userId?.name }}</h4>
         </div>
         <div class="opTitile">
           <h3>TITULO</h3>
         </div>
         <div class="opComment">
-          <h5>{{ rating.comment }}</h5>
+          <h5>{{ rates.comment }}</h5>
         </div>
       </div>
     </div>
     <div class="col-md-4 rating">
       <div class="opRate">
-        {{ rating.rate}}
+        {{ rates.rate}}
       </div>
       <div class="opRating-bar">
         <div class="progress">
-          <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(rating.rate)>
+          <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(rates.rate)>
           </div>
         </div>
       </div>
     </div>
     <div class="col-md-2">
-      {{ rating.date }}
+      {{ rates.date }}
     </div>
   </div>
 </div>

@@ -30,7 +30,7 @@
     <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
   </p>
   <div class="smallForm">
-    <p>Ordenar la busqueda por:
+    <p style="text-align: center">Ordenar la busqueda por:
       <button class='btn btn-default'>Puntuación</button>
       <button class='btn btn-default' (click)="aplhabetOrder()">A-Z</button>
       <button class='btn btn-default'>Novedades</button>
@@ -38,17 +38,19 @@
   </div>
   <div class="row">
     <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product" (click)="productClicked(prod)" routerLink="/productDetail">
-      <div class="productMark">
-        <h1>{{ prod.avgRate }}</h1>
-      </div>
       <div class="imgForm">
         <img src="/assets/images/predet.png" width="40%" height="40%">
       </div>
-      <div class="productName">
-        <h3>{{ prod.name }}</h3>
+      <div class="col-md-8 ">
+        <div class="productName">
+          <h4>{{ prod.name }}</h4>
+        </div>
+        <div class="productSubname">
+          <h5>{{ prod.category }} - {{ prod.company }} </h5>
+        </div>
       </div>
-      <div class="productSubname">
-        <h4>{{ prod.category }} - {{ prod.company }} </h4>
+      <div class="col-md-2 productMark">
+        <h2>{{ prod.avgRate }}</h2>
       </div>
     </div>
   </div>

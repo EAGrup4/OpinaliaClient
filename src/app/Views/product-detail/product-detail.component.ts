@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   @Input () prodSelected = new Product('', '', '', [], null, [], null, '', null, null, null);
   prod = new Product('', '', '', [], null, [], null, '', null, null, null);
   user = new User('', '', '', '', false, '');
-  rating = new Ratings('', '', 0, null);
+  rating = new Ratings(null, '', 0, null);
   product: any;
   products: any;
   data2: any;
@@ -44,7 +44,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   sendComment(comment: string, mark: number) {
     this.user = JSON.parse(sessionStorage.getItem('user'));
     if (this.user !== null) {
-      this.rating.userId = this.user._id;
+      this.rating.userId = this.user;
       this.rating.comment = comment;
       this.rating.mark = mark;
       this.prod.ratings = this.rating;

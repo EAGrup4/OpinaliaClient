@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, OnChanges, ViewChild, ElementRef} from '@angular/core';
+import {Component, Input, OnInit, OnChanges, ViewChild, ElementRef, AfterViewInit} from '@angular/core';
 import {Product} from '../../classes/product.model';
 import {ProductService} from '../../services/product.service';
 import {Ratings} from '../../classes/ratings.model';
@@ -19,8 +19,10 @@ import {NavbarComponent} from '../navbar/navbar.component';
 export class DetailProductComponent implements OnInit {
   @Input () prodSelected = new Product('', '', '', [], null, [], null, '', null, null, null);
   prod = new Product('', '', '', [], null, [], null, '', null, null, null);
+  producte = new Product('', '', '', [], null, [], null, '', null, null, null);
   user = new User('', '', '', '', false, '');
-  rating = new Ratings('', '', 0, null);
+  rating = new Ratings(null, '', 0, null);
+  ratin = new Ratings(null, '', 0, null);
   ratings: any;
   rate: any;
   product: any;
@@ -28,13 +30,12 @@ export class DetailProductComponent implements OnInit {
   data2: any;
   id: String;
   val = 50;
-  chVal: number;
+  chVal: number = null;
   averageRatingPerCent: number;
   numberProgressBar: string;
   opNumberProgressBar: string;
-  day: any;
-  month: any;
-  year: any;
+  range: any;
+  nameUser: string;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -42,16 +43,19 @@ export class DetailProductComponent implements OnInit {
               private navbarComponent: NavbarComponent) {}
   ngOnInit() {
     this.prod = JSON.parse(localStorage.getItem('product'));
-    console.log(this.prod);
+    console.log('THIS.PROD', this.prod);
+
     this.productService.getProductByName(this.prod.name).subscribe(
       (data) => {
         this.product = data;
         console.log(data);
+        this.producte = this.product[0];
+        console.log('Producte',  this.product[0].name);
+        console.log('Name Opinion',  this.product[0].ratings[0].userId.name);
         this.averageRatingPerCent = this.product[0].avgRate * 10;
         if (this.product[0].avgRate === -1) {
           this.product[0].avgRate = 0;
         }
-        /*this.showDate(this.product[0].ratings.date);*/
       });
     this.chVal = 5;
   }
@@ -73,10 +77,10 @@ export class DetailProductComponent implements OnInit {
   passID(id: string) {
     this.id = id;
   }
-  sendComment(comment: string, mark: number) {
+  sendComments(comment: string, mark: number) {
     this.user = JSON.parse(sessionStorage.getItem('user'));
     if (this.user !== null) {
-      this.rating.userId = this.user._id;
+      this.rating.userId = this.user;
       this.rating.comment = comment;
       this.rating.mark = mark;
       this.prod.ratings = this.rating;
@@ -84,6 +88,12 @@ export class DetailProductComponent implements OnInit {
       this.productService.sendComment(this.prod, this.prod._id).subscribe(// ng -g component name
         (data) => {
           console.log(data);
+          this.alerts.pop();
+          this.alerts.push({
+            id: 1,
+            type: 'success',
+            message: 'OPINION REALIZADA',
+          });
         });
     } else {
       this.alerts.pop();

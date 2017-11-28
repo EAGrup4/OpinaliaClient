@@ -25,6 +25,12 @@ import {TabletComponent} from './Views/productsTypes/tablet/tablet.component';
 import {DesktopComponent} from './Views/productsTypes/desktop/desktop.component';
 import {AccessoriesComponent} from './Views/productsTypes/accessories/accessories.component';
 import {DetailProductComponent} from './Views/detailProduct/detailProduct.component';
+import {RankingComponent} from './Views/ranking/ranking.component';
+import {RankingAccessoriesComponent} from './Views/rankingTypes/accessories2/accessories2.component';
+import {RankingDesktopComponent} from './Views/rankingTypes/desktop2/desktop2.component';
+import {RankingLaptopComponent} from './Views/rankingTypes/laptop2/laptop2.component';
+import {RankingMobileComponent} from './Views/rankingTypes/mobile2/mobile2.component';
+import {RankingTabletComponent} from './Views/rankingTypes/tablet2/tablet2.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +49,13 @@ import {DetailProductComponent} from './Views/detailProduct/detailProduct.compon
     TabletComponent,
     DesktopComponent,
     AccessoriesComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    RankingComponent,
+    RankingAccessoriesComponent,
+    RankingDesktopComponent,
+    RankingLaptopComponent,
+    RankingMobileComponent,
+    RankingTabletComponent
   ],
   imports: [
     BrowserModule,

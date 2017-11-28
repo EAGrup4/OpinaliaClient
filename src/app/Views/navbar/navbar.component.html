@@ -7,12 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink="" (click)="showStyle =  false"></a>
+      <a class="navbar-brand" routerLink="" (click)="showStyle =  false; showStyle2 = false"></a>
     </div>
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         <li class="dropdown mega-dropdown active">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products" (click)="showStyle = true">Productos</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products" (click)="showStyle = true; showStyle2 = false;">Productos</a>
           <div  *ngIf="showStyle" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle()">
             <div class="container-fluid">
                 <ul class="nav-list list-inline">
@@ -39,21 +39,21 @@
             </div>
           </div>
         </li>-->
-        <!--<li class="dropdown mega-dropdown active" (click)="showStyle =  false">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ranking</a>
-          <div class="dropdown-menu mega-dropdown-menu">
-            <div class="container-fluid">
+          <li class="dropdown mega-dropdown active">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/ranking" (click)="showStyle2 = true; showStyle = false">Rankings</a>
+            <div  *ngIf="showStyle2" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle2()">
+              <div class="container-fluid">
                 <ul class="nav-list list-inline">
-                  <li><a href="#"><img src="/assets/images/ordinador2.png" width="10%" height="10%"/><span>Sobremesa</span></a></li>
-                  <li><a href="#"><img src="/assets/images/portatil2.png" width="10%" height="10%" /><span>Portatiles</span></a></li>
-                  <li><a href="#"><img src="/assets/images/tablet2.png" width="10%" height="10%" /><span>Tablets</span></a></li>
-                  <li><a href="#"><img src="/assets/images/mobil2.png" width="10%" height="10%" /><span>Mobiles</span></a></li>
-                  <li><a href="#"><img src="/assets/images/accesoris2.png" width="10%" height="10%" /><span>Accesorios</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/desktop"><img src="/assets/images/ordinador2.png" width="40%" /><span>Sobremesa</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/laptop"><img src="/assets/images/portatil2.png" width="40%"/><span>Portatiles</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/tablet"><img src="/assets/images/tablet2.png" width="35%"/><span>Tablets</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/mobile"><img src="/assets/images/mobil2.png" width="35%"/><span>Moviles</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/accessories"><img src="/assets/images/accesoris2.png" width="40%" /><span>Accesorios</span></a></li>
                 </ul>
+              </div>
             </div>
-          </div>
-        </li>
-        <li><a href="#" class="dropdown-toggle">Contacto</a></li>-->
+          </li>
+        <!--<li><a href="#" class="dropdown-toggle">Contacto</a></li>-->
         <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin" *ngIf="showAdmin" (click)="showStyle =  false">Administrador</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

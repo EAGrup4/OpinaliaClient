@@ -12,6 +12,12 @@ import {TabletComponent} from './Views/productsTypes/tablet/tablet.component';
 import {DesktopComponent} from './Views/productsTypes/desktop/desktop.component';
 import {AccessoriesComponent} from './Views/productsTypes/accessories/accessories.component';
 import {DetailProductComponent} from './Views/detailProduct/detailProduct.component';
+import {RankingComponent} from './Views/ranking/ranking.component';
+import {RankingAccessoriesComponent} from './Views/rankingTypes/accessories2/accessories2.component';
+import {RankingDesktopComponent} from './Views/rankingTypes/desktop2/desktop2.component';
+import {RankingTabletComponent} from './Views/rankingTypes/tablet2/tablet2.component';
+import {RankingLaptopComponent} from './Views/rankingTypes/laptop2/laptop2.component';
+import {RankingMobileComponent} from './Views/rankingTypes/mobile2/mobile2.component';
 
 const routes: Routes = [
   {
@@ -46,6 +52,24 @@ const routes: Routes = [
   },
   {
     path: 'productDetail', component: DetailProductComponent
-  }
+  },
+  {
+    path: 'ranking', component: RankingComponent
+  },
+  {
+    path: 'ranking/mobile', component: RankingMobileComponent
+  },
+  {
+    path: 'ranking/laptop', component: RankingLaptopComponent
+  },
+  {
+    path: 'ranking/tablet', component: RankingTabletComponent
+  },
+  {
+    path: 'ranking/desktop', component: RankingDesktopComponent
+  },
+  {
+    path: 'ranking/accessories', component: RankingAccessoriesComponent
+  },
 ];
 export const routing = RouterModule.forRoot(routes);

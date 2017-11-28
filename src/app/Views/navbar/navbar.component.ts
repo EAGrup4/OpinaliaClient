@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
   router: Router;
   showAdmin = false;
   showStyle = false;
+  showStyle2 = false;
   subscription: any;
   constructor(_router: Router) {
     this.router = _router;
@@ -38,6 +39,8 @@ export class NavbarComponent implements OnInit {
         this.showAdmin = true;
       }
     }
+    this.disableStyle();
+    this.disableStyle2();
   }
   leaveSession() {
     sessionStorage.clear();
@@ -59,6 +62,19 @@ export class NavbarComponent implements OnInit {
   }
   ableStyle() {
     this.showStyle = true;
+  }
+  getStyle2() {
+    if (this.showStyle2) {
+      return 'block';
+    } else {
+      return 'inline';
+    }
+  }
+  disableStyle2() {
+    this.showStyle2 = false;
+  }
+  ableStyle2() {
+    this.showStyle2 = true;
   }
 }
 

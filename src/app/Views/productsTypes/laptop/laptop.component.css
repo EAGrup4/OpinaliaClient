@@ -1,5 +1,5 @@
 .container{
-  padding-top: 120px;
+  padding-top: 130px;
   padding-bottom: 30px;
 }
 .row{
@@ -19,10 +19,14 @@
 }
 .productSubname{
 }
+.productInfo{
+  padding-top: 3%;
+  padding-left: 6%;
+}
 .productMark{
-  position: absolute;
-  padding-top: 115px;
-  padding-left: 200px;
+  padding-top: 0.5%;
+  padding-right: 10%;
+  text-align: right;
 }
 #title{
   margin-bottom: 30px;
