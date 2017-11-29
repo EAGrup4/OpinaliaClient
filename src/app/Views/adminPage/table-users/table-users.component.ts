@@ -23,6 +23,7 @@ export class TableUsersComponent implements OnInit{
   error: string;
   id: string;
   index: number;
+  data: any;
   ngOnInit() {
     this.userService.getUser().subscribe(
       (data) => {
@@ -102,6 +103,46 @@ export class TableUsersComponent implements OnInit{
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);
+  }
+  sortByName() {
+    this.userService.getUser().subscribe(
+      (data) => {
+
+        this.data = data.sort();
+        this.data.sort(function (a, b) {
+          if (a.name > b.name) {
+            return 1;
+          }
+          if (a.name < b.name) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+        this.user = this.data;
+        console.log(data);
+        console.log(this.user);
+      });
+  }
+  sortByEmail() {
+    this.userService.getUser().subscribe(
+      (data) => {
+
+        this.data = data.sort();
+        this.data.sort(function (a, b) {
+          if (a.email > b.email) {
+            return 1;
+          }
+          if (a.email < b.email) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+        });
+        this.user = this.data;
+        console.log(data);
+        console.log(this.user);
+      });
   }
 }
 export interface IAlert {
