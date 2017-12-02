@@ -13,6 +13,7 @@ import {IAlert} from '../table-users/table-users.component';
 
 export class TableProductsComponent implements OnInit {
   products = new Product('', '', '', [], null, [], null, '', null, null, null);
+  productsSend = {name: '', category: '', company: ''};
   objectsFilter = {name: '', category: '', company: ''};
   @Input()
   public alerts: Array<IAlert> = [];
@@ -86,13 +87,12 @@ export class TableProductsComponent implements OnInit {
         });
       });
   }
-  addProduct(name: string, category: string, company: string, id: string) {
-    this.products.category = category;
-    this.products.name = name;
-    this.products.company = company;
-    this.products._id = id;
-    console.log(this.products);
-    this.productService.addProduct(this.products).subscribe(
+  addProduct(name: string, category: string, company: string) {
+    this.productsSend.category = category;
+    this.productsSend.name = name;
+    this.productsSend.company = company;
+    console.log(this.productsSend);
+    this.productService.addProduct(this.productsSend).subscribe(
       (data) => {
         console.log(data);
         // this.error = data.name; ARREGLAR SI SE PRODUCE ALGUN ERROR

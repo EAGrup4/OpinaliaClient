@@ -55,7 +55,7 @@
     </div>
     <div class="col-md-4">
       <div id="ratingButton">
-          <button class="btn btn-default" (click)="sendComments(comment.value, mark.value)">Escribir una opinion</button>
+          <button class="btn btn-default" (click)="sendComments(title.value, comment.value, mark.value)">Escribir una opinion</button>
       </div>
     </div>
   </div>
@@ -68,7 +68,7 @@
           <h4>Escrita por: {{ rates.userId?.name }}</h4>
         </div>
         <div class="opTitile">
-          <h3>TITULO</h3>
+          <h3>{{ rates.title }}</h3>
         </div>
         <div class="opComment">
           <h5>{{ rates.comment }}</h5>

@@ -46,7 +46,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     if (this.user !== null) {
       this.rating.userId = this.user;
       this.rating.comment = comment;
-      this.rating.mark = mark;
+      this.rating.rate = mark;
       this.prod.ratings = this.rating;
       console.log(this.prod.ratings);
       this.productService.sendComment(this.prod, this.prod._id).subscribe(// ng -g component name
