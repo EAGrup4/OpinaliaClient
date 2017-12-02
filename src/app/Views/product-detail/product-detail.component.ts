@@ -41,15 +41,15 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   passID(id: string) {
     this.id = id;
   }
-  sendComment(comment: string, mark: number) {
+  sendComment(comment: string, rate: number) {
     this.user = JSON.parse(sessionStorage.getItem('user'));
     if (this.user !== null) {
       this.rating.userId = this.user;
       this.rating.comment = comment;
-      this.rating.mark = mark;
+      this.rating.rate = rate;
       this.prod.ratings = this.rating;
       console.log(this.prod.ratings);
-      this.productService.sendComment(this.prod, this.prod._id).subscribe(// ng -g component name
+      this.productService.sendComment(this.rating, this.prod._id).subscribe(// ng -g component name
         (data) => {
           console.log(data);
         });

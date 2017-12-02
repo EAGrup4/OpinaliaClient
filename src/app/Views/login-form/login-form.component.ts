@@ -5,6 +5,7 @@ import {CloseGuard, DialogRef, ModalComponent} from 'angular2-modal';
 import {BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {IAlert} from '../adminPage/table-users/table-users.component';
 import {Router} from '@angular/router';
+import {NavbarComponent} from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login-form',
@@ -13,17 +14,21 @@ import {Router} from '@angular/router';
   styleUrls: ['./login-form.component.css']
 })
 
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit{
   public loginformShow = false;
   user = new User('', '', '', '', false, '');
   error: string;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private navbarComponent: NavbarComponent) {
     this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
   }
-
+  ngOnInit() {
+    this.navbarComponent.disableStyle();
+    this.navbarComponent.disableStyle2();
+    this.navbarComponent.disableStyle3();
+  }
   get currentUser(){
     return JSON.stringify(this.user);
   }

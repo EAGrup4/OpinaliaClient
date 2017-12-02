@@ -4,7 +4,7 @@ export class Ratings {
   constructor(
     public userId: User,
     public comment: string,
-    public mark: number,
+    public rate: number,
     public date: { type: Date },
   ) {}
 }

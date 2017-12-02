@@ -7,12 +7,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" routerLink="" (click)="showStyle =  false; showStyle2 = false"></a>
+      <a class="navbar-brand" routerLink="" (click)="showStyle =  false; showStyle2 = false; showStyle3 = false;"></a>
     </div>
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         <li class="dropdown mega-dropdown active">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products" (click)="showStyle = true; showStyle2 = false;">Productos</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products" (click)="showStyle = true; showStyle2 = false; showStyle3 = false;">Productos</a>
           <div  *ngIf="showStyle" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle()">
             <div class="container-fluid">
                 <ul class="nav-list list-inline">
@@ -25,22 +25,23 @@
             </div>
           </div>
         </li>
-        <!--<li class="dropdown mega-dropdown active" (click)="showStyle =  false">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Marcas</a>
-          <div class="dropdown-menu mega-dropdown-menu">
+        <li class="dropdown mega-dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/companies" (click)="showStyle2 = false; showStyle = false; showStyle3 = true;">Marcas</a>
+          <div *ngIf="showStyle3" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle3()">
             <div class="container-fluid">
                 <ul class="nav-list list-inline">
-                  <li><a href="#"><img src="/assets/images/marcas/apple2.png" width="25%" height="25%" /><span>Apple</span></a></li>
-                  <li><a href="#"><img src="/assets/images/marcas/samsung2.png" width="25%" height="25%" /><span>Samsung</span></a></li>
-                  <li><a href="#"><img src="/assets/images/marcas/lg2.png" width="25%" height="25%" /><span>Lg</span></a></li>
-                  <li><a href="#"><img src="/assets/images/marcas/asus.png" width="25%" height="25%" /><span>Asus</span></a></li>
-                  <li><a href="#"><img src="/assets/images/marcas/hp.png" width="25%" height="25%" /><span>Hp</span></a></li>
+                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/apple2.png" width="40%" /><span>Apple</span></a></li>
+                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/samsung2.png" width="40%" /><span>Samsung</span></a></li>
+                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/lg2.png" width="40%" /><span>Lg</span></a></li>
+                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/asus.png" width="40%" /><span>Asus</span></a></li>
+                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/hp.png" width="40%" /><span>Hp</span></a></li>
+                  <li class="liSizes"><a href="#"><img src="/assets/images/mas.jpg" width="35%" /><span>Otras!</span></a></li>
                 </ul>
             </div>
           </div>
-        </li>-->
+        </li>
           <li class="dropdown mega-dropdown active">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/ranking" (click)="showStyle2 = true; showStyle = false">Rankings</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/ranking" (click)="showStyle2 = true; showStyle3 = false; showStyle = false">Rankings</a>
             <div  *ngIf="showStyle2" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle2()">
               <div class="container-fluid">
                 <ul class="nav-list list-inline">
@@ -54,14 +55,14 @@
             </div>
           </li>
         <!--<li><a href="#" class="dropdown-toggle">Contacto</a></li>-->
-        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin" *ngIf="showAdmin" (click)="showStyle =  false">Administrador</a></li>
+        <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin" *ngIf="showAdmin" (click)="showStyle = false; showStyle2 = false; showStyle3 = false;">Administrador</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="" class="login" routerLink="/login-form" *ngIf="showEnter" (click)="showStyle =  false"><span class="glyphicon glyphicon-user"></span> Entrar</a></li>
         <li>
           <a *ngIf="!showEnter" class="btn btn-primary dropdown-toggle" id="userButton" type="button" data-toggle="dropdown">{{ this.user.name }}  <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a (click)="editProfile()">Editar Usuario</a></li>
+            <li><a (click)="editProfile(); showStyle2 = false; showStyle = false; showStyle3 = true;">Editar Usuario</a></li>
             <li><a href="#" (click)="leaveSession()"  routerLink="">Salir</a></li>
           </ul>
         </li>

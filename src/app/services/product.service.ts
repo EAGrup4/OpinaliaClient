@@ -55,11 +55,11 @@ export class ProductService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-  sendComment(product: Product, productId) {
+  sendComment(rating: Ratings, productId) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(productId);
-    return this.http.post(this.url + '/rating/' + productId, product, options)
+    return this.http.post(this.url + '/rating/' + productId, rating, options)
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -93,6 +93,14 @@ export class ProductService {
     // ...using get request
     return this.http.get(this.url + '/best/' + category, options)
     // ...and calling .json() on the response to return data
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  searchProduct2(text: string, company: string) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    console.log(text);
+    return this.http.get(this.url + '/searchProduct2/' + text + '/' + company, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

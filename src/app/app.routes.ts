@@ -18,6 +18,7 @@ import {RankingDesktopComponent} from './Views/rankingTypes/desktop2/desktop2.co
 import {RankingTabletComponent} from './Views/rankingTypes/tablet2/tablet2.component';
 import {RankingLaptopComponent} from './Views/rankingTypes/laptop2/laptop2.component';
 import {RankingMobileComponent} from './Views/rankingTypes/mobile2/mobile2.component';
+import {CompaniesComponent} from './Views/companies/companies.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,9 @@ const routes: Routes = [
   },
   {
     path: 'ranking/accessories', component: RankingAccessoriesComponent
+  },
+  {
+    path: 'companies', component: CompaniesComponent
   },
 ];
 export const routing = RouterModule.forRoot(routes);
