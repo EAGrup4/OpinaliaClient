@@ -15,6 +15,7 @@ export class TableProductsComponent implements OnInit {
   products = new Product('', '', '', [], null, [], null, '', null, null, null);
   productsSend = {name: '', category: '', company: ''};
   objectsFilter = {name: '', category: '', company: ''};
+  productsMody = {name: '', category: '', company: '', _id: ''};
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();
@@ -62,12 +63,12 @@ export class TableProductsComponent implements OnInit {
     this.id = id;
   }
   modifyProducts(name: string, category: string, company: string) {
-    this.products.category = category;
-    this.products.name = name;
-    this.products.company = company;
-    this.products._id = this.id;
-    console.log(this.products);
-    this.productService.modifyProduct(this.products).subscribe(
+    this.productsMody.category = category;
+    this.productsMody.name = name;
+    this.productsMody.company = company;
+    this.productsMody._id = this.id;
+    console.log(this.productsMody);
+    this.productService.modifyProduct(this.productsMody).subscribe(
       (data) => {
         console.log(data);
         this.error = data.name;

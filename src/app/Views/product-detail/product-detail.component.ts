@@ -17,7 +17,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   @Input () prodSelected = new Product('', '', '', [], null, [], null, '', null, null, null);
   prod = new Product('', '', '', [], null, [], null, '', null, null, null);
   user = new User('', '', '', '', false, '');
-  rating = new Ratings(null, '', 0, null);
+  rating = {userId: '', title: '', comment: '', rate: 0};
   product: any;
   products: any;
   data2: any;
@@ -44,12 +44,11 @@ export class ProductDetailComponent implements OnInit, OnChanges {
   sendComment(comment: string, mark: number) {
     this.user = JSON.parse(sessionStorage.getItem('user'));
     if (this.user !== null) {
-      this.rating.userId = this.user;
+      this.rating.userId = this.user._id;
       this.rating.comment = comment;
       this.rating.rate = mark;
-      this.prod.ratings = this.rating;
       console.log(this.prod.ratings);
-      this.productService.sendComment(this.prod, this.prod._id).subscribe(// ng -g component name
+      this.productService.sendComment(this.rating, this.prod._id).subscribe(// ng -g component name
         (data) => {
           console.log(data);
         });
