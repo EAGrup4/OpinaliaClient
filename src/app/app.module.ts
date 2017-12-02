@@ -31,7 +31,7 @@ import {RankingDesktopComponent} from './Views/rankingTypes/desktop2/desktop2.co
 import {RankingLaptopComponent} from './Views/rankingTypes/laptop2/laptop2.component';
 import {RankingMobileComponent} from './Views/rankingTypes/mobile2/mobile2.component';
 import {RankingTabletComponent} from './Views/rankingTypes/tablet2/tablet2.component';
-import {FilterByPipe} from "./Views/products/filter.pipe";
+import {FilterByPipe} from './Views/products/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +56,7 @@ import {FilterByPipe} from "./Views/products/filter.pipe";
     RankingDesktopComponent,
     RankingLaptopComponent,
     RankingMobileComponent,
-    RankingTabletComponent
+    RankingTabletComponent,
     DetailProductComponent,
     FilterByPipe
   ],

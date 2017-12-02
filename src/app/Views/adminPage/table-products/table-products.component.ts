@@ -13,6 +13,7 @@ import {IAlert} from '../table-users/table-users.component';
 
 export class TableProductsComponent implements OnInit {
   products = new Product('', '', '', [], null, [], null, '', null, null, null);
+  objectsFilter = {name: '', category: '', company: ''};
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();
@@ -25,6 +26,9 @@ export class TableProductsComponent implements OnInit {
   id: string;
   index: number;
   data: any;
+  arrayObjects: any[] = [];
+  arrayNames: any[] = [];
+  delate = new Product('', '', '', [], null, [], null, '', null, null, null);
   ngOnInit() {
     this.productService.getProduct().subscribe(
       (data) => {
@@ -127,15 +131,15 @@ export class TableProductsComponent implements OnInit {
           // a must be equal to b
           return 0;
         });
+        this.clearArrayOfObjects();
+        this.clearArrayOfNames();
         this.product = this.data;
-        console.log(data);
         console.log(this.product);
       });
   }
   sortByCompany() {
     this.productService.getProduct().subscribe(
       (data) => {
-
         this.data = data.sort();
         this.data.sort(function (a, b) {
           if (a.company > b.company) {
@@ -147,15 +151,15 @@ export class TableProductsComponent implements OnInit {
           // a must be equal to b
           return 0;
         });
+        this.clearArrayOfObjects();
+        this.clearArrayOfNames();
         this.product = this.data;
-        console.log(data);
         console.log(this.product);
       });
   }
   sortByCategory() {
     this.productService.getProduct().subscribe(
       (data) => {
-
         this.data = data.sort();
         this.data.sort(function (a, b) {
           if (a.category > b.category) {
@@ -167,10 +171,57 @@ export class TableProductsComponent implements OnInit {
           // a must be equal to b
           return 0;
         });
+        this.clearArrayOfObjects();
+        this.clearArrayOfNames();
         this.product = this.data;
-        console.log(data);
         console.log(this.product);
       });
+  }
+  checkCheck(check: boolean, object: any) {
+    this.delate = object;
+    console.log(this.delate);
+    if (check) {// if the checkbox is selected
+      if (this.arrayObjects.findIndex(item => item === object._id) === -1) { // this if checks if the id exists alredy in the array
+        this.arrayObjects.push(object._id);
+        this.arrayNames.push(object.name);
+      }else {
+        return;
+      }
+      console.log(this.arrayObjects);
+      console.log(this.arrayNames);
+    }else if (!check) {
+      this.arrayObjects = this.arrayObjects.filter(item => item !== object._id);
+      this.arrayNames = this.arrayNames.filter(item => item !== object.name);
+      console.log(this.arrayObjects);
+    }
+  }
+  deleteSelected() {
+    this.arrayObjects.forEach(id => {
+      this.productService.deleteProduct(id).subscribe(
+        (data) => {
+          console.log(data);
+          this.product.splice(this.index, 1);
+        });
+    });
+    this.clearArrayOfObjects();
+    this.clearArrayOfNames();
+    this.showProducts();
+  }
+  private clearArrayOfObjects() {
+    for (let i = -1; i <= this.arrayObjects.length + 1; i++) {
+      this.arrayObjects.forEach(item => {
+        this.arrayObjects.pop();
+      });
+    }
+    this.arrayObjects.pop();
+  }
+  private clearArrayOfNames() {
+    for (let i = -1; i <= this.arrayNames.length + 1; i++) {
+      this.arrayNames.forEach(item => {
+        this.arrayNames.pop();
+      });
+    }
+    this.arrayNames.pop();
   }
 }
 export interface IAlert {
