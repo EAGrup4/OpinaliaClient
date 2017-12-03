@@ -19,6 +19,13 @@ import {RankingTabletComponent} from './Views/rankingTypes/tablet2/tablet2.compo
 import {RankingLaptopComponent} from './Views/rankingTypes/laptop2/laptop2.component';
 import {RankingMobileComponent} from './Views/rankingTypes/mobile2/mobile2.component';
 import {CompaniesComponent} from './Views/companies/companies.component';
+import {CompaniesAppleComponent} from './Views/companiesTypes/apple/apple.component';
+import {CompaniesSamsungComponent} from './Views/companiesTypes/samsung/samsung.component';
+import {CompaniesAsusComponent} from './Views/companiesTypes/asus/asus.component';
+import {CompaniesLgComponent} from './Views/companiesTypes/lg/lg.component';
+import {CompaniesHpComponent} from './Views/companiesTypes/hp/hp.component';
+import {ContactComponent} from './Views/contact/contact.component';
+import {CompaniesOthersComponent} from './Views/companiesTypes/others/others.component';
 
 const routes: Routes = [
   {
@@ -74,6 +81,27 @@ const routes: Routes = [
   },
   {
     path: 'companies', component: CompaniesComponent
+  },
+  {
+    path: 'companies/apple', component: CompaniesAppleComponent
+  },
+  {
+    path: 'companies/samsung', component: CompaniesSamsungComponent
+  },
+  {
+    path: 'companies/asus', component: CompaniesAsusComponent
+  },
+  {
+    path: 'companies/lg', component: CompaniesLgComponent
+  },
+  {
+    path: 'companies/hp', component: CompaniesHpComponent
+  },
+  {
+    path: 'companies/others', component: CompaniesOthersComponent
+  },
+  {
+    path: 'contact', component: ContactComponent
   },
 ];
 export const routing = RouterModule.forRoot(routes);

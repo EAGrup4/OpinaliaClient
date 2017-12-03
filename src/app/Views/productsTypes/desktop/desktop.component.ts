@@ -39,7 +39,7 @@ export class DesktopComponent implements OnInit {
     this.navbarComponent.disableStyle2();
   }
   aplhabetOrder() {
-    this.productService.searchProductByCategory('Sobremesa').subscribe(
+    this.productService.searchProductByCategory('desktop').subscribe(
       (data) => {
         this.data = data.sort();
         this.data.sort(function (a, b) {

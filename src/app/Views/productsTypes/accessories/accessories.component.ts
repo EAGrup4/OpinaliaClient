@@ -39,7 +39,7 @@ export class AccessoriesComponent implements OnInit {
     this.navbarComponent.disableStyle2();
   }
   aplhabetOrder() {
-    this.productService.searchProductByCategory('Accesorios').subscribe(
+    this.productService.searchProductByCategory('accessories').subscribe(
       (data) => {
         this.data = data.sort();
         this.data.sort(function (a, b) {

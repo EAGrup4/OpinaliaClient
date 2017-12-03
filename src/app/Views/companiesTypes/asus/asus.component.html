@@ -1,0 +1,47 @@
+<div class="container">
+  <div id="title"><h1>Asus</h1></div>
+  <form class='navbar-form'>
+    <div class="col-md-1"></div>
+    <div class='input-group col-md-10'>
+      <input class='form-control' type='text' name='search' placeholder='Busque el producto que desee' #searcher/>
+      <span class="input-group-btn">
+          <button type='submit' class='btn btn-default'>
+            <span class='glyphicon glyphicon-search' (click)="search(searcher.value)"></span>
+          </button>
+          <button class='btn btn-default' disabled="disabled">Ordenar toda la lista de productos por:</button>
+          <button class='btn btn-default'>Puntuación</button>
+          <button class='btn btn-default' (click)="aplhabetOrder()">A-Z</button>
+          <button class='btn btn-default'>Novedades</button>
+        </span>
+    </div>
+    <div class="col-md-1"></div>
+  </form>
+  <p *ngFor="let alert of alerts" id="alertType">
+    <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+  </p>
+  <div class="smallForm">
+    <p>Ordenar la busqueda por:
+      <button class='btn btn-default'>Puntuación</button>
+      <button class='btn btn-default' (click)="aplhabetOrder()">A-Z</button>
+      <button class='btn btn-default'>Novedades</button>
+    </p>
+  </div>
+  <div class="row">
+    <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product" (click)="productClicked(prod)" routerLink="/productDetail">
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="40%" height="40%">
+      </div>
+      <div class="col-md-8 productInfo">
+        <div class="productName">
+          <h4>{{ prod.name }}</h4>
+        </div>
+        <div class="productSubname">
+          <h5>{{ prod.category }} - {{ prod.company }} </h5>
+        </div>
+      </div>
+      <div class="col-md-4 productMark">
+        <h2>{{ prod.avgRate }}</h2>
+      </div>
+    </div>
+  </div>
+</div>

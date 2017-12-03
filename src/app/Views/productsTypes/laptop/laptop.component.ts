@@ -39,7 +39,7 @@ export class LaptopComponent implements OnInit {
     this.navbarComponent.disableStyle2();
   }
   aplhabetOrder() {
-    this.productService.searchProductByCategory('Portatil').subscribe(
+    this.productService.searchProductByCategory('laptop').subscribe(
       (data) => {
         this.data = data.sort();
         this.data.sort(function (a, b) {

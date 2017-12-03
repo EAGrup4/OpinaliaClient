@@ -39,7 +39,7 @@ export class MobileComponent implements OnInit {
     this.navbarComponent.disableStyle2();
   }
   aplhabetOrder() {
-    this.productService.searchProductByCategory('Movil').subscribe(
+    this.productService.searchProductByCategory('phone').subscribe(
       (data) => {
         this.data = data.sort();
         this.data.sort(function (a, b) {

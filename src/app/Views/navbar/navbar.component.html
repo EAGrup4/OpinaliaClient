@@ -30,12 +30,12 @@
           <div *ngIf="showStyle3" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle3()">
             <div class="container-fluid">
                 <ul class="nav-list list-inline">
-                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/apple2.png" width="40%" /><span>Apple</span></a></li>
-                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/samsung2.png" width="40%" /><span>Samsung</span></a></li>
-                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/lg2.png" width="40%" /><span>Lg</span></a></li>
-                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/asus.png" width="40%" /><span>Asus</span></a></li>
-                  <li class="liSizes"><a href="#"><img src="/assets/images/marcas/hp.png" width="40%" /><span>Hp</span></a></li>
-                  <li class="liSizes"><a href="#"><img src="/assets/images/mas.jpg" width="35%" /><span>Otras!</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/apple"><img src="/assets/images/marcas/apple2.png" width="40%" /><span>Apple</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/samsung"><img src="/assets/images/marcas/samsung2.png" width="40%" /><span>Samsung</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/lg"><img src="/assets/images/marcas/lg2.png" width="40%" /><span>Lg</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/asus"><img src="/assets/images/marcas/asus.png" width="40%" /><span>Asus</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/hp"><img src="/assets/images/marcas/hp.png" width="40%" /><span>Hp</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/others"><img src="/assets/images/mas1.png" width="35%" /><span>Otras!</span></a></li>
                 </ul>
             </div>
           </div>
@@ -54,7 +54,7 @@
               </div>
             </div>
           </li>
-        <!--<li><a href="#" class="dropdown-toggle">Contacto</a></li>-->
+        <li><a href="#" class="dropdown-toggle" routerLink="/contact">Contacto</a></li>
         <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin" *ngIf="showAdmin" (click)="showStyle = false; showStyle2 = false; showStyle3 = false;">Administrador</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -62,8 +62,8 @@
         <li>
           <a *ngIf="!showEnter" class="btn btn-primary dropdown-toggle" id="userButton" type="button" data-toggle="dropdown">{{ this.user.name }}  <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a (click)="editProfile(); showStyle2 = false; showStyle = false; showStyle3 = true;">Editar Usuario</a></li>
-            <li><a href="#" (click)="leaveSession()"  routerLink="">Salir</a></li>
+            <li><a (click)="editProfile(); showStyle2 = false; showStyle = false; showStyle3 = false;">Editar Usuario</a></li>
+            <li><a href="#" (click)="leaveSession(); showStyle2 = false; showStyle = false; showStyle3 = false;"  routerLink="">Salir</a></li>
           </ul>
         </li>
       </ul>

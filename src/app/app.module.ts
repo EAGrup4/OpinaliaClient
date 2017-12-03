@@ -33,6 +33,13 @@ import {RankingMobileComponent} from './Views/rankingTypes/mobile2/mobile2.compo
 import {RankingTabletComponent} from './Views/rankingTypes/tablet2/tablet2.component';
 import {CompaniesComponent} from './Views/companies/companies.component';
 import {FilterByPipe} from './Views/products/filter.pipe';
+import {CompaniesAppleComponent} from './Views/companiesTypes/apple/apple.component';
+import {CompaniesSamsungComponent} from './Views/companiesTypes/samsung/samsung.component';
+import {CompaniesLgComponent} from './Views/companiesTypes/lg/lg.component';
+import {CompaniesHpComponent} from './Views/companiesTypes/hp/hp.component';
+import {CompaniesAsusComponent} from './Views/companiesTypes/asus/asus.component';
+import {ContactComponent} from './Views/contact/contact.component';
+import {CompaniesOthersComponent} from './Views/companiesTypes/others/others.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +67,13 @@ import {FilterByPipe} from './Views/products/filter.pipe';
     RankingTabletComponent,
     DetailProductComponent,
     CompaniesComponent,
+    CompaniesAppleComponent,
+    CompaniesSamsungComponent,
+    CompaniesLgComponent,
+    CompaniesHpComponent,
+    CompaniesAsusComponent,
+    CompaniesOthersComponent,
+    ContactComponent,
     FilterByPipe
   ],
   imports: [
