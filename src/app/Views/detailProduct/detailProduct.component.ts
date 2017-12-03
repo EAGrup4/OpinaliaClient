@@ -21,8 +21,9 @@ export class DetailProductComponent implements OnInit {
   prod = new Product('', '', '', [], null, [], null, '', null, null, null);
   producte = new Product('', '', '', [], null, [], null, '', null, null, null);
   user = new User('', '', '', '', false, '');
-  rating = new Ratings(null, '', 0, null);
-  ratin = new Ratings(null, '', 0, null);
+  rating = new Ratings('', '', '', 0, null);
+  ratingSend = {userId: '', title: '', comment: '', rate: 0};
+  ratin = new Ratings('', '', '', 0, null);
   ratings: any;
   rate: any;
   product: any;
@@ -77,15 +78,15 @@ export class DetailProductComponent implements OnInit {
   passID(id: string) {
     this.id = id;
   }
-  sendComments(comment: string, rate: number) {
+  sendComments(title: string, comment: string, mark: number) {
     this.user = JSON.parse(sessionStorage.getItem('user'));
     if (this.user !== null) {
-      this.rating.userId = this.user;
-      this.rating.comment = comment;
-      this.rating.rate = rate;
-      this.prod.ratings = this.rating;
-      console.log(this.prod.ratings);
-      this.productService.sendComment(this.rating, this.prod._id).subscribe(// ng -g component name
+      this.ratingSend.userId = this.user._id;
+      this.ratingSend.title = title;
+      this.ratingSend.comment = comment;
+      this.ratingSend.rate = mark;
+      console.log(this.ratingSend);
+      this.productService.sendComment(this.ratingSend, this.prod._id).subscribe(// ng -g component name
         (data) => {
           console.log(data);
           this.alerts.pop();

@@ -57,6 +57,9 @@ export class FilterByPipe implements PipeTransform {
   }
 
   transform(array: any[], filter: any): any {
+    if (!array) {
+      return array;
+    }
     const type = typeof filter;
 
     if (type === 'string') {

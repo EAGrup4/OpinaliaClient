@@ -2,9 +2,10 @@ import {User} from './user.model';
 
 export class Ratings {
   constructor(
-    public userId: User,
+    public userId: string,
+    public title: string,
     public comment: string,
     public rate: number,
-    public date: { type: Date },
+    public date: string,
   ) {}
 }

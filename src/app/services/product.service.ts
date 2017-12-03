@@ -17,7 +17,7 @@ export class ProductService {
 
   constructor(private http: Http) {
   }
-  addProduct(product: Product): Observable<Response> {
+  addProduct(product: {name, category, company}): Observable<Response> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.url + '/add', product, options)
@@ -47,7 +47,7 @@ export class ProductService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-  modifyProduct(product: Product) {
+  modifyProduct(product: {name, category, company, _id}) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(product._id);
@@ -55,7 +55,7 @@ export class ProductService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-  sendComment(rating: Ratings, productId) {
+  sendComment(rating: {userId, title, comment, rate}, productId) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(productId);
