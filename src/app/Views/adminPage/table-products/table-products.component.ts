@@ -72,6 +72,7 @@ export class TableProductsComponent implements OnInit {
       (data) => {
         console.log(data);
         this.error = data.name;
+        this.alerts.pop();
         this.alerts.push({
           id: 1,
           type: 'success',
@@ -98,12 +99,14 @@ export class TableProductsComponent implements OnInit {
         console.log(data);
         // this.error = data.name; ARREGLAR SI SE PRODUCE ALGUN ERROR
         if (this.error === 'CastError') {
+          this.alerts.pop();
           this.alerts.push({
             id: 2,
             type: 'danger',
             message: 'Error al añadir producto',
           });
         } else {
+          this.alerts.pop();
           this.alerts.push({
             id: 1,
             type: 'success',

@@ -23,7 +23,7 @@ export class AccessoriesComponent implements OnInit {
   constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {}
 
   ngOnInit() {
-    this.productService.searchProductByCategory('Accesorios').subscribe(
+    this.productService.searchProductByCategory('accessories').subscribe(
       (data) => {
         this.product = data;
         console.log(data);

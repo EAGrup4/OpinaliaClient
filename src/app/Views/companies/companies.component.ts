@@ -36,6 +36,7 @@ export class CompaniesComponent implements OnInit {
     localStorage.setItem('product', JSON.stringify(this.prodClicked));
     this.navbarComponent.disableStyle();
     this.navbarComponent.disableStyle2();
+    this.navbarComponent.disableStyle3();
   }
   aplhabetOrder() {
     this.productService.getProduct().subscribe(

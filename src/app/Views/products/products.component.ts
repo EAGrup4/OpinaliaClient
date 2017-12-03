@@ -20,6 +20,7 @@ export class ProductsComponent implements OnInit {
   data2: any;
   avgRate: any;
   objectsFilter = {name: '', category: '', company: ''};
+  categoryToSend: any;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -63,11 +64,23 @@ export class ProductsComponent implements OnInit {
       });
   }
   search(text: string, category: string) {
-    console.log(text);
     if (text === '') {
       text = '0';
     }
-    this.productService.searchProduct(text, category).subscribe(
+    if (category === 'Sobremesa') {
+      this.categoryToSend = 'desktop';
+    } else if (category === 'Portatil') {
+      this.categoryToSend = 'laptop';
+    } else if (category === 'Tablet') {
+      this.categoryToSend = 'tablet';
+    } else if (category === 'Movil') {
+      this.categoryToSend = 'phone';
+    } else if (category === 'Accesorios') {
+      this.categoryToSend = 'accessories';
+    } else if (category === 'Todos') {
+      this.categoryToSend = 'Todos';
+    }
+    this.productService.searchProduct(text, this.categoryToSend).subscribe(
       (data) => {
         this.alerts.pop();
         this.product = data;

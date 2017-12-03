@@ -23,7 +23,7 @@ export class TabletComponent implements OnInit {
   constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {}
 
   ngOnInit() {
-    this.productService.searchProductByCategory('Tablet').subscribe(
+    this.productService.searchProductByCategory('tablet').subscribe(
       (data) => {
         this.product = data;
         console.log(data);

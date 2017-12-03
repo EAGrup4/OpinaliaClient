@@ -23,7 +23,7 @@ export class DesktopComponent implements OnInit {
   constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {}
 
   ngOnInit() {
-    this.productService.searchProductByCategory('Sobremesa').subscribe(
+    this.productService.searchProductByCategory('desktop').subscribe(
       (data) => {
         this.product = data;
         console.log(data);

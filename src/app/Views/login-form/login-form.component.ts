@@ -86,9 +86,9 @@ export class LoginFormComponent implements OnInit{
           type: 'success',
           message: 'Usuario logueado!',
         });
-        let getData:any={};
-        getData=data;
-        let userTmp=getData.user;
+        let getData: any = {};
+        getData = data;
+        let userTmp = getData.user;
         sessionStorage.setItem('user', JSON.stringify(userTmp));
         this.router.navigate(['']);
         window.location.reload();

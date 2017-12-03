@@ -23,7 +23,7 @@ export class MobileComponent implements OnInit {
   constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {}
 
   ngOnInit() {
-    this.productService.searchProductByCategory('Movil').subscribe(
+    this.productService.searchProductByCategory('phone').subscribe(
       (data) => {
         this.product = data;
         console.log(data);

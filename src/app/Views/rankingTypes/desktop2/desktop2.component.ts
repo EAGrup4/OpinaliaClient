@@ -19,7 +19,7 @@ export class RankingDesktopComponent implements OnInit {
   constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {
   }
   ngOnInit() {
-    this.productService.getBestTypeProducts('Sobremesa').subscribe(
+    this.productService.getBestTypeProducts('desktop').subscribe(
       (data) => {
         this.product = data;
         console.log(data);
