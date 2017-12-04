@@ -17,7 +17,7 @@ import {element} from 'protractor';
 })
 
 export class NavbarComponent implements OnInit {
-  user = new User('', '', '', '', false, '');
+  user = new User('', '', '', '', false, '', '');
   savedUser = sessionStorage.getItem('user');
   isAdmin = false;
   showEnter = true;

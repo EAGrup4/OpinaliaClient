@@ -14,7 +14,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 })
 
 export class EditProfileComponent implements OnInit {
-  users = new User('', '', '', '', false, '');
+  users = new User('', '', '', '', false, '', '');
   id: any;
   sub: any;
   @Input()

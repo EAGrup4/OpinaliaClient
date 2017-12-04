@@ -20,7 +20,7 @@ export class DetailProductComponent implements OnInit {
   @Input () prodSelected = new Product('', '', '', [], null, [], null, '', null, null, null);
   prod = new Product('', '', '', [], null, [], null, '', null, null, null);
   producte = new Product('', '', '', [], null, [], null, '', null, null, null);
-  user = new User('', '', '', '', false, '');
+  user = new User('', '', '', '', false, '', '');
   rating = new Ratings('', '', '', 0, null);
   ratingSend = {userId: '', title: '', comment: '', rate: 0};
   ratin = new Ratings('', '', '', 0, null);

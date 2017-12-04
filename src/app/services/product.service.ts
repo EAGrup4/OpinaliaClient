@@ -14,11 +14,12 @@ import {Ratings} from '../classes/ratings.model';
 @Injectable()
 export class ProductService {
   url = '/api/products';
+  sendtoken = JSON.parse(localStorage.getItem('token'));
 
   constructor(private http: Http) {
   }
   addProduct(product: {name, category, company}): Observable<Response> {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': this.sendtoken });
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.url + '/add', product, options)
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
@@ -43,12 +44,14 @@ export class ProductService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   deleteProduct(id: string) {
-    return this.http.delete(this.url + '/' + id)
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': this.sendtoken });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.delete(this.url + '/' + id, options)
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   modifyProduct(product: {name, category, company, _id}) {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': this.sendtoken });
     const options = new RequestOptions({ headers: headers });
     console.log(product._id);
     return this.http.post(this.url + '/' + product._id, product, options)
@@ -56,7 +59,7 @@ export class ProductService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   sendComment(rating: {userId, title, comment, rate}, productId) {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': this.sendtoken });
     const options = new RequestOptions({ headers: headers });
     console.log(productId);
     return this.http.post(this.url + '/rating/' + productId, rating, options)

@@ -10,8 +10,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./table-users.component.css'],
   providers: [UserService],
 })
-export class TableUsersComponent implements OnInit{
-  users = new User('', '', '', '', false, '');
+export class TableUsersComponent implements OnInit {
+  users = new User('', '', '', '', false, '', '');
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();

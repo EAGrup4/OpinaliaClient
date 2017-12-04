@@ -14,9 +14,9 @@ import {NavbarComponent} from '../navbar/navbar.component';
   styleUrls: ['./login-form.component.css']
 })
 
-export class LoginFormComponent implements OnInit{
+export class LoginFormComponent implements OnInit {
   public loginformShow = false;
-  user = new User('', '', '', '', false, '');
+  user = new User('', '', '', '', false, '', '');
   error: string;
   @Input()
   public alerts: Array<IAlert> = [];
@@ -48,7 +48,11 @@ export class LoginFormComponent implements OnInit{
             type: 'success',
             message: 'Usuario Registrado!',
           });
+          let getData: any = {};
+          getData = data;
+          const token = getData.token;
           sessionStorage.setItem('user', JSON.stringify(data));
+          localStorage.setItem('token', JSON.stringify(token));
           this.router.navigate(['']);
           window.location.reload();
         },
@@ -88,8 +92,10 @@ export class LoginFormComponent implements OnInit{
         });
         let getData: any = {};
         getData = data;
-        let userTmp = getData.user;
+        const userTmp = getData.user;
+        const token = getData.token;
         sessionStorage.setItem('user', JSON.stringify(userTmp));
+        localStorage.setItem('token', JSON.stringify(token));
         this.router.navigate(['']);
         window.location.reload();
       },

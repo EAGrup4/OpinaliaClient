@@ -5,6 +5,7 @@ export class User {
     public password: string,
     public profileImage: string,
     public admin: boolean,
+    public token: String,
     public _id: string
   ) {}
 }

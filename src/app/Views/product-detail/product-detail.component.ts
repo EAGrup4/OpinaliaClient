@@ -16,7 +16,7 @@ import {Router} from '@angular/router';
 export class ProductDetailComponent implements OnInit, OnChanges {
   @Input () prodSelected = new Product('', '', '', [], null, [], null, '', null, null, null);
   prod = new Product('', '', '', [], null, [], null, '', null, null, null);
-  user = new User('', '', '', '', false, '');
+  user = new User('', '', '', '', false, '', '');
   rating = {userId: '', title: '', comment: '', rate: 0};
   product: any;
   products: any;

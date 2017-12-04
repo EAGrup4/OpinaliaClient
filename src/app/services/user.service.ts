@@ -12,6 +12,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class UserService {
   url = '/api/users';
+  sendtoken = JSON.parse(localStorage.getItem('token'));
   constructor(private http: Http) {}
   addUser(user: User): Observable<Response> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -28,7 +29,7 @@ export class UserService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   getUser(): Observable<Comment[]> {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': this.sendtoken });
     const options = new RequestOptions({ headers: headers });
     // ...using get request
     return this.http.get(this.url + '/all', options)
@@ -37,12 +38,14 @@ export class UserService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   deleteUser(id: string) {
-    return this.http.delete(this.url + '/' + id)
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': this.sendtoken });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.delete(this.url + '/' + id, options)
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   modifyUser(user: User) {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': this.sendtoken });
     const options = new RequestOptions({ headers: headers });
     console.log(user._id);
     return this.http.post(this.url + '/' + user._id, user, options)
