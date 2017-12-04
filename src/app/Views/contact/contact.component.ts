@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {ProductService} from '../../services/product.service';
+import {NavbarComponent} from '../navbar/navbar.component';
 
 
 
@@ -11,6 +12,11 @@ import {ProductService} from '../../services/product.service';
   providers: [ProductService]
 })
 export class ContactComponent implements OnInit {
+  constructor(private navbarComponent: NavbarComponent) {
+  }
   ngOnInit() {
+    this.navbarComponent.disableStyle();
+    this.navbarComponent.disableStyle2();
+    this.navbarComponent.disableStyle3();
   }
 }
