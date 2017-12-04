@@ -51,7 +51,8 @@ export class LoginFormComponent implements OnInit {
           let getData: any = {};
           getData = data;
           const token = getData.token;
-          sessionStorage.setItem('user', JSON.stringify(data));
+          const userTmp = getData;
+          sessionStorage.setItem('user', JSON.stringify(userTmp));
           localStorage.setItem('token', JSON.stringify(token));
           this.router.navigate(['']);
           window.location.reload();
@@ -81,7 +82,6 @@ export class LoginFormComponent implements OnInit {
     console.log(this.user);
     this.userService.loginUser(this.user).subscribe(
       (data) => {
-        console.log('entraar');
         console.log(data);
         sessionStorage.clear();
         this.alerts.pop();
@@ -92,7 +92,7 @@ export class LoginFormComponent implements OnInit {
         });
         let getData: any = {};
         getData = data;
-        const userTmp = getData.user;
+        const userTmp = getData;
         const token = getData.token;
         sessionStorage.setItem('user', JSON.stringify(userTmp));
         localStorage.setItem('token', JSON.stringify(token));

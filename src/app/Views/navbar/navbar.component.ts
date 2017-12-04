@@ -42,6 +42,7 @@ export class NavbarComponent implements OnInit {
     }
     this.disableStyle();
     this.disableStyle2();
+    this.disableStyle3();
   }
   leaveSession() {
     sessionStorage.clear();
