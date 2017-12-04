@@ -3,13 +3,14 @@ import {Product} from '../../classes/product.model';
 import {ProductService} from '../../services/product.service';
 import {ProductShareService} from '../../services/productShare.service';
 import {NavbarComponent} from '../navbar/navbar.component';
+import {PrincipalComponent} from "../principal/principal.component";
 
 @Component({
   moduleId: module.id,
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
-  providers: [ProductService, ProductShareService]
+  providers: [ProductService, ProductShareService, PrincipalComponent]
 })
 
 export class ProductsComponent implements OnInit {
@@ -24,17 +25,26 @@ export class ProductsComponent implements OnInit {
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
+  private prodComponenSearch: string;
   constructor(private productService: ProductService, private productShareService: ProductShareService,
-              private navbarComponent: NavbarComponent) {
+              private navbarComponent: NavbarComponent, private principalComponent: PrincipalComponent) {
   }
   ngOnInit() {
-    this.productService.getProduct().subscribe(
-      (data) => {
-        this.product = data;
-        console.log(data);
-      });
+    this.prodComponenSearch = localStorage.getItem('searchedProd');
+    console.log(this.prodComponenSearch);
+    if (this.prodComponenSearch !== '') {
+      this.search(this.prodComponenSearch, 'Todos');
+      localStorage.setItem('searchedProd', '');
+    } else {
+      this.productService.getProduct().subscribe(
+        (data) => {
+          this.product = data;
+          console.log(data);
+        });
+    }
     this.navbarComponent.ableStyle();
     this.navbarComponent.disableStyle2();
+    this.navbarComponent.disableStyle3();
   }
   productClicked(prod: Product) {
     localStorage.clear();
@@ -64,6 +74,7 @@ export class ProductsComponent implements OnInit {
       });
   }
   search(text: string, category: string) {
+    console.log(text + ' y ' + category);
     if (text === '') {
       text = '0';
     }

@@ -46,6 +46,7 @@ export class EditProfileComponent implements OnInit {
     this.users.name = name;
     this.users.password = password;
     this.users._id = this.id;
+    this.users.token =  JSON.parse(localStorage.getItem('token'));
     console.log(this.users);
     this.userService.modifyUser(this.users).subscribe(
       (data) => {

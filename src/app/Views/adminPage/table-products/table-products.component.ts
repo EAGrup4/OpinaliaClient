@@ -72,6 +72,7 @@ export class TableProductsComponent implements OnInit {
       (data) => {
         console.log(data);
         this.error = data.name;
+        this.showProducts();
         this.alerts.pop();
         this.alerts.push({
           id: 1,
@@ -112,6 +113,7 @@ export class TableProductsComponent implements OnInit {
             type: 'success',
             message: 'Producto Añadido!',
           });
+          this.showProducts();
         }
       }
     );

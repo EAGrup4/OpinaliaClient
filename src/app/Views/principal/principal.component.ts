@@ -12,6 +12,7 @@ import {Product} from '../../classes/product.model';
 export class PrincipalComponent implements OnInit {
   product: any;
   products: any;
+  boolsearch = false;
   prodClicked = new Product('', '', '', [], null, [], null, '', null, null, null);
   constructor(private productService: ProductService) {}
 
@@ -27,5 +28,9 @@ export class PrincipalComponent implements OnInit {
     this.prodClicked = prod;
     console.log(this.prodClicked);
     localStorage.setItem('product', JSON.stringify(this.prodClicked));
+  }
+  searchProd(searchedProduct) {
+    localStorage.setItem('searchedProd', searchedProduct);
+    this.boolsearch = true;
   }
 }
