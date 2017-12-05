@@ -15,7 +15,7 @@
 </div>
 <div class="container">
   <div class="row">
-    <a routerLink="/ranking"><h2>TOP</h2></a>
+    <a routerLink="/ranking"><h2 style="color: #464646">TOP</h2></a>
     <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of product | slice:0:5" (click)="productClicked(prod)" routerLink="/productDetail">
       <div class="imgForm">
         <img src="/assets/images/predet.png" width="60%" height="60%">
@@ -32,7 +32,7 @@
     </div>
   </div>
   <div class="row">
-    <h2>ULTIMAS NOVEDADES</h2>
+    <h2 style="color: #464646">ULTIMAS NOVEDADES</h2>
     <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of product | slice:0:5" (click)="productClicked(prod)" routerLink="/productDetail">
       <div class="imgForm">
         <img src="/assets/images/predet.png" width="60%" height="60%">
