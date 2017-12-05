@@ -1,8 +1,6 @@
 import {Component, Input, NgModule, OnInit, ViewChild} from '@angular/core';
 import { User } from '../../classes/user.model';
 import { UserService } from '../../services/user.service';
-import {CloseGuard, DialogRef, ModalComponent} from 'angular2-modal';
-import {BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {IAlert} from '../adminPage/table-users/table-users.component';
 import {Router} from '@angular/router';
 import {NavbarComponent} from '../navbar/navbar.component';
