@@ -1,6 +1,12 @@
 .nav{
   font-family: 'Quick-sand', sans-serif;
 }
+.liSizes{
+  width: 200px;
+  height: 60px;
+  margin: 0;
+  font-size: medium;
+}
 .navbar-brand {
   width: 110px;
   height: 50px;
@@ -8,7 +14,7 @@
   background-size: 100%;
 }
 
-@media (min-width:945px){
+@media (min-width:1000px){
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
     margin-left: 55px;
@@ -17,7 +23,7 @@
   }
 }
 
-@media (max-width:945px){
+@media (max-width:1000px){
   .navbar > .container .navbar-brand,
   .navbar > .container-fluid .navbar-brand {
     margin-left: 30px;
@@ -25,13 +31,13 @@
   }
 }
 
-@media screen and (max-width: 1205px){
+@media screen and (max-width: 1300px){
   .row {
     display: none;
   }
 }
 
-@media (max-width:850px){
+@media (max-width:890px){
   .dropdown-toggle{
     text-align: center;
   }
@@ -148,4 +154,9 @@ li{
   padding: 3% 2%;
   width: 100%;
 }
+
+#userButton{
+  border: none;
+}
+
 

@@ -1,0 +1,41 @@
+.container{
+  padding-top: 130px;
+  padding-bottom: 30px;
+}
+#title{
+  margin-bottom: 30px;
+  text-align: center;
+}
+.productInfo{
+  padding-top: 3%;
+  padding-left: 6%;
+}
+.productMark{
+  padding-top: 0.5%;
+  padding-right: 10%;
+  text-align: right;
+}
+.imgForm{
+  margin-top: 10px;
+  text-align: center;
+}
+.podium{
+  padding-left: 14.2%;
+}
+.gold{
+  padding-top: 4%;
+}
+.silver{
+  padding-top: 14%;
+}
+.bronze{
+  padding-top: 17%;
+}
+.formProduct{
+  padding-top: 5%;
+}
+.pod{
+  padding-top: 30%;
+  padding-right: 5%;
+  text-align: center;
+}

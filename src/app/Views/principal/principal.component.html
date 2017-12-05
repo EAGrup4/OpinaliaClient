@@ -1,21 +1,51 @@
+<form class='navbar-form'>
+  <div class="col-md-3"></div>
+  <div class='input-group col-md-6'>
+    <input class='form-control' type='text' name='search' placeholder='Busque el producto que desee' #searchedProduct />
+    <span class="input-group-btn">
+          <button type='submit' class='btn btn-default' routerLink="/products" (click)="searchProd(searchedProduct.value)">
+            <span class='glyphicon glyphicon-search'></span>
+          </button>
+    </span>
+  </div>
+  <div class="col-md-2"></div>
+</form>
 <div>
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <div id="imaginary_container">
-          <div class="input-group stylish-input-group input-append">
-            <input type="text" class="form-control"  placeholder="Search" >
-            <span class="input-group-addon">
-                <button type="submit">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </span>
-          </div>
-        </div>
+  <img src="/assets/images/port2.jpg" width="100%" height="100%"/>
+</div>
+<div class="container">
+  <div class="row">
+    <a routerLink="/ranking"><h2 style="color: #464646">TOP</h2></a>
+    <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of product | slice:0:5" (click)="productClicked(prod)" routerLink="/productDetail">
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="60%" height="60%">
+      </div>
+      <div class="productName">
+        <h3>{{ prod.name }}</h3>
+      </div>
+      <div class="productSubname">
+        <h4>{{ prod.category }} - {{ prod.company }} </h4>
       </div>
     </div>
+    <div class="plusImage">
+      <img src="/assets/images/mas.jpg" width="3%" height="3%">
+    </div>
   </div>
-  <div id="photoimage">
-    <img src="/assets/images/port2.jpg" width="100%" height="100%"/>
+  <div class="row">
+    <h2 style="color: #464646">ULTIMAS NOVEDADES</h2>
+    <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of product | slice:0:5" (click)="productClicked(prod)" routerLink="/productDetail">
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="60%" height="60%">
+      </div>
+      <div class="productName">
+        <h3>{{ prod.name }}</h3>
+      </div>
+      <div class="productSubname">
+        <h4>{{ prod.category }} - {{ prod.company }} </h4>
+      </div>
+    </div>
+    <div class="plusImage">
+      <img src="/assets/images/mas.jpg" width="3%" height="3%">
+    </div>
   </div>
 </div>

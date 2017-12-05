@@ -1,0 +1,78 @@
+<div class="container">
+  <div id="title"><h1>Ranking de Mobiles</h1></div>
+  <div class="podium">
+    <div class="col-md-3 silver" (click)="productClicked(this.product[1])" routerLink="/productDetail">
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="60%" height="60%">
+      </div>
+      <div class="col-md-8 productInfo">
+        <div class="productName">
+          <h4>{{this.product[1].name}}</h4>
+        </div>
+        <div class="productSubname">
+          <h5>{{this.product[1].category}} - {{this.product[1].company}}</h5>
+        </div>
+      </div>
+      <div class="col-md-4 productMark">
+        <h2>{{ this.product[1].avgRate }}</h2>
+      </div>
+      <div class="pod">
+        <img src="/assets/images/podium2.png"  width="88%" height="88%">
+      </div>
+    </div>
+    <div class="col-md-4 gold" (click)="productClicked(this.product[0])" routerLink="/productDetail">
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="60%" height="60%">
+      </div>
+      <div class="col-md-8 productInfo">
+        <div class="productName">
+          <h4>{{this.product[0].name}}</h4>
+        </div>
+        <div class="productSubname">
+          <h5>{{this.product[0].category}} - {{this.product[0].company}}</h5>
+        </div>
+      </div>
+      <div class="col-md-4 productMark">
+        <h2>{{ this.product[0].avgRate }}</h2>
+      </div>
+      <div class="pod">
+        <img src="/assets/images/podium1.png"  width="88%" height="88%">
+      </div>
+    </div>
+    <div class="col-md-3 bronze" (click)="productClicked(this.product[2])" routerLink="/productDetail">
+      <div class="imgForm">
+        <img src="/assets/images/predet.png" width="60%" height="60%">
+      </div>
+      <div class="col-md-8 productInfo">
+        <div class="productName">
+          <h4>{{this.product[2].name}}</h4>
+        </div>
+        <div class="productSubname">
+          <h5>{{this.product[2].category}} - {{this.product[2].company}}</h5>
+        </div>
+      </div>
+      <div class="col-md-4 productMark">
+        <h2>{{ this.product[2].avgRate }}</h2>
+      </div>
+      <div class="pod">
+        <img src="/assets/images/podium3.png"  width="88%" height="88%">
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product | slice:3:7" (click)="productClicked(prod)" routerLink="/productDetail">
+    <div class="imgForm">
+      <img src="/assets/images/predet.png" width="40%" height="40%">
+    </div>
+    <div class="col-md-8 productInfo">
+      <div class="productName">
+        <h4>{{ prod.name }}</h4>
+      </div>
+      <div class="productSubname">
+        <h5>{{ prod.category }} - {{ prod.company }} </h5>
+      </div>
+    </div>
+    <div class="col-md-4 productMark">
+      <h2>{{ prod.avgRate }}</h2>
+    </div>
+  </div>
+</div>
