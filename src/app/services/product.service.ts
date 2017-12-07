@@ -59,7 +59,8 @@ export class ProductService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   sendComment(rating: {userId, title, comment, rate}, productId) {
-    const headers = new Headers({ 'Content-Type': 'application/json', 'authorization': this.sendtoken });
+    const token = JSON.parse(sessionStorage.getItem('user')).token;
+    const headers = new Headers({ 'Content-Type': 'application/json', 'authorization': token });
     const options = new RequestOptions({ headers: headers });
     console.log(productId);
     return this.http.post(this.url + '/rating/' + productId, rating, options)
