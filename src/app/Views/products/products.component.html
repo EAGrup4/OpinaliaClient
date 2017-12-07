@@ -19,7 +19,7 @@
             </select>
           </div>
           <button class='btn btn-default' disabled="disabled">Ordenar toda la lista de productos por:</button>
-          <button class='btn btn-default'>Puntuación</button>
+          <button class='btn btn-default' (click)="puntuation()">Puntuación</button>
           <button class='btn btn-default' (click)="aplhabetOrder()">A-Z</button>
           <button class='btn btn-default'>Novedades</button>
         </span>
@@ -31,7 +31,7 @@
   </p>
   <div class="smallForm">
     <p style="text-align: center">Ordenar la busqueda por:
-      <button class='btn btn-default'>Puntuación</button>
+      <button class='btn btn-default' (click)="puntuation()">Puntuación</button>
       <button class='btn btn-default' (click)="aplhabetOrder()">A-Z</button>
       <button class='btn btn-default'>Novedades</button>
     </p>

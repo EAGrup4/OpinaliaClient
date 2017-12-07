@@ -79,6 +79,13 @@ export class TabletComponent implements OnInit {
       }
     );
   }
+  puntuation() {
+    this.productService.getBestTypeProducts('tablet').subscribe(
+      (data) => {
+        this.product = data;
+        console.log(data);
+      });
+  }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);

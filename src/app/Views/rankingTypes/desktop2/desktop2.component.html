@@ -7,14 +7,14 @@
       </div>
       <div class="col-md-8 productInfo">
         <div class="productName">
-          <h4>{{this.product[1].name}}</h4>
+          <h4>{{this.product[1]?.name}}</h4>
         </div>
         <div class="productSubname">
-          <h5>{{this.product[1].category}} - {{this.product[1].company}}</h5>
+          <h5>{{this.product[1]?.category}} - {{this.product[1]?.company}}</h5>
         </div>
       </div>
       <div class="col-md-4 productMark">
-        <h2>{{ this.product[1].avgRate }}</h2>
+        <h2>{{ this.product[1]?.avgRate }}</h2>
       </div>
       <div class="pod">
         <img src="/assets/images/podium2.png"  width="88%" height="88%">

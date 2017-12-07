@@ -80,6 +80,13 @@ export class CompaniesAppleComponent implements OnInit {
       }
     );
   }
+  puntuation() {
+    this.productService.getBestCompanyProducts('Apple').subscribe(
+      (data) => {
+        this.product = data;
+        console.log(data);
+      });
+  }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);

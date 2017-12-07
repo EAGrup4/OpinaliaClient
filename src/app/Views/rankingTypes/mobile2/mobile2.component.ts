@@ -19,11 +19,12 @@ export class RankingMobileComponent implements OnInit {
   constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {
   }
   ngOnInit() {
-    this.productService.getBestTypeProducts('mobile').subscribe(
+    this.productService.getBest7TypeProducts('phone').subscribe(
       (data) => {
         this.product = data;
         console.log(data);
       });
+    this.navbarComponent.ableStyle2();
   }
   productClicked(prod: Product) {
     localStorage.clear();
