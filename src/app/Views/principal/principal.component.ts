@@ -17,7 +17,7 @@ export class PrincipalComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getProduct().subscribe(
+    this.productService.getBestProducts().subscribe(
       (data) => {
         this.product = data;
         console.log(data);

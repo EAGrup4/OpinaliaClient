@@ -71,6 +71,7 @@ export class DetailProductComponent implements OnInit {
   goBack() {
     this._location.back();
     this.navbarComponent.ableStyle();
+    localStorage.setItem('searchedProd', '');
   }
   scrollElement(el) {
     el.scrollIntoView();

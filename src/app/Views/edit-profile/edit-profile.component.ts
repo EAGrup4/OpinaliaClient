@@ -29,6 +29,7 @@ export class EditProfileComponent implements OnInit {
     this.id = sessionStorage.getItem('id');
   }
   passUser(name: string, email: string, password: string, password22: string) {
+    this.currentModal = true;
     if (password === password22) {
       this.users.email = email;
       this.users.name = name;

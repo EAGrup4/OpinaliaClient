@@ -34,7 +34,6 @@ export class ProductDetailComponent implements OnInit, OnChanges {
     this.productService.getProductByName(this.prod.name).subscribe(// ng -g component name
       (data) => {
         this.product = data;
-        /*ARREGLAR MOSTRAR LAS OPINIONES*/
         console.log(data);
       });
   }
