@@ -12,7 +12,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class UserService {
   url = '/api/users';
-  sendtoken = JSON.parse(localStorage.getItem('token'));
+  sendtoken = JSON.parse(sessionStorage.getItem('token'));
   constructor(private http: Http) {}
   addUser(user: User): Observable<Response> {
     const headers = new Headers({ 'Content-Type': 'application/json' });

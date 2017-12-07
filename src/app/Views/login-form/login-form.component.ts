@@ -51,7 +51,7 @@ export class LoginFormComponent implements OnInit {
           const token = getData.token;
           const userTmp = getData;
           sessionStorage.setItem('user', JSON.stringify(userTmp));
-          localStorage.setItem('token', JSON.stringify(token));
+          sessionStorage.setItem('token', JSON.stringify(token));
           this.router.navigate(['']);
           window.location.reload();
         },
@@ -92,8 +92,9 @@ export class LoginFormComponent implements OnInit {
         getData = data;
         const userTmp = getData;
         const token = getData.token;
+        console.log('token', token);
         sessionStorage.setItem('user', JSON.stringify(userTmp));
-        localStorage.setItem('token', JSON.stringify(token));
+        sessionStorage.setItem('token', JSON.stringify(token));
         this.router.navigate(['']);
         window.location.reload();
       },
