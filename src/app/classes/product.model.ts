@@ -8,7 +8,7 @@ export class Product {
     public specifications: string[],
     public date: { type: Date },
     public images: string[],
-    public ratings: Ratings,
+    public ratings: Ratings[],
     public _id: string,
     public numRates: {type: Number, default: 0},
     public totalRate: {type: Number, default: 0},

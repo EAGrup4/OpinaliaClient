@@ -21,7 +21,7 @@
           <button class='btn btn-default' disabled="disabled">Ordenar toda la lista de productos por:</button>
           <button class='btn btn-default' (click)="puntuation()">Puntuación</button>
           <button class='btn btn-default' (click)="aplhabetOrder()">A-Z</button>
-          <button class='btn btn-default'>Novedades</button>
+          <button class='btn btn-default' (click)="newest()">Novedades</button>
         </span>
       </div>
       <div class="col-md-1"></div>
@@ -33,7 +33,7 @@
     <p style="text-align: center">Ordenar la busqueda por:
       <button class='btn btn-default' (click)="puntuation()">Puntuación</button>
       <button class='btn btn-default' (click)="aplhabetOrder()">A-Z</button>
-      <button class='btn btn-default'>Novedades</button>
+      <button class='btn btn-default' (click)="newest()">Novedades</button>
     </p>
   </div>
   <div class="row">

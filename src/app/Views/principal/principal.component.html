@@ -28,12 +28,12 @@
       </div>
     </div>
     <div class="plusImage">
-      <img src="/assets/images/mas.jpg" width="3%" height="3%">
+      <img src="/assets/images/mas.jpg" width="3%" height="3%" routerLink="/ranking">
     </div>
   </div>
   <div class="row">
-    <h2 style="color: #464646">ULTIMAS NOVEDADES</h2>
-    <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of product | slice:0:5" (click)="productClicked(prod)" routerLink="/productDetail">
+    <a routerLink="/products"><h2 style="color: #464646">ULTIMAS NOVEDADES</h2></a>
+    <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of products | slice:0:5" (click)="productClicked(prod)" routerLink="/productDetail">
       <div class="imgForm">
         <img src="/assets/images/predet.png" width="60%" height="60%">
       </div>
@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="plusImage">
-      <img src="/assets/images/mas.jpg" width="3%" height="3%">
+      <img src="/assets/images/mas.jpg" width="3%" height="3%" routerLink="/products">
     </div>
   </div>
 </div>

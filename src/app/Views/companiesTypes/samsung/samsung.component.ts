@@ -87,6 +87,13 @@ export class CompaniesSamsungComponent implements OnInit {
         console.log(data);
       });
   }
+  newest() {
+    this.productService.getNewCompanyProducts('Samsung').subscribe(
+      (data) => {
+        this.product = data;
+        console.log(data);
+      });
+  }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);

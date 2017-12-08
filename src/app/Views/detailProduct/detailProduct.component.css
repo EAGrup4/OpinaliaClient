@@ -78,7 +78,22 @@
   font-size: 150%;
   text-align: center;
 }
-
+.summaryForm{
+  background-color: #f3f3f3;
+  padding-top: 2%;
+  padding-bottom: 1%;
+  border-radius: 20px;
+  margin-bottom: 1%;
+}
+.summaryRating-bar{
+  padding-top: 0.7%;
+}
+.sumRate{
+  font-size: 150%;
+  text-align: center;
+  padding-right: 20%;
+  padding-bottom: 3%;
+}
 
 h3{
   margin: 0;

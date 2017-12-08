@@ -35,8 +35,10 @@ export class DetailProductComponent implements OnInit {
   averageRatingPerCent: number;
   numberProgressBar: string;
   opNumberProgressBar: string;
+  summaryNumberProgressBar: string;
   range: any;
   nameUser: string;
+  opinions0 = 0; opinions3 = 0; opinions5 = 0; opinions7 = 0; opinions9 = 0; numb = 0;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -51,9 +53,10 @@ export class DetailProductComponent implements OnInit {
         this.product = data;
         console.log(data);
         this.producte = this.product[0];
-        console.log('Producte',  this.product[0].name);
-        console.log('Name Opinion',  this.product[0].ratings[0].userId.name);
         this.averageRatingPerCent = this.product[0].avgRate * 10;
+        this.summaryOpinions(this.product[0]);
+        this.numb = this.product[0].ratings.length;
+        console.log(this.numb);
         if (this.product[0].avgRate === -1) {
           this.product[0].avgRate = 0;
         }
@@ -67,6 +70,10 @@ export class DetailProductComponent implements OnInit {
   getRate(rate: number) {
     this.opNumberProgressBar = rate * 10 + '%';
     return this.opNumberProgressBar;
+  }
+  getSummaryRate(rate: number) {
+    this.summaryNumberProgressBar = rate / this.numb * 100 + '%';
+    return this.summaryNumberProgressBar;
   }
   goBack() {
     this._location.back();
@@ -114,6 +121,38 @@ export class DetailProductComponent implements OnInit {
     this.day = moreParts[0];
     console.log(this.year + '-' + this.month + '-' + this.day);
   }*/
+  public summaryOpinions(product) {
+    let ratings: Ratings[];
+    ratings = product.ratings;
+
+    console.log(ratings.length);
+    if (ratings.length > 0) {
+      for (let i = 0; i < ratings.length; i++) {
+        if (ratings[i].rate === 0 || ratings[i].rate === 1 || ratings[i].rate === 2) {
+          this.opinions0++;
+        }
+        if (ratings[i].rate === 3 || ratings[i].rate === 4) {
+          this.opinions3++;
+        }
+        if (ratings[i].rate === 5 || ratings[i].rate === 6) {
+          this.opinions5++;
+        }
+        if (ratings[i].rate === 7 || ratings[i].rate === 8) {
+          this.opinions7++;
+        }
+        if (ratings[i].rate === 9 || ratings[i].rate === 10) {
+          this.opinions9++;
+        }
+      }
+    } else {
+      this.opinions0 = 0;
+      this.opinions3 = 0;
+      this.opinions5 = 0;
+      this.opinions7 = 0;
+      this.opinions9 = 0;
+    }
+
+  }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);

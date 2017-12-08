@@ -22,6 +22,11 @@ export class PrincipalComponent implements OnInit {
         this.product = data;
         console.log(data);
       });
+    this.productService.getNewProducts().subscribe(
+      (data) => {
+        this.products = data;
+        console.log(data);
+      });
   }
   productClicked(prod: Product) {
     localStorage.clear();
