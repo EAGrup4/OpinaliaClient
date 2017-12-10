@@ -8,4 +8,4 @@ RUN npm install -g @angular/cli
 RUN npm install
 COPY . /Client
 
-EXPOSE 4200
+EXPOSE 80
