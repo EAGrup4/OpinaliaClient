@@ -13,7 +13,7 @@ import {IAlert} from '../table-users/table-users.component';
 
 export class TableProductsComponent implements OnInit {
   products = new Product('', '', '', [], null, [], null, '', null, null, null);
-  productsSend = {name: '', category: '', company: ''};
+  productsSend = {name: '', category: '', company: '', specifications: []};
   objectsFilter = {name: '', category: '', company: ''};
   productsMody = {name: '', category: '', company: '', _id: ''};
   @Input()
@@ -31,6 +31,8 @@ export class TableProductsComponent implements OnInit {
   arrayObjects: any[] = [];
   arrayNames: any[] = [];
   delate = new Product('', '', '', [], null, [], null, '', null, null, null);
+  fieldArray: Array<any> = [];
+  newAttribute: any = {};
   ngOnInit() {
     this.productService.getProduct().subscribe(
       (data) => {
@@ -94,6 +96,7 @@ export class TableProductsComponent implements OnInit {
     this.productsSend.category = category;
     this.productsSend.name = name;
     this.productsSend.company = company;
+    this.productsSend.specifications = this.fieldArray;
     console.log(this.productsSend);
     this.productService.addProduct(this.productsSend).subscribe(
       (data) => {
@@ -117,6 +120,17 @@ export class TableProductsComponent implements OnInit {
         }
       }
     );
+  }
+  addFieldValue() {
+    this.fieldArray.push(this.newAttribute);
+    this.newAttribute = {};
+  }
+
+  deleteFieldValue(index) {
+    this.fieldArray.splice(index, 1);
+  }
+  showSpecifi() {
+    console.log(this.fieldArray);
   }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);

@@ -104,9 +104,6 @@
             <input type="text" class="form-control" id="company" name="company" value="" required="" title="Introduzca su marca" #company>
             <span class="help-block"></span>
           </div>
-          <div class="form-group">
-            <label for="company" class="control-label">Especificaciones:</label>
-          </div>
           <p><a class="btn btn-info btn-block" (click)="modifyProducts(name.value, category.value, company.value)" data-dismiss="modal">Editar Producto</a></p>
         </form>
         <div class="modal-footer">
@@ -146,10 +143,54 @@
             <input type="text" class="form-control" id="company2" name="company2" value="" required="" title="Introduzca su marca" #company2>
             <span class="help-block"></span>
           </div>
+          <div class="form-group">
+            <label for="company" class="control-label">Especificaciones:</label>
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Titulo</th>
+                  <th>Especificación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let field of fieldArray; let i = index">
+                  <td>
+                    <input [(ngModel)]="field.name" class="form-control" type="text" name="{{field.name}}" />
+                  </td>
+                  <td>
+                    <input [(ngModel)]="field.spec" class="form-control" type="text" name="{{field.spec}}" />
+                  </td>
+                  <td>
+                    <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <select name="newAttributeCode" id="newAttributeCode" class="form-control" [(ngModel)]="newAttribute.name">
+                      <option value="procesador">procesador</option>
+                      <option value="pantalla">pantalla</option>
+                      <option value="ram">ram</option>
+                      <option value="disco">disco</option>
+                      <option value="peso">peso</option>
+                      <option value="camara">camara</option>
+                      <option value="tarjetaGrafica">tarjeta gráfica</option>
+                      <option value="so">sistema operativo</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input class="form-control" type="text" id="newAttributeName" [(ngModel)]="newAttribute.spec" name="newAttributeName" />
+                  </td>
+                  <td>
+                    <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <p><a class="btn btn-info btn-block" (click)="addProduct(name2.value, category2.value, company2.value)" data-dismiss="modal">Añadir Producto</a></p>
         </form>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="showSpecifi()">Close</button>
         </div>
       </div>
     </div>
