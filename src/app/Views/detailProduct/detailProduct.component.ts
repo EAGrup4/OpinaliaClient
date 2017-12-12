@@ -38,7 +38,13 @@ export class DetailProductComponent implements OnInit {
   summaryNumberProgressBar: string;
   range: any; /*NO SE USA*/
   nameUser: string;
-  opinions0 = 0; opinions3 = 0; opinions5 = 0; opinions7 = 0; opinions9 = 0; numb = 0;
+  opinions0 = 0; opinions3 = 0; opinions5 = 0;
+  opinions7 = 0; opinions9 = 0; numb = 0;
+  specProcesador: string; specRam: string;
+  specPantalla: string; specPeso: string;
+  specSo: string; specDisco: string;
+  specTarjetaGrafica: string; specCamara: string;
+  spec1= false; spec2 = false; spec3 = false; spec4 = false; spec5 = false; spec6 = false; spec7 = false; spec8 = false;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -55,6 +61,7 @@ export class DetailProductComponent implements OnInit {
         this.producte = this.product[0];
         this.averageRatingPerCent = this.product[0].avgRate * 10;
         this.summaryOpinions(this.product[0]);
+        this.iconsSpecifications(this.product[0]);
         this.numb = this.product[0].ratings.length;
         if (this.product[0].avgRate === -1) {
           this.product[0].avgRate = 0;
@@ -125,37 +132,74 @@ export class DetailProductComponent implements OnInit {
     this.day = moreParts[0];
     console.log(this.year + '-' + this.month + '-' + this.day);
   }*/
+  public iconsSpecifications(product) {
+    let specific: {name: string, spec: string}[];
+    specific = product.specifications;
+    for (let i = 0; i < specific.length; i++) {
+      if (specific[i].name === 'procesador' && specific[i].spec !== '') {
+        this.specProcesador = specific[i].spec;
+        this.spec1 = true;
+      }
+      if (specific[i].name === 'pantalla' && specific[i].spec !== '') {
+        this.specPantalla = specific[i].spec;
+        this.spec2 = true;
+      }
+      if (specific[i].name === 'so' && specific[i].spec !== '') {
+        this.specSo = specific[i].spec;
+        this.spec8 = true;
+      }
+      if (specific[i].name === 'ram' && specific[i].spec !== '') {
+        this.specRam = specific[i].spec;
+        this.spec3 = true;
+      }
+      if (specific[i].name === 'disco' && specific[i].spec !== '') {
+        this.specDisco = specific[i].spec;
+        this.spec4 = true;
+      }
+      if (specific[i].name === 'peso' && specific[i].spec !== '') {
+        this.specPeso = specific[i].spec;
+        this.spec6 = true;
+      }
+      if (specific[i].name === 'camara' && specific[i].spec !== '') {
+        this.specCamara = specific[i].spec;
+        this.spec5 = true;
+      }
+      if (specific[i].name === 'tarjetaGrafica' && specific[i].spec !== '') {
+        this.specTarjetaGrafica = specific[i].spec;
+        this.spec7 = true;
+      }
+    }
+  }
   public summaryOpinions(product) {
-        let ratings: Ratings[];
-        ratings = product.ratings;
-
-        console.log(ratings.length);
-        if (ratings.length > 0) {
-            for (let i = 0; i < ratings.length; i++) {
-                if (ratings[i].rate === 0 || ratings[i].rate === 1 || ratings[i].rate === 2) {
-                    this.opinions0++;
-                  }
-                if (ratings[i].rate === 3 || ratings[i].rate === 4) {
-                    this.opinions3++;
-                  }
-                if (ratings[i].rate === 5 || ratings[i].rate === 6) {
-                    this.opinions5++;
-                  }
-                if (ratings[i].rate === 7 || ratings[i].rate === 8) {
-                    this.opinions7++;
-                  }
-                if (ratings[i].rate === 9 || ratings[i].rate === 10) {
-                    this.opinions9++;
-                  }
+    let ratings: Ratings[];
+    ratings = product.ratings;
+    console.log(ratings.length);
+    if (ratings.length > 0) {
+        for (let i = 0; i < ratings.length; i++) {
+            if (ratings[i].rate === 0 || ratings[i].rate === 1 || ratings[i].rate === 2) {
+                this.opinions0++;
               }
-          } else {
-            this.opinions0 = 0;
-            this.opinions3 = 0;
-            this.opinions5 = 0;
-            this.opinions7 = 0;
-            this.opinions9 = 0;
+            if (ratings[i].rate === 3 || ratings[i].rate === 4) {
+                this.opinions3++;
+              }
+            if (ratings[i].rate === 5 || ratings[i].rate === 6) {
+                this.opinions5++;
+              }
+            if (ratings[i].rate === 7 || ratings[i].rate === 8) {
+                this.opinions7++;
+              }
+            if (ratings[i].rate === 9 || ratings[i].rate === 10) {
+                this.opinions9++;
+              }
           }
-        }
+      } else {
+        this.opinions0 = 0;
+        this.opinions3 = 0;
+        this.opinions5 = 0;
+        this.opinions7 = 0;
+        this.opinions9 = 0;
+      }
+    }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);
