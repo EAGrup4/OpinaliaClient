@@ -36,7 +36,7 @@ export class DetailProductComponent implements OnInit {
   numberProgressBar: string;
   opNumberProgressBar: string;
   summaryNumberProgressBar: string;
-  range: any;
+  range: any; /*NO SE USA*/
   nameUser: string;
   opinions0 = 0; opinions3 = 0; opinions5 = 0; opinions7 = 0; opinions9 = 0; numb = 0;
   @Input()
