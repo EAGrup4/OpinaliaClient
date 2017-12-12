@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {FormsModule, NgModel} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -86,6 +86,9 @@ import {CompaniesOthersComponent} from './Views/companiesTypes/others/others.com
     routing
   ],
   bootstrap: [AppComponent],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'es-ES' }, // replace "en-US" with your locale
+  ],
   entryComponents: [ LoginFormComponent ]
 })
 export class AppModule {
