@@ -78,6 +78,31 @@
   font-size: 150%;
   text-align: center;
 }
+.summaryForm{
+  background-color: #f3f3f3;
+  padding-top: 2%;
+  padding-bottom: 1%;
+  border-radius: 20px;
+  margin-bottom: 1%;
+}
+.summaryRating-bar{
+  padding-top: 0.7%;
+}
+.sumRate{
+  font-size: 150%;
+  text-align: center;
+  padding-right: 20%;
+  padding-bottom: 3%;
+}
+.specifications{
+  padding-top: 10%;
+}
+.icons{
+  padding-bottom: 5%;
+}
+.nameIcon{
+  margin: 0;
+}
 
 
 h3{

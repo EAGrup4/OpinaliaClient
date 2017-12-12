@@ -18,7 +18,7 @@ export class RankingComponent implements OnInit {
   constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {
   }
   ngOnInit() {
-    this.productService.getBestProducts().subscribe(
+    this.productService.getBest7Products().subscribe(
       (data) => {
         this.product = data;
         console.log(data);

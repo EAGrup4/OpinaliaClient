@@ -19,11 +19,12 @@ export class RankingAccessoriesComponent implements OnInit {
   constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {
   }
   ngOnInit() {
-    this.productService.getBestTypeProducts('accessories').subscribe(
+    this.productService.getBest7TypeProducts('accessories').subscribe(
       (data) => {
         this.product = data;
         console.log(data);
       });
+    this.navbarComponent.ableStyle2();
   }
   productClicked(prod: Product) {
     localStorage.clear();

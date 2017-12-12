@@ -17,11 +17,16 @@ export class PrincipalComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getProduct().subscribe(
+    this.productService.getBestProducts().subscribe(
       (data) => {
         this.product = data;
         console.log(data);
       });
+    this.productService.getNewProducts().subscribe(
+            (data) => {
+              this.products = data;
+              console.log(data);
+            });
   }
   productClicked(prod: Product) {
     localStorage.clear();

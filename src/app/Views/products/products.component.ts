@@ -3,7 +3,7 @@ import {Product} from '../../classes/product.model';
 import {ProductService} from '../../services/product.service';
 import {ProductShareService} from '../../services/productShare.service';
 import {NavbarComponent} from '../navbar/navbar.component';
-import {PrincipalComponent} from "../principal/principal.component";
+import {PrincipalComponent} from '../principal/principal.component';
 
 @Component({
   moduleId: module.id,
@@ -22,10 +22,10 @@ export class ProductsComponent implements OnInit {
   avgRate: any;
   objectsFilter = {name: '', category: '', company: ''};
   categoryToSend: any;
+  prodComponenSearch: string;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
-  private prodComponenSearch: string;
   constructor(private productService: ProductService, private productShareService: ProductShareService,
               private navbarComponent: NavbarComponent, private principalComponent: PrincipalComponent) {
   }
@@ -109,6 +109,20 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
+  puntuation() {
+    this.productService.getBestProducts().subscribe(
+      (data) => {
+        this.product = data;
+        console.log(data);
+      });
+  }
+  newest() {
+        this.productService.getNewProducts().subscribe(
+            (data) => {
+              this.product = data;
+              console.log(data);
+            });
+      }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);

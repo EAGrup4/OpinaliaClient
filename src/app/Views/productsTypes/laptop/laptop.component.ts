@@ -79,6 +79,20 @@ export class LaptopComponent implements OnInit {
       }
     );
   }
+  puntuation() {
+    this.productService.getBestTypeProducts('laptop').subscribe(
+      (data) => {
+        this.product = data;
+        console.log(data);
+      });
+  }
+  newest() {
+    this.productService.getNewTypeProducts('laptop').subscribe(
+      (data) => {
+        this.product = data;
+        console.log(data);
+      });
+  }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);

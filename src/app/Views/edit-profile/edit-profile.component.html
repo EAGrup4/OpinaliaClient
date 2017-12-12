@@ -45,7 +45,7 @@
     </div>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="myModal5" role="dialog">
+  <div class="modal fade" id="myModal5" role="dialog" *ngIf="currentModal">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -58,7 +58,7 @@
           <p>Contraseña: {{ this.users.password }}</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal" (click)="modifyUsers(username2.value, email2.value, password2.value)">Si, Modificar!</button>
+          <button type="button" class="btn btn-info" data-dismiss="modal" (click)="modifyUsers(username2.value, email2.value, password2.value, password22.value)">Si, Modificar!</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

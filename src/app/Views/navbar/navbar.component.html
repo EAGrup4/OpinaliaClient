@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="menu">
       <ul class="nav navbar-nav">
         <li class="dropdown mega-dropdown active">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products" (click)="showStyle = true; showStyle2 = false; showStyle3 = false;">Productos</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products" (click)="showStyle = true; showStyle2 = false; showStyle3 = false; allProducts()">Productos</a>
           <div  *ngIf="showStyle" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle()">
             <div class="container-fluid">
                 <ul class="nav-list list-inline">

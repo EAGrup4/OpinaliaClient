@@ -17,6 +17,7 @@ export class EditProfileComponent implements OnInit {
   users = new User('', '', '', '', false, '', '');
   id: any;
   sub: any;
+  currentModal = true;
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();
@@ -28,6 +29,7 @@ export class EditProfileComponent implements OnInit {
     this.id = sessionStorage.getItem('id');
   }
   passUser(name: string, email: string, password: string, password22: string) {
+    this.currentModal = true;
     if (password === password22) {
       this.users.email = email;
       this.users.name = name;
@@ -39,14 +41,16 @@ export class EditProfileComponent implements OnInit {
         type: 'danger',
         message: 'Las contraseñas no coinciden!',
       });
+      this.currentModal = false;
     }
   }
-  modifyUsers(name: string, email: string, password: string) {
+  modifyUsers(name: string, email: string, password: string, password22: string) {
     this.users.email = email;
     this.users.name = name;
     this.users.password = password;
     this.users._id = this.id;
     this.users.token =  JSON.parse(localStorage.getItem('token'));
+    if (password === password22) {
     console.log(this.users);
     this.userService.modifyUser(this.users).subscribe(
       (data) => {
@@ -70,7 +74,15 @@ export class EditProfileComponent implements OnInit {
           message: 'No se ha podido modificar el usuario!',
         });
       });
-  }
+  }else {
+      this.alerts.pop();
+      this.alerts.push({
+        id: 2,
+        type: 'danger',
+        message: 'Las contraseñas no coinciden!',
+      });
+      }
+    }
   deleteUser() {
     this.users._id = this.id;
     console.log(this.id);

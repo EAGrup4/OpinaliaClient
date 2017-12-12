@@ -14,7 +14,7 @@ import {Ratings} from '../classes/ratings.model';
 @Injectable()
 export class ProductService {
   url = '/api/products';
-  sendtoken = JSON.parse(localStorage.getItem('token'));
+  sendtoken = JSON.parse(sessionStorage.getItem('token'));
 
   constructor(private http: Http) {
   }
@@ -59,10 +59,10 @@ export class ProductService {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   sendComment(rating: {userId, title, comment, rate}, productId) {
-    const token = JSON.parse(sessionStorage.getItem('user')).token;
-    const headers = new Headers({ 'Content-Type': 'application/json', 'authorization': token });
+    const headers = new Headers({ 'Content-Type': 'application/json', 'authorization': this.sendtoken });
     const options = new RequestOptions({ headers: headers });
     console.log(productId);
+    console.log('token', this.sendtoken);
     return this.http.post(this.url + '/rating/' + productId, rating, options)
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
@@ -89,6 +89,15 @@ export class ProductService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+  getBest7Products(): Observable<Comment[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    // ...using get request
+    return this.http.get(this.url + '/best7', options)
+    // ...and calling .json() on the response to return data
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
   getBestProducts(): Observable<Comment[]> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
@@ -98,14 +107,33 @@ export class ProductService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+  getBest7TypeProducts(category: string): Observable<Comment[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    // ...using get request
+    return this.http.get(this.url + '/best7/' + category, options)
+    // ...and calling .json() on the response to return data
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
   getBestTypeProducts(category: string): Observable<Comment[]> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     // ...using get request
-    return this.http.get(this.url + '/best/' + category, options)
+    return this.http.get(this.url + '/bestCategory/' + category, options)
     // ...and calling .json() on the response to return data
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  getBestCompanyProducts(company: string): Observable<Comment[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    // ...using get request
+    return this.http.get(this.url + '/bestCompany/' + company, options)
+    // ...and calling .json() on the response to return data
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+
   }
   searchProduct2(text: string, company: string) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
@@ -113,6 +141,33 @@ export class ProductService {
     console.log(text);
     return this.http.get(this.url + '/searchProduct2/' + text + '/' + company, options)
       .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  getNewProducts(): Observable<Comment[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    // ...using get request
+      return this.http.get(this.url + '/new', options)
+      // ...and calling .json() on the response to return data
+        .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  getNewTypeProducts(category: string): Observable<Comment[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    // ...using get request
+      return this.http.get(this.url + '/newCategory/' + category, options)
+      // ...and calling .json() on the response to return data
+        .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  getNewCompanyProducts(company: string): Observable<Comment[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    // ...using get request
+      return this.http.get(this.url + '/newCompany/' + company, options)
+      // ...and calling .json() on the response to return data
+        .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 }

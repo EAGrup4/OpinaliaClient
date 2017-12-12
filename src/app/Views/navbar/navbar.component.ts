@@ -7,6 +7,7 @@ import {ProductService} from '../../services/product.service';
 import {Router} from '@angular/router';
 import {User} from '../../classes/user.model';
 import {element} from 'protractor';
+import {ProductsComponent} from '../products/products.component';
 
 @Component({
   moduleId: module.id,
@@ -90,6 +91,9 @@ export class NavbarComponent implements OnInit {
   }
   ableStyle3() {
     this.showStyle3 = true;
+  }
+  allProducts() {
+    localStorage.setItem('searchedProd', '');
   }
 }
 
