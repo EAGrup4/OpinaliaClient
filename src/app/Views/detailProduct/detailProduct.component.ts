@@ -96,6 +96,11 @@ export class DetailProductComponent implements OnInit {
       this.productService.sendComment(this.ratingSend, this.prod._id).subscribe(// ng -g component name
         (data) => {
           console.log(data);
+          this.product = data;
+          this.producte = this.product;
+          this.averageRatingPerCent = this.product.avgRate * 10;
+          this.summaryOpinions(this.product);
+          this.numb = this.product.ratings.length;
           this.alerts.pop();
           this.alerts.push({
             id: 1,

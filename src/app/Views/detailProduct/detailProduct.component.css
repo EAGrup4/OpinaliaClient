@@ -23,7 +23,6 @@
   padding-left: 8%;
   padding-right: 8%;
   padding-top: 1%;
-  margin-bottom: 2%;
 }
 .averageRating{
   text-align: center;
@@ -63,12 +62,13 @@
   margin-bottom: 2%;
 }
 .writtenBy{
-  padding-top: 0.5%;
-  padding-bottom: 0.5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  text-align: center;
 }
 .opTitile{
   padding-top: 0.5%;
-  padding-bottom: 0.5%;
+  padding-bottom: 1%;
 }
 .opComment{
   padding-top: 0.5%;
@@ -95,7 +95,7 @@
   padding-bottom: 3%;
 }
 .specifications{
-  padding-top: 10%;
+  padding-top: 12%;
 }
 .icons{
   padding-bottom: 5%;
@@ -103,6 +103,15 @@
 .nameIcon{
   margin: 0;
 }
+.iconsName{
+  font-size: 125%;
+  padding-left: 5%;
+  padding-top: 5%;
+}
+.rateDate{
+  text-align: center;
+}
+
 
 
 h3{

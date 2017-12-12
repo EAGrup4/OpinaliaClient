@@ -17,30 +17,37 @@
       <div class="col-md-6 specifications">
         <div class="icons">
           <img src="../../../assets/images/iconsStadistics/cpu.png" height="20%" width="20%"/>
+          <span class="iconsName">150 gr</span>
         </div>
         <div class="icons">
           <img src="../../../assets/images/iconsStadistics/pantalla.png" height="20%" width="20%"/>
+          <span class="iconsName">150 gr</span>
         </div>
         <div class="icons">
           <img src="../../../assets/images/iconsStadistics/ram.png" height="20%" width="20%"/>
+          <span class="iconsName">150 gr</span>
         </div>
         <div class="icons">
           <img src="../../../assets/images/iconsStadistics/disc.png" height="20%" width="20%"/>
+          <span class="iconsName">150 gr</span>
         </div>
       </div>
       <div class="col-md-6 specifications">
         <div class="icons">
           <img src="../../../assets/images/iconsStadistics/camara.png" height="20%" width="20%"/>
+          <span class="iconsName">150 gr</span>
         </div>
         <div class="icons">
           <img src="../../../assets/images/iconsStadistics/grams.png" height="20%" width="20%"/>
-          <span>150 gr</span>
+          <span class="iconsName">150 gr</span>
         </div>
         <div class="icons">
           <img src="../../../assets/images/iconsStadistics/graphicTarget.png" height="20%" width="20%"/>
+          <span class="iconsName">150 gr</span>
         </div>
         <div class="icons">
           <img src="../../../assets/images/iconsStadistics/so.png" height="20%" width="20%"/>
+          <span class="iconsName">150 gr</span>
         </div>
       </div>
     </div>
@@ -133,13 +140,10 @@
     </div>
   </div>
     <h2 style="padding-top: 2%">Opiniones:</h2>
-    <h6 style="color: #666666">(Nº de opiniones: {{this.numb}})</h6>
+    <h6 style="color: #666666; padding-left: 1.5%; padding-bottom: 0.5%">Nº de opiniones: {{this.numb}}</h6>
   <div class="row opinionsForm" *ngFor="let rates of this.producte.ratings | slice:0:10">
     <div class="col-md-6 col-sm-6">
       <div class="opinionTitle">
-        <div class="writtenBy">
-          <h4>Escrita por: {{ rates.userId?.name }}</h4>
-        </div>
         <div class="opTitile">
           <h3>{{ rates.title }}</h3>
         </div>
@@ -160,7 +164,12 @@
       </div>
     </div>
     <div class="col-md-2">
+      <div class="writtenBy">
+        <h4>{{ rates.userId?.name }}</h4>
+      </div>
+      <div class="rateDate">
       {{ rates.date }}
+      </div>
     </div>
   </div>
 </div>
