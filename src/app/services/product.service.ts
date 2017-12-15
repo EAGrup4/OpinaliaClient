@@ -71,7 +71,7 @@ export class ProductService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(text);
-    return this.http.get(this.url + '/searchProduct/' + text + '/' + category, options)
+    return this.http.get(this.url + '/category/' + text + '/' + category, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -111,7 +111,7 @@ export class ProductService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     // ...using get request
-    return this.http.get(this.url + '/best7/' + category, options)
+    return this.http.get(this.url + '/category/best7/' + category, options)
     // ...and calling .json() on the response to return data
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
@@ -120,7 +120,7 @@ export class ProductService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     // ...using get request
-    return this.http.get(this.url + '/bestCategory/' + category, options)
+    return this.http.get(this.url + '/category/best/' + category, options)
     // ...and calling .json() on the response to return data
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
@@ -129,7 +129,7 @@ export class ProductService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     // ...using get request
-    return this.http.get(this.url + '/bestCompany/' + company, options)
+    return this.http.get(this.url + '/company/best/' + company, options)
     // ...and calling .json() on the response to return data
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
@@ -139,7 +139,7 @@ export class ProductService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(text);
-    return this.http.get(this.url + '/searchProduct2/' + text + '/' + company, options)
+    return this.http.get(this.url + '/company/' + text + '/' + company, options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
