@@ -3,6 +3,7 @@ import {Product} from '../../../classes/product.model';
 import {Subject} from 'rxjs/Subject';
 import {ProductService} from '../../../services/product.service';
 import {IAlert} from '../table-users/table-users.component';
+import {Specifications} from '../../../classes/specifications.model';
 
 @Component({
   selector: 'app-table-products',
@@ -13,13 +14,14 @@ import {IAlert} from '../table-users/table-users.component';
 
 export class TableProductsComponent implements OnInit {
   products = new Product('', '', '', [], null, [], null, '', null, null, null);
-  productsSend = {name: '', category: '', company: '', specifications: []};
+  productsSend = {name: '', category: '', company: '', specifications: Specifications['']};
   objectsFilter = {name: '', category: '', company: ''};
-  productsMody = {name: '', category: '', company: '', _id: ''};
+  productsMody = {name: '', category: '', company: '', specifications: Specifications[''], _id: ''};
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();
   private backup: Array<IAlert>;
+  spec = new Specifications('', '', '', '', '', '', '', '');
   constructor(private productService: ProductService) {
     this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
   }
@@ -33,6 +35,7 @@ export class TableProductsComponent implements OnInit {
   delate = new Product('', '', '', [], null, [], null, '', null, null, null);
   fieldArray: Array<any> = [];
   newAttribute: any = {};
+  tableDesktop = false; tableLaptop = false; tableMobile = false; tableTablet = false; tableAccessories = false;
   ngOnInit() {
     this.productService.getProduct().subscribe(
       (data) => {
@@ -69,6 +72,11 @@ export class TableProductsComponent implements OnInit {
     this.productsMody.name = name;
     this.productsMody.company = company;
     this.productsMody._id = this.id;
+    this.productsMody.specifications = this.spec;
+    if (this.productsMody.specifications.procesador === '') {
+      this.productsMody.specifications = '';
+      this.productsMody.specifications = this.fieldArray;
+    }
     console.log(this.productsMody);
     this.productService.modifyProduct(this.productsMody).subscribe(
       (data) => {
@@ -96,8 +104,13 @@ export class TableProductsComponent implements OnInit {
     this.productsSend.category = category;
     this.productsSend.name = name;
     this.productsSend.company = company;
-    this.productsSend.specifications = this.fieldArray;
+    this.productsSend.specifications = this.spec;
+    if (this.productsSend.specifications.procesador === '') {
+      this.productsSend.specifications = '';
+      this.productsSend.specifications = this.fieldArray;
+    }
     console.log(this.productsSend);
+    console.log('SPECIFIC', this.productsSend.specifications);
     this.productService.addProduct(this.productsSend).subscribe(
       (data) => {
         console.log(data);
@@ -131,6 +144,40 @@ export class TableProductsComponent implements OnInit {
   }
   showSpecifi() {
     console.log(this.fieldArray);
+    console.log('ESTE', this.spec);
+  }
+  showTypeTable(category) {
+    if (category === 'desktop') {
+      this.tableDesktop = true;
+      this.tableAccessories = false;
+      this.tableLaptop = false;
+      this.tableMobile = false;
+      this.tableTablet = false;
+    } else if (category === 'laptop') {
+      this.tableDesktop = false;
+      this.tableAccessories = false;
+      this.tableLaptop = true;
+      this.tableMobile = false;
+      this.tableTablet = false;
+    } else if (category === 'phone') {
+      this.tableDesktop = false;
+      this.tableAccessories = false;
+      this.tableLaptop = false;
+      this.tableMobile = true;
+      this.tableTablet = false;
+    } else if (category === 'accessories') {
+      this.tableDesktop = false;
+      this.tableAccessories = true;
+      this.tableLaptop = false;
+      this.tableMobile = false;
+      this.tableTablet = false;
+    } else if (category === 'tablet') {
+      this.tableDesktop = false;
+      this.tableAccessories = false;
+      this.tableLaptop = false;
+      this.tableMobile = false;
+      this.tableTablet = true;
+    }
   }
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);

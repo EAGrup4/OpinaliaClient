@@ -61,7 +61,7 @@ export class DetailProductComponent implements OnInit {
         this.producte = this.product[0];
         this.averageRatingPerCent = this.product[0].avgRate * 10;
         this.summaryOpinions(this.product[0]);
-        this.iconsSpecifications(this.product[0]);
+        this.iconsSpecifications(this.product[0].specifications[0]);
         this.numb = this.product[0].ratings.length;
         if (this.product[0].avgRate === -1) {
           this.product[0].avgRate = 0;
@@ -132,40 +132,39 @@ export class DetailProductComponent implements OnInit {
     this.day = moreParts[0];
     console.log(this.year + '-' + this.month + '-' + this.day);
   }*/
-  public iconsSpecifications(product) {
-    let specific: {name: string, spec: string}[];
-    specific = product.specifications;
-    for (let i = 0; i < specific.length; i++) {
-      if (specific[i].name === 'procesador' && specific[i].spec !== '') {
-        this.specProcesador = specific[i].spec;
+  public iconsSpecifications(spec) {
+    if (spec !== ['']) {
+      console.log('AAAAAAAAAAAA');
+      if (spec.procesador !== '') {
+        this.specProcesador = spec.procesador;
         this.spec1 = true;
       }
-      if (specific[i].name === 'pantalla' && specific[i].spec !== '') {
-        this.specPantalla = specific[i].spec;
+      if (spec.pantalla !== '') {
+        this.specPantalla = spec.pantalla;
         this.spec2 = true;
       }
-      if (specific[i].name === 'so' && specific[i].spec !== '') {
-        this.specSo = specific[i].spec;
+      if (spec.so !== '') {
+        this.specSo = spec.so;
         this.spec8 = true;
       }
-      if (specific[i].name === 'ram' && specific[i].spec !== '') {
-        this.specRam = specific[i].spec;
+      if (spec.ram !== '') {
+        this.specRam = spec.ram;
         this.spec3 = true;
       }
-      if (specific[i].name === 'disco' && specific[i].spec !== '') {
-        this.specDisco = specific[i].spec;
+      if (spec.disco !== '') {
+        this.specDisco = spec.disco;
         this.spec4 = true;
       }
-      if (specific[i].name === 'peso' && specific[i].spec !== '') {
-        this.specPeso = specific[i].spec;
+      if (spec.peso !== '') {
+        this.specPeso = spec.peso;
         this.spec6 = true;
       }
-      if (specific[i].name === 'camara' && specific[i].spec !== '') {
-        this.specCamara = specific[i].spec;
+      if (spec.camara !== '') {
+        this.specCamara = spec.camara;
         this.spec5 = true;
       }
-      if (specific[i].name === 'tarjetaGrafica' && specific[i].spec !== '') {
-        this.specTarjetaGrafica = specific[i].spec;
+      if (spec.tarjetaGrafica !== '') {
+        this.specTarjetaGrafica = spec.tarjetaGrafica;
         this.spec7 = true;
       }
     }
