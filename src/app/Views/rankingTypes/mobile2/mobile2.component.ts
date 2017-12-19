@@ -19,7 +19,7 @@ export class RankingMobileComponent implements OnInit {
   constructor(private productService: ProductService, private navbarComponent: NavbarComponent) {
   }
   ngOnInit() {
-    this.productService.getBest7TypeProducts('mobile').subscribe(
+    this.productService.getBest7TypeProducts('phone').subscribe(
       (data) => {
         this.product = data;
         console.log(data);
