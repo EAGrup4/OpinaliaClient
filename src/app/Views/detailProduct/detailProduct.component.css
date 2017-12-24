@@ -24,6 +24,11 @@
   padding-right: 8%;
   padding-top: 1%;
 }
+.ratings{
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1%;
+}
 .averageRating{
   text-align: center;
   font-size: 350%;
@@ -50,6 +55,15 @@
   padding-top: 0.5%;
   padding-bottom: 1%;
   border-radius: 20px;
+}
+.opinionsFormSumary{
+  background-color: #bebebe;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 20px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-right: 1%;
 }
 .opinionsForm{
   background-color: #f3f3f3;

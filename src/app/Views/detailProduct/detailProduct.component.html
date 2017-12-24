@@ -108,6 +108,72 @@
         </div>
         <div class="col-md-2 sumRate">{{ this.opinions0 }}</div>
       </div>
+      <div class="col-md-6 col-sm-6">
+        Mejor puntuación:
+        <div class="row opinionsFormSumary">
+          <div class="col-md-4 col-sm-6">
+            <div class="opinionTitle">
+              <div class="opTitile">
+                <h3>{{ ratin.title }}</h3>
+              </div>
+              <div class="opComment">
+                <h5>{{ ratin.comment }}</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ratings">
+            <div class="opRate">
+              {{ ratin.rate}}
+            </div>
+            <div class="opRating-bar">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(ratin.rate)>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="writtenBy">
+              <h4>{{ ratin.userId?.name }}</h4>
+            </div>
+            <div class="rateDate">
+              {{ ratin.date | date: 'longDate'}}
+            </div>
+          </div>
+        </div>
+        Peor puntuación:
+        <div class="row opinionsFormSumary">
+          <div class="col-md-4 col-sm-6">
+            <div class="opinionTitle">
+              <div class="opTitile">
+                <h3>{{ ratin2.title }}</h3>
+              </div>
+              <div class="opComment">
+                <h5>{{ ratin2.comment }}</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ratings">
+            <div class="opRate">
+              {{ ratin2.rate}}
+            </div>
+            <div class="opRating-bar">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(ratin.rate)>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="writtenBy">
+              <h4>{{ ratin2.userId?.name }}</h4>
+            </div>
+            <div class="rateDate">
+              {{ ratin2.date | date: 'longDate'}}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   <p *ngFor="let alert of alerts" id="alertType">
@@ -139,8 +205,19 @@
       </div>
     </div>
   </div>
+  <div class="col-md-2">
     <h2 style="padding-top: 2%">Opiniones:</h2>
-    <h6 style="color: #666666; padding-left: 1.5%; padding-bottom: 0.5%">Nº de opiniones: {{this.numb}}</h6>
+  </div>
+  <div class="col-md-10" style="padding-bottom: 1%; padding-top: 0.2%">
+    <h2>
+      <button class='btn btn-default' disabled="disabled">Ordenar toda la lista de productos por:</button>
+      <button class='btn btn-default' (click)="bestRatings()">Puntuación <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
+      <button class='btn btn-default' (click)="worstRatings()">Puntuación <img src="../../../assets/images/arrowdown.png" height="16" width="16"/></button>
+      <button class='btn btn-default'>Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
+      <button class='btn btn-default'>Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
+    </h2>
+  </div>
+    <h6 style="color: #666666; padding-left: 1.5%; padding-bottom: 0.5%; padding-top: 3%">Nº de opiniones: {{this.numb}}</h6>
   <div class="row opinionsForm" *ngFor="let rates of this.producte.ratings | slice:0:10">
     <div class="col-md-6 col-sm-6">
       <div class="opinionTitle">

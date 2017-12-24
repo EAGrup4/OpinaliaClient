@@ -24,6 +24,7 @@ export class DetailProductComponent implements OnInit {
   rating = new Ratings('', '', '', 0, null);
   ratingSend = {userId: '', title: '', comment: '', rate: 0};
   ratin = new Ratings('', '', '', 0, null);
+  ratin2 = new Ratings('', '', '', 0, null);
   ratings: any;
   rate: any;
   product: any;
@@ -45,6 +46,7 @@ export class DetailProductComponent implements OnInit {
   specSo: string; specDisco: string;
   specTarjetaGrafica: string; specCamara: string;
   spec1= false; spec2 = false; spec3 = false; spec4 = false; spec5 = false; spec6 = false; spec7 = false; spec8 = false;
+  numRatings: number;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -54,19 +56,27 @@ export class DetailProductComponent implements OnInit {
     this.prod = JSON.parse(localStorage.getItem('product'));
     console.log('THIS.PROD', this.prod);
 
-    this.productService.getProductByName(this.prod.name).subscribe(
+    this.productService.getProductById(this.prod._id).subscribe(
       (data) => {
         this.product = data;
         console.log(data);
-        this.producte = this.product[0];
-        this.averageRatingPerCent = this.product[0].avgRate * 10;
-        this.summaryOpinions(this.product[0]);
-        this.iconsSpecifications(this.product[0].specifications[0]);
-        this.numb = this.product[0].ratings.length;
-        if (this.product[0].avgRate === -1) {
-          this.product[0].avgRate = 0;
+        this.producte = this.product;
+        this.averageRatingPerCent = this.product.avgRate * 10;
+        this.summaryOpinions(this.product);
+        this.iconsSpecifications(this.product.specifications[0]);
+        this.numb = this.product.ratings.length;
+        if (this.product.avgRate === -1) {
+          this.product.avgRate = 0;
         }
       });
+    this.productService.getBestRatings(this.prod._id).subscribe(
+      (data) => {
+        this.ratin = data[0];
+        this.numRatings = data.length;
+        console.log(data.length);
+        this.ratin2 = data[this.numRatings - 1];
+      }
+    );
     this.chVal = 5;
   }
   getAvgRate() {
@@ -123,6 +133,20 @@ export class DetailProductComponent implements OnInit {
       });
     }
   }
+  bestRatings() {
+    this.productService.getBestRatings(this.prod._id).subscribe(
+      (data) => {
+        this.product.ratings = data;
+      }
+    );
+  }
+  worstRatings() {
+    this.productService.getWorstRatings(this.prod._id).subscribe(
+      (data) => {
+        this.product.ratings = data;
+      }
+    );
+  }
   /*public showDate(date: string) {
     const parts = date.split('-');
     this.year = parts[0];
@@ -133,7 +157,6 @@ export class DetailProductComponent implements OnInit {
   }*/
   public iconsSpecifications(spec) {
     if (spec !== ['']) {
-      console.log('AAAAAAAAAAAA');
       if (spec.procesador !== '') {
         this.specProcesador = spec.procesador;
         this.spec1 = true;
@@ -171,7 +194,6 @@ export class DetailProductComponent implements OnInit {
   public summaryOpinions(product) {
     let ratings: Ratings[];
     ratings = product.ratings;
-    console.log(ratings.length);
     if (ratings.length > 0) {
         for (let i = 0; i < ratings.length; i++) {
             if (ratings[i].rate === 0 || ratings[i].rate === 1 || ratings[i].rate === 2) {

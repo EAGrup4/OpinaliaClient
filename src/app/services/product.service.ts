@@ -34,11 +34,11 @@ export class ProductService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-  getProductByName(name: String): Observable<Comment[]> {
+  getProductById(id: String): Observable<Comment[]> {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     // ...using get request
-    return this.http.get(this.url + '/name/' + name, options)
+    return this.http.get(this.url + '/id/' + id, options)
     // ...and calling .json() on the response to return data
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
@@ -168,6 +168,24 @@ export class ProductService {
       return this.http.get(this.url + '/newCompany/' + company, options)
       // ...and calling .json() on the response to return data
         .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  getBestRatings(id: string) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    // ...using get request
+    return this.http.get(this.url + '/ratings/best/' + id, options)
+    // ...and calling .json() on the response to return data
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  getWorstRatings(id: string) {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    // ...using get request
+    return this.http.get(this.url + '/ratings/worst/' + id, options)
+    // ...and calling .json() on the response to return data
+      .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 }

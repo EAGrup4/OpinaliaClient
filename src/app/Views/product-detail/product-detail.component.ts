@@ -31,7 +31,7 @@ export class ProductDetailComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.prod = this.prodSelected;
-    this.productService.getProductByName(this.prod.name).subscribe(// ng -g component name
+    this.productService.getProductById(this.prod._id).subscribe(// ng -g component name
       (data) => {
         this.product = data;
         console.log(data);
