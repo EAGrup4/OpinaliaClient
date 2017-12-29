@@ -7,27 +7,27 @@
   </p>
   <form id="editForm" method="POST" action="/login/" novalidate="novalidate" ngNativeValidate>
     <div class="form-group">
-      <label for="username2" class="control-label">Nombre de usuario:</label>
-      <input type="text" class="form-control" id="username2" name="username2" value="" title="Introduzca su nuevo nombre de usuario" placeholder="Exemple" #username2 required>
+      <label for="username3" class="control-label">Nombre de usuario:</label>
+      <input type="text" class="form-control" id="username3" name="username2" value="" title="Introduzca su nuevo nombre de usuario" placeholder="Exemple" #username2 required>
       <span class="help-block"></span>
     </div>
     <div class="form-group">
-      <label for="email2" class="control-label">Correo</label>
-      <input type="text" class="form-control" id="email2" name="email2" value="" title="Introduzca su nuevo correo" placeholder="exemplo@gmail.com" #email2 required>
+      <label for="email3" class="control-label">Correo</label>
+      <input type="text" class="form-control" id="email3" name="email2" value="" title="Introduzca su nuevo correo" placeholder="exemplo@gmail.com" #email2 required>
       <span class="help-block"></span>
     </div>
     <div class="form-group">
-      <label for="password2" class="control-label">Contraseña</label>
-      <input type="password" class="form-control" id="password2" name="password" value="" title="Introduzca su nueva contraseña" #password2 required>
+      <label for="password3" class="control-label">Contraseña</label>
+      <input type="password" class="form-control" id="password3" name="password" value="" title="Introduzca su nueva contraseña" #password2 required>
       <span class="help-block"></span>
     </div>
     <div class="form-group">
-      <label for="password22" class="control-label">Confirmar contraseña</label>
-      <input type="password" class="form-control" id="password22" name="password" value="" title="Introduzca su nueva contraseña" #password22 required>
+      <label for="password33" class="control-label">Confirmar contraseña</label>
+      <input type="password" class="form-control" id="password33" name="password" value="" title="Introduzca su nueva contraseña" #password22 required>
       <span class="help-block"></span>
     </div>
-    <p><a class="btn btn-info btn-block" (click)="passUser(username2.value, email2.value, password2.value, password22.value)" data-toggle="modal" data-target="#myModal5">Editar usuario</a></p>
-    <p><a class="btn btn-danger btn-block" data-toggle="modal" data-target="#myModal4">Borrar tu cuenta</a></p>
+    <p><a class="btn btn-info btn-block" id='editUserButton' (click)="passUser(username2.value, email2.value, password2.value, password22.value)" data-toggle="modal" data-target="#myModal5">Editar usuario</a></p>
+    <p><a id='deleteUserButton' class="btn btn-danger btn-block" data-toggle="modal" data-target="#myModal4">Borrar tu cuenta</a></p>
   </form>
   <!-- Modal -->
   <div class="modal fade" id="myModal4" role="dialog">
@@ -38,7 +38,7 @@
           <h4 class="modal-title">¿Seguro que quieres borrar tu cuenta?</h4>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deleteUser()">Si, Borrar!</button>
+          <button type="button" class="btn btn-danger" id='deleteUser' data-dismiss="modal" (click)="deleteUser()">Si, Borrar!</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -58,7 +58,7 @@
           <p>Contraseña: {{ this.users.password }}</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal" (click)="modifyUsers(username2.value, email2.value, password2.value, password22.value)">Si, Modificar!</button>
+          <button type="button" class="btn btn-info" id="editUser" data-dismiss="modal" (click)="modifyUsers(username2.value, email2.value, password2.value, password22.value)">Si, Modificar!</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>

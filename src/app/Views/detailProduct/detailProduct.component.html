@@ -213,8 +213,8 @@
       <button class='btn btn-default' disabled="disabled">Ordenar toda la lista de productos por:</button>
       <button class='btn btn-default' (click)="bestRatings()">Puntuación <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
       <button class='btn btn-default' (click)="worstRatings()">Puntuación <img src="../../../assets/images/arrowdown.png" height="16" width="16"/></button>
-      <button class='btn btn-default'>Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
-      <button class='btn btn-default'>Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
+      <button class='btn btn-default' (click)="newRatings()">Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
+      <button class='btn btn-default' (click)="oldRatings()">Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
     </h2>
   </div>
     <h6 style="color: #666666; padding-left: 1.5%; padding-bottom: 0.5%; padding-top: 3%">Nº de opiniones: {{this.numb}}</h6>

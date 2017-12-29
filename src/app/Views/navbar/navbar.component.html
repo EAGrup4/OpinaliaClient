@@ -58,11 +58,11 @@
         <li><a href="#" class="dropdown-toggle" id="admin" routerLink="/admin" *ngIf="showAdmin" (click)="showStyle = false; showStyle2 = false; showStyle3 = false;">Administrador</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="" class="login" *ngIf="showEnter" data-toggle="modal" data-target="#myModal10" (click)="showStyle =  false"><span class="glyphicon glyphicon-user"></span> Entrar</a></li> <!--routerLink="/login-form"-->
+        <li><a href="" class="login" *ngIf="showEnter" id="login" data-toggle="modal" data-target="#myModal10" (click)="showStyle =  false"><span class="glyphicon glyphicon-user"></span> Entrar</a></li> <!--routerLink="/login-form"-->
         <li>
           <a *ngIf="!showEnter" class="btn btn-primary dropdown-toggle" id="userButton" type="button" data-toggle="dropdown">{{ this.user.name }}  <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a (click)="editProfile(); showStyle2 = false; showStyle = false; showStyle3 = false;">Editar Usuario</a></li>
+          <ul id="menuUser" class="dropdown-menu">
+            <li id="editProfile"><a (click)="editProfile(); showStyle2 = false; showStyle = false; showStyle3 = false;">Editar Usuario</a></li>
             <li><a href="#" (click)="leaveSession(); showStyle2 = false; showStyle = false; showStyle3 = false;"  routerLink="">Salir</a></li>
           </ul>
         </li>
