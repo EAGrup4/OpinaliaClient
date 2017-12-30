@@ -28,7 +28,7 @@
                   <input type="checkbox" name="remember" id="remember"> Recordar Contraseña
                 </label>
               </div>
-              <button type="submit" class="btn btn-success btn-block" (click)="enterUser(email.value, password.value)">Entrar</button>
+              <button type="submit" class="btn btn-success btn-block" id="loginUser" (click)="enterUser(email.value, password.value)">Entrar</button>
               <a class="btn btn-default btn-block">Ayuda para entrar</a>
               <button type="submit" class="btn btn-success btn-block" (click)="FBlogin()">Facebook</button>
               <div *ngIf="display" class="list-group">
@@ -62,7 +62,7 @@
               <input type="password" class="form-control" id="password22" name="password" value="" required="" title="Introduzca su contraseña" #password22>
               <span class="help-block"></span>
             </div>
-          <p><a class="btn btn-info btn-block" (click)="addUser(username2.value, email2.value, password2.value, password22.value)">Registrar</a></p>
+          <p><a class="btn btn-info btn-block" id="register" (click)="addUser(username2.value, email2.value, password2.value, password22.value)">Registrar</a></p>
           </form>
         </div>
       </div>

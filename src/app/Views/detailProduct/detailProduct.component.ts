@@ -147,6 +147,20 @@ export class DetailProductComponent implements OnInit {
       }
     );
   }
+  newRatings() {
+    this.productService.getNewRatings(this.prod._id).subscribe(
+      (data) => {
+        this.product.ratings = data;
+      }
+    );
+  }
+  oldRatings() {
+    this.productService.getOldRatings(this.prod._id).subscribe(
+      (data) => {
+        this.product.ratings = data;
+      }
+    );
+  }
   /*public showDate(date: string) {
     const parts = date.split('-');
     this.year = parts[0];
