@@ -379,6 +379,16 @@
             </table>
           </div>
           <p><a class="btn btn-info btn-block" (click)="modifyProducts(name.value, category.value, company.value)" data-dismiss="modal">Editar Producto</a></p>
+
+
+          <!--IMAGE UPLOAD//////////////////////////////////////////////////////////////////////////////-->
+          <label for="category" class="control-label">Imagen:</label>
+          <input type="file" (change)="fileChangeEvent($event)" placeholder="Upload file..." />
+          <button class="btn btn-info btn-block" type="button" (click)="upload()">Añadir</button>
+          <!--END IMAGE UPLOAD///////////////////////////////////////////////////////////////////////////-->
+
+
+
         </form>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -4,6 +4,7 @@ import {Subject} from 'rxjs/Subject';
 import {ProductService} from '../../../services/product.service';
 import {IAlert} from '../table-users/table-users.component';
 import {Specifications} from '../../../classes/specifications.model';
+import { Http, Response, Headers,RequestOptions } from '@angular/http';
 
 @Component({
   selector: 'app-table-products',
@@ -22,7 +23,7 @@ export class TableProductsComponent implements OnInit {
   private _success = new Subject<string>();
   private backup: Array<IAlert>;
   spec = new Specifications('', '', '', '', '', '', '', '');
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private http: Http) {
     this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
   }
   product: any;
@@ -36,6 +37,7 @@ export class TableProductsComponent implements OnInit {
   fieldArray: Array<any> = [];
   newAttribute: any = {};
   tableDesktop = false; tableLaptop = false; tableMobile = false; tableTablet = false; tableAccessories = false;
+
   ngOnInit() {
     this.productService.getProduct().subscribe(
       (data) => {
@@ -43,6 +45,37 @@ export class TableProductsComponent implements OnInit {
         console.log(data);
       });
   }
+
+
+////UPLOAD IMAGE///////////////////(//////////////////////////////////////////////////////////////
+  filesToUpload: Array<File> = [];
+  sendtoken = JSON.parse(sessionStorage.getItem('token'));
+
+  upload() {
+    const formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+    var tempId=this.id;
+    console.log(tempId)
+
+    formData.append("uploads[]", files[0], files[0]['name']);
+
+    const headers = new Headers({'Authorization': this.sendtoken });
+    const options = new RequestOptions({ headers: headers });
+    
+    this.http.post(`http://localhost:3000/products/image/add/${tempId}`, formData, options)
+      .map((res: Response) => res.json())
+      .subscribe(data =>{ 
+        console.log(data)
+      });
+  }
+
+  fileChangeEvent(fileInput: any) {
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    //this.product.photo = fileInput.target.files[0]['name'];
+  }
+  ///////////////////////////////////////////////////////////////////////////////////////////////
+
+
   showProducts() {
     this.productService.getProduct().subscribe(
       (data) => {
