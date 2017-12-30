@@ -42,6 +42,9 @@ export class TableProductsComponent implements OnInit {
         this.product = data;
         console.log(data);
       });
+    for (let i = 0; i < this.fieldArray.length; i++) {
+      this.fieldArray.pop();
+    }
   }
   showProducts() {
     this.productService.getProduct().subscribe(
@@ -133,6 +136,10 @@ export class TableProductsComponent implements OnInit {
         }
       }
     );
+    for (let i = 0; i < this.fieldArray.length; i++) {
+      this.fieldArray.pop();
+    }
+    this.tableDesktop = false; this.tableLaptop = false; this.tableMobile = false; this.tableTablet = false; this.tableAccessories = false;
   }
   addFieldValue() {
     this.fieldArray.push(this.newAttribute);

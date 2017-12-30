@@ -30,6 +30,13 @@
               </div>
               <button type="submit" class="btn btn-success btn-block" (click)="enterUser(email.value, password.value)">Entrar</button>
               <a class="btn btn-default btn-block">Ayuda para entrar</a>
+              <button type="submit" class="btn btn-success btn-block" (click)="FBlogin()">Facebook</button>
+              <div *ngIf="display" class="list-group">
+                {{name}}
+                <img [src]="imagen" />
+              </div>
+
+
             </form>
           </div>
         </div>

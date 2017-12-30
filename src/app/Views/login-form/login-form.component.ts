@@ -7,6 +7,8 @@ import {IAlert} from '../adminPage/table-users/table-users.component';
 import {Router} from '@angular/router';
 import {NavbarComponent} from '../navbar/navbar.component';
 
+declare const FB: any;
+
 @Component({
   selector: 'app-login-form',
   providers: [UserService],
@@ -18,6 +20,9 @@ export class LoginFormComponent implements OnInit {
   public loginformShow = false;
   user = new User('', '', '', '', false, '', '');
   error: string;
+  public display;
+  public name;
+  public imagen;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -28,6 +33,13 @@ export class LoginFormComponent implements OnInit {
     this.navbarComponent.disableStyle();
     this.navbarComponent.disableStyle2();
     this.navbarComponent.disableStyle3();
+    FB.init({
+      // appId: '565381053812647',
+      appId: '1817613605202343',
+      status: true,
+      xfbml: true,
+      version: 'v2.11'
+    });
   }
   get currentUser(){
     return JSON.stringify(this.user);
@@ -117,5 +129,31 @@ export class LoginFormComponent implements OnInit {
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);
+  }
+  me() {
+    FB.api('/me?fields=id,name,first_name,email,gender,picture.width(150).height(150),age_range,friends',
+      (result) => {
+        if (result && !result.error) {
+          this.name = result.name;
+          this.display = true;
+          this.imagen = result.picture.data.url;
+          console.log(result);
+        } else {
+          console.log(result.error);
+        }
+      });
+  }
+  FBlogin() {
+    FB.getLoginStatus((response) => {
+      if (response.status === 'connected') {
+        this.me();
+      }else {
+        FB.login((response) => {
+          if (response.authResponse) {
+            this.me();
+          }
+        });
+      }
+    });
   }
 }
