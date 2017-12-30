@@ -147,6 +147,7 @@ export class LoginFormComponent implements OnInit {
     FB.getLoginStatus((response) => {
       if (response.status === 'connected') {
         this.me();
+        console.log(response.authResponse.accessToken); // token obtenido
       }else {
         FB.login((response) => {
           if (response.authResponse) {
