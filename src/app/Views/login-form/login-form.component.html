@@ -29,8 +29,8 @@
                 </label>
               </div>
               <button type="submit" class="btn btn-success btn-block" id="loginUser" (click)="enterUser(email.value, password.value)">Entrar</button>
+              <button type="submit" class="btn btn-success btn-block fb" (click)="FBlogin()">Facebook</button>
               <a class="btn btn-default btn-block">Ayuda para entrar</a>
-              <button type="submit" class="btn btn-success btn-block" (click)="FBlogin()">Facebook</button>
               <div *ngIf="display" class="list-group">
                 {{name}}
                 <img [src]="imagen" />
