@@ -186,17 +186,59 @@ export class LoginFormComponent implements OnInit {
                   });
                 });
             }else {
-              console.log(result.error);
+              this.FBlogin();
             }
         });
-        console.log(response.authResponse.accessToken); // token obtenido
+        console.log('SocialToken' + response.authResponse.accessToken); // Social Token
         console.log(sendUser);
       }else {
-        FB.login(function(response) {
-          if (response.authResponse) {
-            this.me();
+        let logged = false;
+        const self = this;
+        FB.login((respone: any) => {
+          if (respone.status === 'connected') {
+            logged = true;
+            FB.api('/me?fields=id,name,first_name,email,gender,picture.width(150).height(150),age_range,friends',
+              (result) => {
+              const sendUser = {name: '', _id: '', admin: false, token: '', email: '', password: ''};
+              sendUser.name = result.name;
+              sendUser._id = null;
+              sendUser.email = result.email;
+              sendUser.password = result.id;
+              console.log(result);
+              this.userService.loginUserFB(sendUser).subscribe(
+                (data) => {
+                  console.log(data);
+                  sessionStorage.clear();
+                  this.alerts.pop();
+                  this.alerts.push({
+                    id: 1,
+                    type: 'success',
+                    message: 'Usuario logueado!',
+                  });
+                  let getData: any = {};
+                  getData = data;
+                  const userTmp = getData;
+                  const token = getData.token;
+                  console.log('token', token);
+                  sessionStorage.setItem('user', JSON.stringify(userTmp));
+                  sessionStorage.setItem('token', JSON.stringify(token));
+                  this.router.navigate(['']);
+                  window.location.reload();
+                  },
+                (err) => {
+                  console.log(err);
+                  this.alerts.pop();
+                  this.alerts.push({
+                    id: 2,
+                    type: 'danger',
+                    message: 'Error al loguear!',
+                  });
+                });
+              });
+          }else {
+            console.log('User cancelled login or did not fully authorize.');
           }
-        }, {scope: 'email'});
+          }, { scope: 'email' });
       }
     });
   }
