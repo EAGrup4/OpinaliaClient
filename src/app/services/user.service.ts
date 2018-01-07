@@ -60,4 +60,11 @@ export class UserService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+  sendMessage(message = {name: '', email: '', message: '' }): Observable<Response> {
+    const headers = new Headers({ 'Content-Type': 'application/json' });
+    const options = new RequestOptions({ headers: headers });
+    return this.http.post(this.url + '/contact', message, options)
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
 }
