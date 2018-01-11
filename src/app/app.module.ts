@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
-import {FormsModule, NgModel} from '@angular/forms';
+import {FormsModule, NgModel, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -40,6 +40,8 @@ import {CompaniesHpComponent} from './Views/companiesTypes/hp/hp.component';
 import {CompaniesAsusComponent} from './Views/companiesTypes/asus/asus.component';
 import {ContactComponent} from './Views/contact/contact.component';
 import {CompaniesOthersComponent} from './Views/companiesTypes/others/others.component';
+import { ForgotPasswordComponent } from './Views/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './Views/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import {CompaniesOthersComponent} from './Views/companiesTypes/others/others.com
     CompaniesAsusComponent,
     CompaniesOthersComponent,
     ContactComponent,
-    FilterByPipe
+    FilterByPipe,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +87,9 @@ import {CompaniesOthersComponent} from './Views/companiesTypes/others/others.com
     NgbModule.forRoot(),
     ModalModule.forRoot(),
     HttpClientModule,
-    routing
+    routing,
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [AppComponent],
   providers: [

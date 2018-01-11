@@ -22,15 +22,17 @@
                 <input type="password" class="form-control" id="password" name="password" value="" required="" title="Introduzca su contraseña" #password>
                 <span class="help-block"></span>
               </div>
-              <div id="loginErrorMsg" class="alert alert-error hide">Error en correo o contraseña</div>
+              <!--<div id="loginErrorMsg" class="alert alert-error hide">Error en correo o contraseña</div>
               <div class="checkbox">
                 <label>
                   <input type="checkbox" name="remember" id="remember"> Recordar Contraseña
                 </label>
-              </div>
+              </div>-->
               <button type="submit" class="btn btn-success btn-block" id="loginUser" (click)="enterUser(email.value, password.value)">Entrar</button>
               <button type="submit" class="btn btn-success btn-block fb" (click)="FBlogin()">Facebook</button>
-              <a class="btn btn-default btn-block">Ayuda para entrar</a>
+              <button class="btn btn-default btn-block" type="submit" name="button" routerLink="forgot_password" data-dismiss="modal">
+                <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Recordar contraseña
+              </button>
               <div *ngIf="display" class="list-group">
                 {{name}}
                 <img [src]="imagen" />
