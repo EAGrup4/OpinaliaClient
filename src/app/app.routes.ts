@@ -26,6 +26,8 @@ import {CompaniesLgComponent} from './Views/companiesTypes/lg/lg.component';
 import {CompaniesHpComponent} from './Views/companiesTypes/hp/hp.component';
 import {ContactComponent} from './Views/contact/contact.component';
 import {CompaniesOthersComponent} from './Views/companiesTypes/others/others.component';
+import {ForgotPasswordComponent} from "./Views/forgot-password/forgot-password.component";
+import {ResetPasswordComponent} from "./Views/reset-password/reset-password.component";
 
 const routes: Routes = [
   {
@@ -103,5 +105,11 @@ const routes: Routes = [
   {
     path: 'contact', component: ContactComponent
   },
+  {
+    path: 'forgot_password', component: ForgotPasswordComponent
+  },
+  {
+    path: 'reset_password', component: ResetPasswordComponent
+  }
 ];
 export const routing = RouterModule.forRoot(routes);
