@@ -106,6 +106,13 @@
             <span class="help-block"></span>
           </div>
           <div class="form-group">
+            <label for="company" class="control-label">Imagen:</label>
+            <input type='file' (change)="readUrl($event)">
+            <img [src]="url" style="width: 100px; height: 100px">
+            <span class="help-block"></span>
+            <button class="btn btn-info btn-block" type="button" (click)="upload()">Añadir</button>
+          </div>
+          <div class="form-group">
             <label for="company" class="control-label">Especificaciones: </label>
             <table class="table table-striped table-bordered" *ngIf="tableAccessories">
               <thead>
@@ -416,6 +423,12 @@
           <div class="form-group">
             <label for="company2" class="control-label">Marca:</label>
             <input type="text" class="form-control" id="company2" name="company2" value="" required="" title="Introduzca su marca" #company2>
+            <span class="help-block"></span>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Imagen:</label>
+            <input type='file' (change)="readUrl($event)">
+            <img [src]="url" class="imageProduct" *ngIf="imgprod">
             <span class="help-block"></span>
           </div>
           <div class="form-group">

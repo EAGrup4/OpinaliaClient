@@ -5,7 +5,7 @@
   <p *ngFor="let alert of alerts" id="alertType">
     <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
   </p>
-  <form id="editForm" method="POST" action="/login/" novalidate="novalidate" ngNativeValidate>
+  <form id="editForm" class="col-md-7" method="POST" action="/login/" novalidate="novalidate" ngNativeValidate>
     <div class="form-group">
       <label for="username3" class="control-label">Nombre de usuario:</label>
       <input type="text" class="form-control" id="username3" name="username2" value="" title="Introduzca su nuevo nombre de usuario" placeholder="Exemple" #username2 required>
@@ -29,6 +29,15 @@
     <p><a class="btn btn-info btn-block" id='editUserButton' (click)="passUser(username2.value, email2.value, password2.value, password22.value)" data-toggle="modal" data-target="#myModal5">Editar usuario</a></p>
     <p><a id='deleteUserButton' class="btn btn-danger btn-block" data-toggle="modal" data-target="#myModal4">Borrar tu cuenta</a></p>
   </form>
+  <div class="col-md-4 editform">
+    <div class="form-group">
+      <label class="control-label">Foto de perfil:</label>
+      <input type='file' (change)="readUrl($event)">
+      <img [src]="url" class="imageProduct">
+      <span class="help-block" style="padding-top: 5%"></span>
+      <button class="btn btn-default btn-block" (click)="imageProfile()">Canviar foto de perfil</button>
+    </div>
+  </div>
   <!-- Modal -->
   <div class="modal fade" id="myModal4" role="dialog">
     <div class="modal-dialog">

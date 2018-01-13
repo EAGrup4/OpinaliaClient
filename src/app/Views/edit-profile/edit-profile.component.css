@@ -5,6 +5,10 @@
 #editForm{
   padding-top: 30px;
 }
+.editform{
+  padding-top: 30px;
+  margin: 2%;
+}
 .clickable{
   cursor: pointer;
 }
@@ -30,4 +34,8 @@
 }
 #alertType{
   margin-top: 1em;
+}
+.imageProduct{
+  width: 100px;
+  height: 100px;
 }

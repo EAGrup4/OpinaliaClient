@@ -1,5 +1,6 @@
 .nav{
   font-family: 'Quick-sand', sans-serif;
+  z-index: 5000;
 }
 .liSizes{
   width: 200px;

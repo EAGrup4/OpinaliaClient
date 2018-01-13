@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 import { Http, Response} from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 
@@ -15,7 +15,7 @@ import {Ratings} from '../classes/ratings.model';
 export class ProductService {
   url = '/api/products';
   sendtoken = JSON.parse(sessionStorage.getItem('token'));
-
+  passCode: any;
   constructor(private http: Http) {
   }
   addProduct(product: {name, category, company}): Observable<Response> {
@@ -64,7 +64,17 @@ export class ProductService {
     console.log(productId);
     console.log('token', this.sendtoken);
     return this.http.post(this.url + '/rating/' + productId, rating, options)
-      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .map((res: Response) => {
+        res.json();
+        /*console.log('h');
+        if (res.status === 409) {
+          this.passCode = res.status;
+          console.log(res.status);
+          console.log(this.passCode);
+          sessionStorage.setItem('codeServer', this.passCode);
+          return [{ status: res.status, json: res }];
+        }   */
+      }) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   searchProduct(text: string, category: string) {
@@ -79,7 +89,9 @@ export class ProductService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     return this.http.get(this.url + '/category/' + category, options)
-      .map((res: Response) => res.json())
+      .map((res: Response) => {
+        res.json();
+      })
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   searchProductByCompany(company: string) {

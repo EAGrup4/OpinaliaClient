@@ -3,6 +3,7 @@ import {User} from '../../classes/user.model';
 import {UserService} from '../../services/user.service';
 import {Subject} from 'rxjs/Subject';
 import {ActivatedRoute, Params, Router} from '@angular/router';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 
 @Component({
@@ -22,9 +23,12 @@ export class EditProfileComponent implements OnInit {
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();
   private backup: Array<IAlert>;
-  constructor(private userService: UserService, private router: Router) {
+  url = '';
+  constructor(private userService: UserService, private router: Router, private http: Http) {
     this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
   }
+  filesToUpload: Array<File> = [];
+  sendtoken = JSON.parse(sessionStorage.getItem('token'));
   ngOnInit() {
     this.id = sessionStorage.getItem('id');
   }
@@ -101,6 +105,31 @@ export class EditProfileComponent implements OnInit {
           type: 'danger',
           message: 'No se ha podido eliminar el usuario!',
         });
+      });
+  }
+  readUrl(event: any) {
+    this.filesToUpload = <Array<File>>event.target.files;
+    if (event.target.files && event.target.files[0]) {
+      let reader = new FileReader();
+
+      reader.onload = (event: any) => {
+        this.url = event.target.result;
+      };
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  imageProfile() {
+    const formData: any = new FormData();
+    const files: Array<File> = this.filesToUpload;
+    var tempId = this.id;
+    console.log(tempId);
+    formData.append('uploads[]', files[0], files[0]['name']);
+    const headers = new Headers({'Authorization': this.sendtoken });
+    const options = new RequestOptions({ headers: headers });
+    this.http.post(`http://localhost:3000/users/image/add/${tempId}`, formData, options)
+      .map((res: Response) => res.json())
+      .subscribe(data => {console.log(data);
       });
   }
   public closeAlert(alert: IAlert) {

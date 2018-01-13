@@ -11,14 +11,17 @@
    background:transparent;
  }
  .navbar-form{
-   margin: 5px;
    position: absolute;
    padding-top: 12%;
+   width: 100%;
+   text-align: center;
+   padding-left: 8%;
  }
  .formProduct{
    padding: 20px;
    /*border-right: 1px solid rgba(70, 70, 70, 0.53);*/
-   margin: 0.5%;
+   margin: 1%;
+   width: 200px;
 
  }
  .productMark{
@@ -35,22 +38,51 @@
    text-align: center;
  }
  .productName{
-   text-align: center;
+   text-align: left;
+   padding-top: 5%;
  }
  .productSubname{
-   text-align: center;
+   text-align: left;
  }
  .plusImage{
-   margin-top: 8.5%;
-   margin-left: 2%;
+   margin-top: 14%;
+   margin-left: 4%;
  }
- @media screen and (max-width: 768px){
+ @media screen and (max-width: 767px){
    .plusImage {
      display: none;
    }
+   .input-group{
+     margin-left: 31%;
+   }
+   .container{
+     text-align: center;
+   }
+   .form-control{
+     text-align: center;
+   }
+ }
+ @media screen and (max-width: 600px){
+   .input-group{
+     margin-left: 25%;
+   }
+   .navbar-form{
+     padding-top: 8%;
+   }
+ }
+ @media screen and (max-width: 500px){
+   .input-group{
+     margin-left: 20%;
+   }
+ }
+ @media screen and (max-width: 1000px){
+   .plusImage{
+     margin-top: 18%;
+     margin-left: 4%;
+   }
  }
  .row{
-   margin-top: 2%;
+   margin-top: 4%;
  }
   .container{
     margin-bottom: 2%;
@@ -58,3 +90,62 @@
  a{
    text-decoration:none
  }
+ .sinPadding [class*="col-" ] {
+   padding: 0;
+ }
+.productName h3{
+
+}
+
+
+ video {
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   min-width: 100%;
+   margin: 0 !important;
+   padding: 0 !important;
+   width: 100%;
+   transform: translateX(0%) translateY(0%);
+   background: url('#') no-repeat;
+   background-size: cover;
+   transition: 1s opacity;
+   z-index: 20;
+   margin-top: 53px !important;
+
+   -webkit-animation: seconds 4.5s forwards;
+   -webkit-animation-iteration-count: 1;
+   -webkit-animation-delay: 15s;
+   animation: seconds 4.5s forwards;
+   animation-iteration-count: 1;
+   animation-delay: 15s;
+ }
+ @-webkit-keyframes seconds {
+   0% {
+     opacity: 1;
+   }
+   100% {
+     opacity: 0;
+     left: -9999px;
+   }
+ }
+ @keyframes seconds {
+   0% {
+     opacity: 1;
+   }
+   100% {
+     opacity: 0;
+     left: -9999px;
+   }
+ }
+.showAfter{
+  z-index: 100;
+}
+.input-group-btn{
+  text-align: left;
+  width: 34px;
+}
+.anunci1{
+  padding-top: 2%;
+}

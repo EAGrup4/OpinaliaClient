@@ -47,6 +47,7 @@ export class DetailProductComponent implements OnInit {
   specTarjetaGrafica: string; specCamara: string;
   spec1= false; spec2 = false; spec3 = false; spec4 = false; spec5 = false; spec6 = false; spec7 = false; spec8 = false;
   numRatings: number;
+  codeServer: any;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -123,6 +124,8 @@ export class DetailProductComponent implements OnInit {
             type: 'success',
             message: 'OPINION REALIZADA',
           });
+        }, (err) => {
+          console.log(err);
         });
     } else {
       this.alerts.pop();

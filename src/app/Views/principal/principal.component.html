@@ -1,6 +1,11 @@
+<header>
+  <script src="http://pupunzi.com/mb.components/mb.YTPlayer/demo/inc/jquery.mb.YTPlayer.js"></script>
+  <script>
+
+  </script>
+</header>
 <form class='navbar-form'>
-  <div class="col-md-3"></div>
-  <div class='input-group col-md-6'>
+  <div class='input-group col-md-9'>
     <input class='form-control' type='text' name='search' placeholder='Busque el producto que desee' #searchedProduct />
     <span class="input-group-btn">
           <button type='submit' class='btn btn-default' routerLink="/products" (click)="searchProd(searchedProduct.value)">
@@ -8,44 +13,56 @@
           </button>
     </span>
   </div>
-  <div class="col-md-2"></div>
 </form>
 <div>
   <img src="/assets/images/port2.jpg" width="100%" height="100%"/>
 </div>
+<div class="container-fluid video">
+  <video poster="#" id="bgvid" playsinline autoplay muted>
+    <source src="/assets/video/opinalia.mp4" type="video/mp4">
+  </video>
+</div>
+
 <div class="container">
   <div class="row">
+    <div class="col-md-6 anunci1">
+      <img src="../../../assets/images/anunci1.png" style="width: 85%; height: 85%"/></div>
+    </div>
+    <div class="col-md-6">
+
+  </div>
+  <div class="row sinPadding">
     <a routerLink="/ranking"><h2 style="color: #464646">TOP</h2></a>
-    <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of product | slice:0:5" (click)="productClicked(prod)" routerLink="/productDetail">
+    <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product | slice:0:this.numberSlice" (click)="productClicked(prod)" routerLink="/productDetail">
       <div class="imgForm">
-        <img src="/assets/images/predet.png" width="60%" height="60%">
+        <img src="/assets/images/predet.png" width="200px" height="200px">
       </div>
       <div class="productName">
-        <h3>{{ prod.name }}</h3>
+        <h4>{{ prod.name }}</h4>
       </div>
       <div class="productSubname">
-        <h4>{{ prod.category }} - {{ prod.company }} </h4>
+        <h5>{{ prod.category }} - {{ prod.company }} </h5>
       </div>
     </div>
     <div class="plusImage">
       <img src="/assets/images/mas.jpg" width="3%" height="3%" routerLink="/ranking">
     </div>
   </div>
-  <div class="row">
+  <div class="row sinPadding">
     <a routerLink="/products"><h2 style="color: #464646">ULTIMAS NOVEDADES</h2></a>
-    <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of products | slice:0:5" (click)="productClicked(prod)" routerLink="/productDetail">
+    <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of products | slice:0:this.numberSlice" (click)="productClicked(prod)" routerLink="/productDetail">
       <div class="imgForm">
-        <img src="/assets/images/predet.png" width="60%" height="60%">
+        <img src="/assets/images/predet.png" width="200px" height="200px">
       </div>
       <div class="productName">
-        <h3>{{ prod.name }}</h3>
+        <h4>{{ prod.name }}</h4>
       </div>
       <div class="productSubname">
-        <h4>{{ prod.category }} - {{ prod.company }} </h4>
+        <h5>{{ prod.category }} - {{ prod.company }} </h5>
       </div>
     </div>
     <div class="plusImage">
-      <img src="/assets/images/mas.jpg" width="3%" height="3%" routerLink="/products">
+      <img src="/assets/images/mas.jpg" width="3%" height="3%" routerLink="/ranking">
     </div>
   </div>
 </div>

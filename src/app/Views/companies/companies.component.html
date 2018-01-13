@@ -3,7 +3,7 @@
   <form class='navbar-form'>
     <div class="col-md-1"></div>
     <div class='input-group col-md-10'>
-      <input class='form-control' type='text' name='search' placeholder='Busque el producto que desee' #searcher/><!--[(ngModel)]="objectsFilter.name"-->
+      <input class='form-control' type='text' name='search' placeholder='Buscar' #searcher/><!--[(ngModel)]="objectsFilter.name"-->
       <span class="input-group-btn">
           <button type='submit' class='btn btn-default'>
             <span class='glyphicon glyphicon-search' (click)="search(searcher.value, company.value)"></span>
@@ -43,10 +43,10 @@
       </div>
       <div class="col-md-8 ">
         <div class="productName">
-          <h4>{{ prod.name }}</h4>
+          <h4 class="limitName">{{ prod.name }}</h4>
         </div>
         <div class="productSubname">
-          <h5>{{ prod.category }} - {{ prod.company }} </h5>
+          <h5 class="limitName">{{ prod.category }} - {{ prod.company }} </h5>
         </div>
       </div>
       <div class="col-md-2 productMark">
