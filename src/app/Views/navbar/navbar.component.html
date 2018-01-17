@@ -62,6 +62,7 @@
         <li>
           <a *ngIf="!showEnter" class="btn btn-primary dropdown-toggle" id="userButton" type="button" data-toggle="dropdown">{{ this.user.name }}  <span class="caret"></span></a>
           <ul id="menuUser" class="dropdown-menu">
+            <li id="yourProfile"><a (click)="yourProfile(); showStyle2 = false; showStyle = false; showStyle3 = false;">Tu Usuario</a></li>
             <li id="editProfile"><a (click)="editProfile(); showStyle2 = false; showStyle = false; showStyle3 = false;">Editar Usuario</a></li>
             <li><a href="#" (click)="leaveSession(); showStyle2 = false; showStyle = false; showStyle3 = false;"  routerLink="">Salir</a></li>
           </ul>

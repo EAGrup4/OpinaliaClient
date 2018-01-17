@@ -28,6 +28,8 @@ import {ContactComponent} from './Views/contact/contact.component';
 import {CompaniesOthersComponent} from './Views/companiesTypes/others/others.component';
 import {ForgotPasswordComponent} from "./Views/forgot-password/forgot-password.component";
 import {ResetPasswordComponent} from "./Views/reset-password/reset-password.component";
+import {YourProfileComponent} from './Views/yourProfile/yourProfile.component';
+import {ProfileComponent} from './Views/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -44,6 +46,12 @@ const routes: Routes = [
   },
   {
     path: 'edit-profile', component: EditProfileComponent
+  },
+  {
+    path: 'your-profile', component: YourProfileComponent
+  },
+  {
+    path: 'profile', component: ProfileComponent
   },
   {
     path: 'products/mobile', component: MobileComponent

@@ -44,6 +44,15 @@ export class UserService {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+  getTheUser(name: string): Observable<Comment[]> {
+    const headers = new Headers({ 'Content-Type': 'application/json'});
+    const options = new RequestOptions({ headers: headers });
+    // ...using get request
+    return this.http.get(this.url + '/name/' + name, options)
+    // ...and calling .json() on the response to return data
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
   deleteUser(id: string) {
     const headers = new Headers({ 'Content-Type': 'application/json', 'authorization': this.sendtoken });
     const options = new RequestOptions({ headers: headers });

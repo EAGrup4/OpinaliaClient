@@ -164,6 +164,10 @@ export class DetailProductComponent implements OnInit {
       }
     );
   }
+  saveUserName(name: string) { // without type info
+    console.log('AQUIII', name);
+    sessionStorage.setItem('userClick', name);
+  }
   /*public showDate(date: string) {
     const parts = date.split('-');
     this.year = parts[0];

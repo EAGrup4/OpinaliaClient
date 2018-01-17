@@ -109,7 +109,7 @@
   padding-bottom: 3%;
 }
 .specifications{
-  padding-top: 12%;
+  padding-top: 6%;
 }
 .icons{
   padding-bottom: 5%;
@@ -124,6 +124,38 @@
 }
 .rateDate{
   text-align: center;
+}
+@media screen and (max-width: 992px){
+  .iconsImage{
+    display: none;
+  }
+  .specifications{
+    padding-top: 0%;
+  }
+  .specName{
+    padding-bottom: 4%;
+  }
+  .rating{
+    text-align: center;
+    margin-left: 25%;
+  }
+  .writtenBy{
+    padding-top: 2%;
+    padding-bottom: 2%;
+  }
+  .opinionForm{
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+}
+.specName{
+  padding-top: 10%;
+}
+@media screen and (max-width: 768px){
+  .rating{
+    text-align: center;
+    margin-left: 0%;
+  }
 }
 
 

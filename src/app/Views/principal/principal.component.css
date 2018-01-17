@@ -61,6 +61,9 @@
    .form-control{
      text-align: center;
    }
+   .video{
+     display: none;
+   }
  }
  @media screen and (max-width: 600px){
    .input-group{

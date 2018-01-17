@@ -53,6 +53,10 @@ export class NavbarComponent implements OnInit {
     sessionStorage.setItem('id', this.user._id);
     this.router.navigate(['edit-profile']);
   }
+  yourProfile() {
+    sessionStorage.setItem('id', this.user._id);
+    this.router.navigate(['your-profile']);
+  }
   getStyle() {
     if (this.showStyle) {
       return 'block';

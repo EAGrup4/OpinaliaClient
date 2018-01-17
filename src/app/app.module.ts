@@ -42,6 +42,8 @@ import {ContactComponent} from './Views/contact/contact.component';
 import {CompaniesOthersComponent} from './Views/companiesTypes/others/others.component';
 import { ForgotPasswordComponent } from './Views/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './Views/reset-password/reset-password.component';
+import {YourProfileComponent} from './Views/yourProfile/yourProfile.component';
+import {ProfileComponent} from './Views/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,9 @@ import { ResetPasswordComponent } from './Views/reset-password/reset-password.co
     ContactComponent,
     FilterByPipe,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    YourProfileComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
