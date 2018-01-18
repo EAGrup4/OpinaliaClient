@@ -62,3 +62,8 @@
   text-overflow: ellipsis;
   max-width: 95%;
 }
+@media (max-width:768px){
+  .container{
+    padding-top: 30px;
+  }
+}

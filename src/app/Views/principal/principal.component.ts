@@ -36,8 +36,10 @@ export class PrincipalComponent implements OnInit, DoCheck {
       this.numberSlice = 5;
     } else if (this.width > 991 && this.width < 1200) {
       this.numberSlice = 4;
-    } else if (this.width > 770 && this.width < 991) {
+    } else if (this.width > 767 && this.width < 991) {
       this.numberSlice = 3;
+    } else if (this.width < 767) {
+      this.numberSlice = 2;
     }
 
   }

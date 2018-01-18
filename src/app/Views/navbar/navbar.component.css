@@ -47,6 +47,15 @@
   }
 }
 
+@media (max-width:768px){
+  .imageSubmenu{
+    display: none;
+  }
+  .liSizes{
+    height: 30px;
+  }
+}
+
 .nav-tabs {
   display: inline-block;
   border-bottom: none;

@@ -1,7 +1,13 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+      <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>-->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" (click)="showStyle2 = false; showStyle = false; showStyle3 = false;">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -13,14 +19,14 @@
       <ul class="nav navbar-nav">
         <li class="dropdown mega-dropdown active">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" routerLink="/products" (click)="showStyle = true; showStyle2 = false; showStyle3 = false; allProducts()">Productos</a>
-          <div  *ngIf="showStyle" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle()">
+          <div *ngIf="showStyle" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle()">
             <div class="container-fluid">
                 <ul class="nav-list list-inline">
-                    <li class="liSizes"><a href="#" routerLink="/products/desktop"><img src="/assets/images/ordinador2.png" width="40%" /><span>Sobremesa</span></a></li>
-                    <li class="liSizes"><a href="#" routerLink="/products/laptop"><img src="/assets/images/portatil2.png" width="40%"/><span>Portatiles</span></a></li>
-                    <li class="liSizes"><a href="#" routerLink="/products/tablet"><img src="/assets/images/tablet2.png" width="35%"/><span>Tablets</span></a></li>
-                    <li class="liSizes"><a href="#" routerLink="/products/mobile"><img src="/assets/images/mobil2.png" width="35%"/><span>Moviles</span></a></li>
-                    <li class="liSizes"><a href="#" routerLink="/products/accessories"><img src="/assets/images/accesoris2.png" width="40%" /><span>Accesorios</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/desktop"><img src="/assets/images/ordinador2.png" width="40%" class="imageSubmenu" /><span>Sobremesa</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/laptop"><img src="/assets/images/portatil2.png" width="40%" class="imageSubmenu" /><span>Portatiles</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/tablet"><img src="/assets/images/tablet2.png" width="35%" class="imageSubmenu" /><span>Tablets</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/mobile"><img src="/assets/images/mobil2.png" width="35%" class="imageSubmenu" /><span>Moviles</span></a></li>
+                    <li class="liSizes"><a href="#" routerLink="/products/accessories"><img src="/assets/images/accesoris2.png" width="40%" class="imageSubmenu" /><span>Accesorios</span></a></li>
                 </ul>
             </div>
           </div>
@@ -30,12 +36,12 @@
           <div *ngIf="showStyle3" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle3()">
             <div class="container-fluid">
                 <ul class="nav-list list-inline">
-                  <li class="liSizes"><a href="#" routerLink="/companies/apple"><img src="/assets/images/marcas/apple2.png" width="40%" /><span>Apple</span></a></li>
-                  <li class="liSizes"><a href="#" routerLink="/companies/samsung"><img src="/assets/images/marcas/samsung2.png" width="40%" /><span>Samsung</span></a></li>
-                  <li class="liSizes"><a href="#" routerLink="/companies/lg"><img src="/assets/images/marcas/lg2.png" width="40%" /><span>Lg</span></a></li>
-                  <li class="liSizes"><a href="#" routerLink="/companies/asus"><img src="/assets/images/marcas/asus.png" width="40%" /><span>Asus</span></a></li>
-                  <li class="liSizes"><a href="#" routerLink="/companies/hp"><img src="/assets/images/marcas/hp.png" width="40%" /><span>Hp</span></a></li>
-                  <li class="liSizes"><a href="#" routerLink="/companies/others"><img src="/assets/images/mas1.png" width="35%" /><span>Otras!</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/apple"><img src="/assets/images/marcas/apple2.png" width="40%" class="imageSubmenu"/><span>Apple</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/samsung"><img src="/assets/images/marcas/samsung2.png" width="40%" class="imageSubmenu"/><span>Samsung</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/lg"><img src="/assets/images/marcas/lg2.png" width="40%" class="imageSubmenu"/><span>Lg</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/asus"><img src="/assets/images/marcas/asus.png" width="40%" class="imageSubmenu"/><span>Asus</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/hp"><img src="/assets/images/marcas/hp.png" width="40%" class="imageSubmenu"/><span>Hp</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/companies/others"><img src="/assets/images/mas1.png" width="35%" class="imageSubmenu"/><span>Otras!</span></a></li>
                 </ul>
             </div>
           </div>
@@ -45,11 +51,11 @@
             <div  *ngIf="showStyle2" class="dropdown-menu mega-dropdown-menu submenu" [style.display]="getStyle2()">
               <div class="container-fluid">
                 <ul class="nav-list list-inline">
-                  <li class="liSizes"><a href="#" routerLink="/ranking/desktop"><img src="/assets/images/ordinador2.png" width="40%" /><span>Sobremesa</span></a></li>
-                  <li class="liSizes"><a href="#" routerLink="/ranking/laptop"><img src="/assets/images/portatil2.png" width="40%"/><span>Portatiles</span></a></li>
-                  <li class="liSizes"><a href="#" routerLink="/ranking/tablet"><img src="/assets/images/tablet2.png" width="35%"/><span>Tablets</span></a></li>
-                  <li class="liSizes"><a href="#" routerLink="/ranking/mobile"><img src="/assets/images/mobil2.png" width="35%"/><span>Moviles</span></a></li>
-                  <li class="liSizes"><a href="#" routerLink="/ranking/accessories"><img src="/assets/images/accesoris2.png" width="40%" /><span>Accesorios</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/desktop"><img src="/assets/images/ordinador2.png" width="40%" class="imageSubmenu"/><span>Sobremesa</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/laptop"><img src="/assets/images/portatil2.png" width="40%" class="imageSubmenu"/><span>Portatiles</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/tablet"><img src="/assets/images/tablet2.png" width="35%" class="imageSubmenu"/><span>Tablets</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/mobile"><img src="/assets/images/mobil2.png" width="35%" class="imageSubmenu"/><span>Moviles</span></a></li>
+                  <li class="liSizes"><a href="#" routerLink="/ranking/accessories"><img src="/assets/images/accesoris2.png" width="40%" class="imageSubmenu"/><span>Accesorios</span></a></li>
                 </ul>
               </div>
             </div>

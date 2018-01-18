@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="header">
+    <h1 class="title">Tu perfil</h1>
+  </div>
+
+  <div class="col-md-4 editform">
+    <div class="form-group">
+      <img class="imageProduct" src="{{this.image}}" style="width: 300px; height: 300px; "/>
+      <span class="help-block" style="paddi
+       5%"></span>
+      <button class="btn btn-default btn-block" routerLink="/edit-profile">Editar perfil</button>
+    </div>
+  </div>
+
+  <div class="col-md-7 nameEdit">
+    <div id="text">
+      <h2>Nombre: {{ this.userIt.name }}</h2>
+      <h2>Email:  {{ this.userIt.email }}</h2>
+    </div>
+  </div>
+
+</div>

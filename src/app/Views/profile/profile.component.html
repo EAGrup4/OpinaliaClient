@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="back">
+    <a class="btn btn-default" (click)="goBack()">< Atrás</a>
+  </div>
+  <div class="header">
+    <h1 class="title">Perfil de usuario</h1>
+  </div>
+
+  <div class="col-md-4 editform">
+    <div class="form-group">
+      <img src="{{this.image}}" style="width: 300px; height: 300px;" #profilePhoto/>
+      <span class="help-block" style="paddi
+       5%"></span>
+    </div>
+  </div>
+
+  <div class="col-md-7 nameEdit">
+    <div id="text">
+      <h2>Nombre: {{ this.userIt.name }}</h2>
+      <h2>Email:  {{ this.userIt.email }}</h2>
+    </div>
+  </div>
+
+</div>

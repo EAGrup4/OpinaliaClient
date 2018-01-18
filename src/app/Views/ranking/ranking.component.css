@@ -45,3 +45,8 @@
     padding-top: 220px;
   }
 }
+@media (max-width:768px){
+  .container{
+    padding-top: 30px;
+  }
+}

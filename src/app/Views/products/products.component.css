@@ -46,14 +46,20 @@
     display: none;
   }
 }
+
 @media screen and (max-width: 1060px){
-    .container{
-      padding-top: 220px;
-    }
+  .container{
+    padding-top: 220px;
   }
+}
 .limitName{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 95%;
+}
+@media (max-width:768px){
+  .container{
+    padding-top: 30px;
+  }
 }
