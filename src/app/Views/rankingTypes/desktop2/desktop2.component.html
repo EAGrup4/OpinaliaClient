@@ -3,7 +3,7 @@
   <div class="podium">
     <div class="col-md-3 silver" (click)="productClicked(this.product[1])" routerLink="/productDetail">
       <div class="imgForm">
-        <img src="/assets/images/predet.png" width="60%" height="60%">
+        <img src="{{ this.product[1]?.images[this.product[1].images.length - 1].src }}" width="128.71px" height="128.71px">
       </div>
       <div class="col-md-8 productInfo">
         <div class="productName">
@@ -22,7 +22,7 @@
     </div>
     <div class="col-md-4 gold" (click)="productClicked(this.product[0])" routerLink="/productDetail">
       <div class="imgForm">
-        <img src="/assets/images/predet.png" width="60%" height="60%">
+        <img src="{{ this.product[0].images[this.product[0].images.length - 1].src }}" width="177.61px" height="177.61px">
       </div>
       <div class="col-md-8 productInfo">
         <div class="productName">
@@ -41,7 +41,7 @@
     </div>
     <div class="col-md-3 bronze" (click)="productClicked(this.product[2])" routerLink="/productDetail">
       <div class="imgForm">
-        <img src="/assets/images/predet.png" width="60%" height="60%">
+        <img src="{{ this.product[2].images[this.product[2].images.length - 1].src }}" width="128.71px" height="128.71px">
       </div>
       <div class="col-md-8 productInfo">
         <div class="productName">
@@ -61,7 +61,7 @@
   </div>
   <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product | slice:3:7" (click)="productClicked(prod)" routerLink="/productDetail">
     <div class="imgForm">
-      <img src="/assets/images/predet.png" width="40%" height="40%">
+      <img src="{{ prod.images[prod.images.length - 1].src }}" width="102px" height="102px">
     </div>
     <div class="col-md-8 productInfo">
       <div class="productName">

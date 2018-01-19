@@ -39,7 +39,7 @@
   <div class="row">
     <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product" (click)="productClicked(prod)" routerLink="/productDetail">
       <div class="imgForm">
-        <img src="/assets/images/predet.png" width="40%" height="40%">
+        <img src="{{ prod.images[prod.images.length - 1].src }}" width="100.6px" height="100.6px">
       </div>
       <div class="col-md-8 ">
         <div class="productName">

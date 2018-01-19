@@ -23,6 +23,7 @@ export class ProductsComponent implements OnInit {
   objectsFilter = {name: '', category: '', company: ''};
   categoryToSend: any;
   prodComponenSearch: string;
+  image: any;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;

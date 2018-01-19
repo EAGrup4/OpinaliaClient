@@ -1,7 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 #contact{
-  background-color:#f1f1f1;
+  background-color: #ffffff;
   font-family: 'Roboto', sans-serif;
+}
+.container{
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+#title{
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 #contact .well{

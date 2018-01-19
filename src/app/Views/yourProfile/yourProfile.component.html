@@ -2,7 +2,9 @@
   <div class="header">
     <h1 class="title">Tu perfil</h1>
   </div>
-
+  <p *ngFor="let alert of alerts" id="alertType">
+    <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+  </p>
   <div class="col-md-4 editform">
     <div class="form-group">
       <img class="imageProduct" src="{{this.image}}" style="width: 300px; height: 300px; "/>

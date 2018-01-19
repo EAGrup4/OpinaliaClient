@@ -35,7 +35,7 @@
     <a routerLink="/ranking"><h2 style="color: #464646">TOP</h2></a>
     <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product | slice:0:this.numberSlice" (click)="productClicked(prod)" routerLink="/productDetail">
       <div class="imgForm">
-        <img src="/assets/images/predet.png" width="200px" height="200px">
+        <img src="{{ prod.images[prod.images.length - 1].src }}" width="200px" height="200px">
       </div>
       <div class="productName">
         <h4>{{ prod.name }}</h4>
@@ -52,7 +52,7 @@
     <a routerLink="/products"><h2 style="color: #464646">ULTIMAS NOVEDADES</h2></a>
     <div class="col-6 col-sm-2 formProduct" *ngFor="let prod of products | slice:0:this.numberSlice" (click)="productClicked(prod)" routerLink="/productDetail">
       <div class="imgForm">
-        <img src="/assets/images/predet.png" width="200px" height="200px">
+        <img src="{{ prod.images[prod.images.length - 1].src }}" width="200px" height="200px">
       </div>
       <div class="productName">
         <h4>{{ prod.name }}</h4>

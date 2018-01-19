@@ -23,7 +23,6 @@
           <thead>
           <tr>
             <th>#</th>
-            <th>id</th>
             <th><a (click)="sortByName()">Nombre</a></th>
             <th><a (click)="sortByCategory()">Tipo</a></th>
             <th><a (click)="sortByCompany()">Marca</a></th>
@@ -34,7 +33,6 @@
           <tbody>
           <tr *ngFor="let products of product | filterBy: {name: objectsFilter.name}; let i = index">
             <td>{{ i + 1}}</td>
-            <td>{{ products._id}}</td>
             <td>{{ products.name }}</td>
             <td>{{ products.category }}</td>
             <td>{{ products.company }}</td>
@@ -423,12 +421,6 @@
           <div class="form-group">
             <label for="company2" class="control-label">Marca:</label>
             <input type="text" class="form-control" id="company2" name="company2" value="" required="" title="Introduzca su marca" #company2>
-            <span class="help-block"></span>
-          </div>
-          <div class="form-group">
-            <label class="control-label">Imagen:</label>
-            <input type='file' (change)="readUrl($event)">
-            <img [src]="url" class="imageProduct" *ngIf="imgprod">
             <span class="help-block"></span>
           </div>
           <div class="form-group">

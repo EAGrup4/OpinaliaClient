@@ -16,7 +16,11 @@ export class YourProfileComponent implements OnInit {
   image: any;
   imagePrev: any;
   userIt: any;
+  @Input()
+  public alerts: Array<IAlert> = [];
+  private backup: Array<IAlert>;
   constructor(private userService: UserService, private router: Router) {
+    this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
   }
   ngOnInit() {
     this.user = JSON.parse(this.savedUser);
@@ -42,4 +46,13 @@ export class YourProfileComponent implements OnInit {
         }
       });
   }
+  public closeAlert(alert: IAlert) {
+    const index: number = this.alerts.indexOf(alert);
+    this.alerts.splice(index, 1);
+  }
+}
+export interface IAlert {
+  id: number;
+  type: string;
+  message: string;
 }
