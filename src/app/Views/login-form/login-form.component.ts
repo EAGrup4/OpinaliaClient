@@ -147,14 +147,16 @@ export class LoginFormComponent implements OnInit {
   FBlogin() {
     FB.getLoginStatus((response) => {
       if (response.status === 'connected') {
-        const sendUser = {name: '', _id: '', admin: false, token: '', email: '', password: ''};
+        sessionStorage.setItem('socialToken', JSON.stringify(response.authResponse.accessToken));
+        const sendUser = {id: '', userr: {name: '', _id: '', admin: false, token: '', email: '', password: ''}};
         FB.api('/me?fields=id,name,first_name,email,gender,picture.width(150).height(150),age_range,friends',
           (result) => {
             if (result && !result.error) {
-              sendUser.name = result.name;
-              sendUser._id = null;
-              sendUser.email = result.email;
-              sendUser.password = result.id;
+              sendUser.id = result.id;
+              sendUser.userr.name = result.name;
+              sendUser.userr._id = null;
+              sendUser.userr.email = result.email;
+              sendUser.userr.password = result.id;
               console.log(result);
               this.userService.loginUserFB(sendUser).subscribe(
                 (data) => {
@@ -196,14 +198,17 @@ export class LoginFormComponent implements OnInit {
         const self = this;
         FB.login((respone: any) => {
           if (respone.status === 'connected') {
+            FB.getLoginStatus((respons) => {sessionStorage.setItem('socialToken', JSON.stringify(respons.authResponse.accessToken)); });
             logged = true;
             FB.api('/me?fields=id,name,first_name,email,gender,picture.width(150).height(150),age_range,friends',
               (result) => {
-              const sendUser = {name: '', _id: '', admin: false, token: '', email: '', password: ''};
-              sendUser.name = result.name;
-              sendUser._id = null;
-              sendUser.email = result.email;
-              sendUser.password = result.id;
+                console.log('--------------------' + result);
+                const sendUser = {id: '', userr: {name: '', _id: '', admin: false, token: '', email: '', password: ''}};
+              sendUser.id = result.id;
+              sendUser.userr.name = result.name;
+              sendUser.userr._id = null;
+              sendUser.userr.email = result.email;
+              sendUser.userr.password = result.id;
               console.log(result);
               this.userService.loginUserFB(sendUser).subscribe(
                 (data) => {

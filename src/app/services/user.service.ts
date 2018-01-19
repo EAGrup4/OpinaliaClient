@@ -28,8 +28,8 @@ export class UserService {
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-  loginUserFB(user = {name: '', _id: '', admin: false, token: '', email: '', password: ''}): Observable<Response> {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
+  loginUserFB(user = {id: '', userr: {name: '', _id: '', admin: false, token: '', email: '', password: ''}}): Observable<Response> {
+    const headers = new Headers({ 'Content-Type': 'application/json', 'authorization': JSON.parse(sessionStorage.getItem('socialToken')) });
     const options = new RequestOptions({ headers: headers });
     return this.http.post(this.url + '/loginFB', user, options)
       .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
