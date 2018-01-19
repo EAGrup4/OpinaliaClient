@@ -48,6 +48,7 @@ export class DetailProductComponent implements OnInit {
   spec1= false; spec2 = false; spec3 = false; spec4 = false; spec5 = false; spec6 = false; spec7 = false; spec8 = false;
   numRatings: number;
   codeServer: any;
+  image: any;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;

@@ -128,7 +128,15 @@ export class EditProfileComponent implements OnInit {
     const headers = new Headers({'Authorization': this.sendtoken });
     const options = new RequestOptions({ headers: headers });
     this.http.post(`http://localhost:3000/users/image/add/${tempId}`, formData, options)
-      .map((res: Response) => res.json())
+      .map((res: Response) => {
+        res.json();
+        this.alerts.pop();
+        this.alerts.push({
+          id: 1,
+          type: 'success',
+          message: 'Imagen cambiada!',
+        });
+      })
       .subscribe(data => {console.log(data);
       });
   }

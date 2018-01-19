@@ -88,6 +88,7 @@ export class ProductService {
   searchProductByCategory(category: string) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
+    console.log(this.url + '/category/' + category);
     return this.http.get(this.url + '/category/' + category, options)
       .map((res: Response) => {
         res.json();
