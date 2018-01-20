@@ -46,9 +46,14 @@
         <div class="col-xs-6">
           <form id="registerForm" novalidate [formGroup]="myform">
 
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{
+            'has-danger': nameControl.invalid && (nameControl.dirty || nameControl.touched),
+            'has-success': nameControl.valid && (nameControl.dirty || nameControl.touched)
+            }">
               <label for="username2" class="control-label">Nombre de usuario:</label>
-              <input type="text" class="form-control" id="username2" required title="Introduzca su nombre de usuario" placeholder="Exemple" #username2>
+              <input type="text" class="form-control"formControlName="nameControl" id="username2" required title="Introduzca su nombre de usuario" placeholder="Exemple" #username2>
+              <p *ngIf="(nameControl.errors && (nameControl.dirty || nameControl.touched)) && nameControl.errors.required">Introduzca nombre</p>
+              <p *ngIf="(nameControl.errors && (nameControl.dirty || nameControl.touched)) && nameControl.errors.rangeLength">Tiene que tener minimo 4 letras</p>
               <span class="help-block"></span>
             </div>
 
@@ -58,8 +63,8 @@
             }">
               <label for="email2" class="control-label">Correo</label>
               <input type="email" class="form-control" formControlName="emailControl" required id="email2" title="Introduzca su correo" placeholder="exemplo@gmail.com" #email2>
-                <p *ngIf="(emailControl.errors && (emailControl.dirty || emailControl.touched)) && emailControl.errors.required">Email is required</p>
-                <p *ngIf="(emailControl.errors && (emailControl.dirty || emailControl.touched)) && emailControl.errors.pattern">The email address must contain at least the @ character</p>
+              <p *ngIf="(emailControl.errors && (emailControl.dirty || emailControl.touched)) && emailControl.errors.required">Introduce email</p>
+              <p *ngIf="(emailControl.errors && (emailControl.dirty || emailControl.touched)) && emailControl.errors.email">El formato del Email no es correcto</p>
               <span class="help-block"></span>
             </div>
 
@@ -69,8 +74,8 @@
           }">
               <label for="password2" class="control-label">Contraseña</label>
               <input type="password" class="form-control" formControlName="passwordControl" required id="password2" title="Introduzca su contraseña" #password2>
-              <p *ngIf="(passwordControl.errors && (passwordControl.dirty || passwordControl.touched)) && passwordControl?.errors?.required">Password is required</p>
-              <p *ngIf="(passwordControl.errors && (passwordControl.dirty || passwordControl.touched)) && passwordControl?.errors?.rangeLength">Password must be 8 characters long, we need another {{passwordControl?.errors?.rangeLength.actualLength}} characters </p>
+              <p *ngIf="(passwordControl.errors && (passwordControl.dirty || passwordControl.touched)) && passwordControl?.errors?.required">Introduzca contraseña</p>
+              <p *ngIf="(passwordControl.errors && (passwordControl.dirty || passwordControl.touched)) && passwordControl?.errors?.rangeLength">La longitud de ca contrasña tiene que ser 6 y usted tiene {{passwordControl?.errors?.rangeLength.actualLength}} caracteres </p>
               <span class="help-block"></span>
             </div>
 
@@ -80,7 +85,7 @@
             }">
               <label for="password22" class="control-label">Confirmar Contraseña</label>
               <input type="password" class="form-control" formControlName="passwordControl2" id="password22" name="password" required title="Introduzca su contraseña" #password22>
-              <p *ngIf="(passwordControl2.errors && (passwordControl2.dirty || passwordControl2.touched)) && passwordControl2?.errors?.required">Password is required</p>
+              <p *ngIf="(passwordControl2.errors && (passwordControl2.dirty || passwordControl2.touched)) && passwordControl2?.errors?.required">Introduzca contraseña</p>
               <p *ngIf="(passwordControl2.errors && (passwordControl2.dirty || passwordControl2.touched)) && passwordControl2?.errors?.equalTo">Contraseña no coincide </p>
               <span class="help-block"></span>
             </div>
