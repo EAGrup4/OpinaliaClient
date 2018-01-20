@@ -35,6 +35,7 @@
 .navbar-form{
   text-align:center;
   display:inline-block;
+  padding-left: 10%;
 }
 @media screen and (min-width: 767px){
   .smallForm {
@@ -62,4 +63,8 @@
     padding-top: 160px;
   }
 }
-
+@media (max-width:1200px){
+  .navbar-form{
+    padding-left: 0%;
+  }
+}
