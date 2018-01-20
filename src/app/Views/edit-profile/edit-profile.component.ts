@@ -16,6 +16,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 export class EditProfileComponent implements OnInit {
   users = new User('', '', '', '', false, '', '');
+  oldUser: any;
   id: any;
   sub: any;
   currentModal = true;
@@ -31,6 +32,9 @@ export class EditProfileComponent implements OnInit {
   sendtoken = JSON.parse(sessionStorage.getItem('token'));
   ngOnInit() {
     this.id = sessionStorage.getItem('id');
+    this.oldUser = JSON.parse(sessionStorage.getItem('user'));
+    (<HTMLInputElement>document.getElementById('username3')).value = this.oldUser.name;
+    (<HTMLInputElement>document.getElementById('email3')).value = this.oldUser.email;
   }
   passUser(name: string, email: string, password: string, password22: string) {
     this.currentModal = true;

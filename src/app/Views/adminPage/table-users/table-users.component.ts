@@ -52,8 +52,10 @@ export class TableUsersComponent implements OnInit {
         this.user.splice(this.index, 1);
       });
   }
-  passID(id: string) {
+  passID(id: string, user: User) {
     this.id = id;
+    (<HTMLInputElement>document.getElementById('oldUsername')).value = user.name;
+    (<HTMLInputElement>document.getElementById('oldEmail')).value = user.email;
   }
 
   modifyUsers(name: string, email: string, password: string) {
