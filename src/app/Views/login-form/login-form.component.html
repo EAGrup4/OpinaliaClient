@@ -42,30 +42,51 @@
             </form>
           </div>
         </div>
+
         <div class="col-xs-6">
-          <form id="registerForm" method="POST" action="/login/" novalidate="novalidate">
+          <form id="registerForm" novalidate [formGroup]="myform">
+
             <div class="form-group">
               <label for="username2" class="control-label">Nombre de usuario:</label>
-              <input type="text" class="form-control" id="username2" name="username2" value="" required="" title="Introduzca su nombre de usuario" placeholder="Exemple" [(ngModel)]="username" #username2>
+              <input type="text" class="form-control" id="username2" required title="Introduzca su nombre de usuario" placeholder="Exemple" #username2>
               <span class="help-block"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group" [ngClass]="{
+            'has-danger': emailControl.invalid && (emailControl.dirty || emailControl.touched),
+            'has-success': emailControl.valid && (emailControl.dirty || emailControl.touched)
+            }">
               <label for="email2" class="control-label">Correo</label>
-              <input type="text" class="form-control" id="email2" name="email2" value="" required="" title="Introduzca su correo" placeholder="exemplo@gmail.com" #email2>
+              <input type="email" class="form-control" formControlName="emailControl" required id="email2" title="Introduzca su correo" placeholder="exemplo@gmail.com" #email2>
+              <div class="form-control-feedback" *ngIf="emailControl.errors && (emailControl.dirty || emailControl.touched)">
+                <p *ngIf="emailControl.errors.required">Email is required</p>
+                <p *ngIf="emailControl.errors.pattern">The email address must contain at least the @ character</p>
+              </div>
               <span class="help-block"></span>
             </div>
-            <div class="form-group">
+
+            <div class="form-group" [ngClass]="{
+          'has-danger': passwordControl.invalid && (passwordControl.dirty || passwordControl.touched),
+          'has-success': passwordControl.valid && (passwordControl.dirty || passwordControl.touched)
+          }">
               <label for="password2" class="control-label">Contraseña</label>
-              <input type="password" class="form-control" id="password2" name="password" value="" required="" title="Introduzca su contraseña" #password2>
+              <input type="password" class="form-control" formControlName="passwordControl" required id="password2" title="Introduzca su contraseña" #password2>
+              <div class="form-control-feedback" *ngIf="passwordControl.errors && (passwordControl.dirty || passwordControl.touched)">
+                <p *ngIf="passwordControl.errors.required">Password is required</p>
+                <p *ngIf="passwordControl.errors.minlength">Password must be 8 characters long, we need another {{passwordControl.errors.minlength.requiredLength - passwordControl.errors.minlength.actualLength}} characters </p>
+              </div>
               <span class="help-block"></span>
             </div>
+
             <div class="form-group">
               <label for="password22" class="control-label">Confirmar Contraseña</label>
               <input type="password" class="form-control" id="password22" name="password" value="" required="" title="Introduzca su contraseña" #password22>
               <span class="help-block"></span>
             </div>
-          <p><a class="btn btn-info btn-block" id="register" (click)="addUser(username2.value, email2.value, password2.value, password22.value)">Registrar</a></p>
+            <p><a class="btn btn-info btn-block" id="register" (click)="addUser(username2.value, email2.value, password2.value, password22.value)">Registrar</a></p>
+            <pre>{{myform.value | json}}</pre>
           </form>
+
         </div>
       </div>
     </div>

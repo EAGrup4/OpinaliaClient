@@ -6,6 +6,17 @@ import {BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {IAlert} from '../adminPage/table-users/table-users.component';
 import {Router} from '@angular/router';
 import {NavbarComponent} from '../navbar/navbar.component';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  Pipe,
+} from '@angular/core';
+import {
+  ReactiveFormsModule,
+  FormsModule,
+  FormBuilder
+} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 declare const FB: any;
 
@@ -23,6 +34,10 @@ export class LoginFormComponent implements OnInit {
   public display;
   public name;
   public imagen;
+  public myform: FormGroup;
+  public emailControl: FormControl;
+  public passwordControl: FormControl;
+  public nameControl: FormControl;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -41,6 +56,8 @@ export class LoginFormComponent implements OnInit {
       cookie: false,
       version: 'v2.11'
     });
+    this.createFormControls();
+    this.createForm();
   }
   get currentUser(){
     return JSON.stringify(this.user);
@@ -245,6 +262,25 @@ export class LoginFormComponent implements OnInit {
           }
           }, { scope: 'email' });
       }
+    });
+  }
+  createFormControls() {
+    this.nameControl = new FormControl('', Validators.required);
+    this.emailControl = new FormControl('', [
+      Validators.required,
+      Validators.pattern('[^ @]*@[^ @]*')
+    ]);
+    this.passwordControl = new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ]);
+  }
+
+  createForm() {
+    this.myform = new FormGroup({
+      nameControl: this.nameControl,
+      emailControl: this.emailControl,
+      passwordControl: this.passwordControl,
     });
   }
 }
