@@ -21,7 +21,7 @@ export class TableUsersComponent implements OnInit {
   }
   user: any;
   error: string;
-  id: string;
+  id: string; name: string; mail: string;
   index: number;
   data: any;
   ngOnInit() {
@@ -52,8 +52,10 @@ export class TableUsersComponent implements OnInit {
         this.user.splice(this.index, 1);
       });
   }
-  passID(id: string) {
+  passID(id: string, name: string, mail: string) {
     this.id = id;
+    this.name = name;
+    this.mail = mail;
   }
 
   modifyUsers(name: string, email: string, password: string) {
