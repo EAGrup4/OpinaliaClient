@@ -5,25 +5,44 @@
   <p *ngFor="let alert of alerts" id="alertType">
     <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
   </p>
-  <form id="editForm" class="col-md-7" method="POST" action="/login/" novalidate="novalidate" ngNativeValidate>
-    <div class="form-group">
+  <form id="editForm" class="col-md-7" novalidate [formGroup]="myform">
+    <div class="form-group"[ngClass]="{
+    'has-danger': nameControl.invalid && (nameControl.dirty || nameControl.touched),
+    'has-success': nameControl.valid && (nameControl.dirty || nameControl.touched)}">
       <label for="username3" class="control-label">Nombre de usuario:</label>
-      <input type="text" class="form-control" id="username3" name="username2" value="{{this.user.name}}" title="Introduzca su nuevo nombre de usuario" placeholder="Exemple" #username2 required>
+      <input type="text" class="form-control" formControlName="nameControl" id="username3" name="username2" value="{{this.user.name}}" title="Introduzca su nuevo nombre de usuario" placeholder="Exemple" #username2 required>
+      <p *ngIf="(nameControl.errors && (nameControl.dirty || nameControl.touched)) && nameControl.errors.required">Introduzca nombre</p>
+      <p *ngIf="(nameControl.errors && (nameControl.dirty || nameControl.touched)) && nameControl.errors.rangeLength">Tiene que tener minimo 4 letras</p>
       <span class="help-block"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{
+    'has-danger': emailControl.invalid && (emailControl.dirty || emailControl.touched),
+    'has-success': emailControl.valid && (emailControl.dirty || emailControl.touched)
+    }">
       <label for="email3" class="control-label">Correo</label>
-      <input type="text" class="form-control" id="email3" name="email2" value="{{this.user.email}}" title="Introduzca su nuevo correo" placeholder="exemplo@gmail.com" #email2 required>
+      <input type="text" class="form-control" formControlName="emailControl" id="email3" name="email2" value="{{this.user.email}}" title="Introduzca su nuevo correo" placeholder="exemplo@gmail.com" #email2 required>
+      <p *ngIf="(emailControl.errors && (emailControl.dirty || emailControl.touched)) && emailControl.errors.required">Introduce email</p>
+      <p *ngIf="(emailControl.errors && (emailControl.dirty || emailControl.touched)) && emailControl.errors.email">El formato del Email no es correcto</p>
       <span class="help-block"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{
+    'has-danger': passwordControl.invalid && (passwordControl.dirty || passwordControl.touched),
+    'has-success': passwordControl.valid && (passwordControl.dirty || passwordControl.touched)
+    }">
       <label for="password3" class="control-label">Contraseña</label>
-      <input type="password" class="form-control" id="password3" name="password" value="" title="Introduzca su nueva contraseña" #password2 required>
+      <input type="password" class="form-control" id="password3" formControlName="passwordControl" name="password" value="" title="Introduzca su nueva contraseña" #password2 required>
+      <p *ngIf="(passwordControl.errors && (passwordControl.dirty || passwordControl.touched)) && passwordControl?.errors?.required">Introduzca contraseña</p>
+      <p *ngIf="(passwordControl.errors && (passwordControl.dirty || passwordControl.touched)) && passwordControl?.errors?.rangeLength">La longitud de ca contrasña tiene que ser 6 y usted tiene {{passwordControl?.errors?.rangeLength.actualLength}} caracteres </p>
       <span class="help-block"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group" [ngClass]="{
+    'has-danger': passwordControl2.invalid && (passwordControl2.dirty || passwordControl2.touched),
+    'has-success': passwordControl2.valid && (passwordControl2.dirty || passwordControl2.touched)
+    }">
       <label for="password33" class="control-label">Confirmar contraseña</label>
-      <input type="password" class="form-control" id="password33" name="password" value="" title="Introduzca su nueva contraseña" #password22 required>
+      <input type="password" class="form-control" formControlName="passwordControl2" id="password33" name="password" value="" title="Introduzca su nueva contraseña" #password22 required>
+      <p *ngIf="(passwordControl2.errors && (passwordControl2.dirty || passwordControl2.touched)) && passwordControl2?.errors?.required">Introduzca contraseña</p>
+      <p *ngIf="(passwordControl2.errors && (passwordControl2.dirty || passwordControl2.touched)) && passwordControl2?.errors?.equalTo">Contraseña no coincide </p>
       <span class="help-block"></span>
     </div>
     <p><a class="btn btn-info btn-block" id='editUserButton' (click)="passUser(username2.value, email2.value, password2.value, password22.value)" data-toggle="modal" data-target="#myModal5">Editar usuario</a></p>

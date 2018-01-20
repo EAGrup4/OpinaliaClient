@@ -4,6 +4,8 @@ import {UserService} from '../../services/user.service';
 import {Subject} from 'rxjs/Subject';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
 
 
 @Component({
@@ -25,6 +27,11 @@ export class EditProfileComponent implements OnInit {
   private _success = new Subject<string>();
   private backup: Array<IAlert>;
   url = '';
+  public myform: FormGroup;
+  public emailControl: FormControl;
+  public passwordControl: FormControl;
+  public passwordControl2: FormControl;
+  public nameControl: FormControl;
   constructor(private userService: UserService, private router: Router, private http: Http) {
     this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
   }
@@ -34,6 +41,8 @@ export class EditProfileComponent implements OnInit {
     this.id = sessionStorage.getItem('id');
     this.user = JSON.parse(sessionStorage.getItem('user'));
     console.log(this.user);
+    this.createFormControls();
+    this.createForm();
   }
   passUser(name: string, email: string, password: string, password22: string) {
     this.currentModal = true;
@@ -52,44 +61,54 @@ export class EditProfileComponent implements OnInit {
     }
   }
   modifyUsers(name: string, email: string, password: string, password22: string) {
-    this.users.email = email;
-    this.users.name = name;
-    this.users.password = password;
-    this.users._id = this.id;
-    this.users.token =  JSON.parse(localStorage.getItem('token'));
-    if (password === password22) {
-    console.log(this.users);
-    this.userService.modifyUser(this.users).subscribe(
-      (data) => {
-        console.log(data);
-        this.alerts.pop();
-        this.alerts.push({
-          id: 1,
-          type: 'success',
-          message: 'Usuario modificado!',
-        });
-        sessionStorage.setItem('user', JSON.stringify(data));
-        this.router.navigate(['']);
-        window.location.reload();
-      },
-      (err) => {
-        console.log(err);
+    if (this.myform.valid) {
+      this.users.email = email;
+      this.users.name = name;
+      this.users.password = password;
+      this.users._id = this.id;
+      this.users.token = JSON.parse(localStorage.getItem('token'));
+      if (password === password22) {
+        console.log(this.users);
+        this.userService.modifyUser(this.users).subscribe(
+          (data) => {
+            console.log(data);
+            this.alerts.pop();
+            this.alerts.push({
+              id: 1,
+              type: 'success',
+              message: 'Usuario modificado!',
+            });
+            sessionStorage.setItem('user', JSON.stringify(data));
+            this.router.navigate(['']);
+            window.location.reload();
+          },
+          (err) => {
+            console.log(err);
+            this.alerts.pop();
+            this.alerts.push({
+              id: 2,
+              type: 'danger',
+              message: 'No se ha podido modificar el usuario!',
+            });
+          });
+      } else {
         this.alerts.pop();
         this.alerts.push({
           id: 2,
           type: 'danger',
-          message: 'No se ha podido modificar el usuario!',
+          message: 'Las contraseñas no coinciden!',
         });
-      });
-  }else {
+      }
+    } else {
       this.alerts.pop();
       this.alerts.push({
         id: 2,
         type: 'danger',
-        message: 'Las contraseñas no coinciden!',
+        message: 'El formulario no se ha rellenado correctamente',
       });
-      }
+      setTimeout(() => this.alerts.pop(), 5000);
     }
+  }
   deleteUser() {
     this.users._id = this.id;
     console.log(this.id);
@@ -146,6 +165,37 @@ export class EditProfileComponent implements OnInit {
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);
+  }
+
+  createFormControls() {
+    this.nameControl = new FormControl('', [
+      Validators.required,
+      CustomValidators.rangeLength([4, 20])
+    ]);
+    this.emailControl = new FormControl('', [
+      Validators.required,
+      CustomValidators.email
+    ]);
+    this.passwordControl = new FormControl('', [
+      Validators.required,
+      // Validators.minLength(8),
+      CustomValidators.rangeLength([6, 20])
+    ]);
+    this.passwordControl2 = new FormControl('', [
+      Validators.required,
+      // Validators.minLength(8),
+      CustomValidators.rangeLength([5, 9]),
+      CustomValidators.equalTo(this.passwordControl)
+    ]);
+  }
+
+  createForm() {
+    this.myform = new FormGroup({
+      nameControl: this.nameControl,
+      emailControl: this.emailControl,
+      passwordControl: this.passwordControl,
+      passwordControl2: this.passwordControl2
+    });
   }
 }
 export interface IAlert {
