@@ -211,10 +211,24 @@ h5{
 
 #outer
 {
-  width:100%;
-  text-align: right;
+  text-align: left;
+  padding-left: 3%;
+  padding-top: 1%;
 }
 .inner
 {
   display: inline-block;
+  padding-top: 5%;
+}
+.numberOp{
+  text-align: center;
+}
+@media screen and (max-width: 991px){
+  #outer{
+    text-align: center;
+  }
+  .inner
+  {
+    padding-top: 0%;
+  }
 }

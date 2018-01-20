@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="panel-body">
-          <input type="text" class="form-control" id="dev-table-filter-user" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
+          <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Developers" />
         </div>
         <table class="table table-hover" id="dev-table">
           <thead>
@@ -35,7 +35,7 @@
             <td>{{ users.name }}</td>
             <td>{{ users.email }}</td>
             <td>{{ users.admin }}<p><button class="glyphicon glyphicon-refresh" (click)="changeAdmin(users._id, users.name, users.email, users.admin)"></button></p> </td>
-            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#myModal" (click)="passID(users._id, users, i)"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+            <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#myModal" (click)="passID(users._id,users.name, users.email, i)"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
             <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" (click)="passIndex(users._id, users.name, i)" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
           </tr>
           </tbody>
@@ -52,20 +52,20 @@
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Editar</h4>
         </div>
-        <form id="editFormUser" method="POST" action="/login/" novalidate="novalidate">
+        <form id="editForm" method="POST" action="/login/" novalidate="novalidate">
           <div class="form-group">
-            <label for="oldUsername" class="control-label">Nombre de usuario:</label>
-            <input type="text" class="form-control" id="oldUsername" name="oldUsername" value="" required="" title="Introduzca su nombre de usuario" placeholder="Exemple" #username2>
+            <label for="username2" class="control-label">Nombre de usuario:</label>
+            <input type="text" class="form-control" id="username2" name="username2" value="{{this.name}}" required="" title="Introduzca su nombre de usuario" placeholder="Exemple" #username2>
             <span class="help-block"></span>
           </div>
           <div class="form-group">
-            <label for="oldEmail" class="control-label">Correo</label>
-            <input type="text" class="form-control" id="oldEmail" name="oldEmail" value="" required="" title="Introduzca su correo" placeholder="exemplo@gmail.com" #email2>
+            <label for="email2" class="control-label">Correo</label>
+            <input type="text" class="form-control" id="email2" name="email2" value="{{this.mail}}" required="" title="Introduzca su correo" placeholder="exemplo@gmail.com" #email2>
             <span class="help-block"></span>
           </div>
           <div class="form-group">
-            <label for="oldPassword" class="control-label">Contraseña</label>
-            <input type="password" class="form-control" id="oldPassword" name="password" value="" required="" title="Introduzca su contraseña" #password2>
+            <label for="password2" class="control-label">Contraseña</label>
+            <input type="password" class="form-control" id="password2" name="password" value="" required="" title="Introduzca su contraseña" #password2>
             <span class="help-block"></span>
           </div>
           <p><a class="btn btn-info btn-block" (click)="modifyUsers(username2.value, email2.value, password2.value)" data-dismiss="modal">Editar usuario</a></p>

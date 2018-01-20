@@ -28,7 +28,7 @@ export class TableProductsComponent implements OnInit {
   }
   product: any;
   error: string;
-  id: string;
+  id: string; nameE: string; categoryE: string; companyE: string;
   index: number;
   data: any;
   arrayObjects: any[] = [];
@@ -71,8 +71,15 @@ export class TableProductsComponent implements OnInit {
         this.product.splice(this.index, 1);
       });
   }
-  passID(id: string) {
+  passID(id: string, name: string, category: string, company: string, image: string) {
     this.id = id;
+    this.nameE = name;
+    this.categoryE = category;
+    if (category === 'desktop') {
+
+    }
+    this.companyE = company;
+    this.url = image;
   }
   modifyProducts(name: string, category: string, company: string) {
     this.productsMody.category = category;

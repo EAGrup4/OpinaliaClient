@@ -230,7 +230,7 @@
   </div>
     <h6 style="color: #666666; padding-left: 1.5%; padding-bottom: 0.5%; padding-top: 3%">Nº de opiniones: {{this.numb}}</h6>
   <div class="row opinionsForm" *ngFor="let rates of this.producte.ratings | slice:0:10">
-    <div class="col-md-6 col-sm-6">
+    <div class="col-md-4 col-sm-4">
       <div class="opinionTitle">
         <div class="opTitile">
           <h3>{{ rates.title }}</h3>
@@ -252,6 +252,22 @@
       </div>
     </div>
     <div class="col-md-2">
+      <div class="row" id="outer">
+        <div class="inner">
+          <h4 class="numberOp">0</h4>
+          <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-up"></i></a><br></p>
+        </div>
+        <div class="inner">
+          <h4 class="numberOp">0</h4>
+          <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-down"></i></a><br></p>
+        </div>
+        <div class="inner">
+          <h4 class="numberOp">0</h4>
+          <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
       <div class="writtenBy" routerLink="/profile" #myElement (click)="saveUserName(myElement.innerText)">
         <h4>{{ rates.userId?.name }}</h4>
       </div>
@@ -261,9 +277,8 @@
     </div>
   </div>
 
-  <h2 class="page-header">Comments</h2>
+  <!--<h2 class="page-header">Comments</h2>
   <section class="comment-list">
-    <!-- First Comment -->
     <article class="row" *ngFor="let rates of this.producte.ratings | slice:0:10">
       <div class="col-md-2 col-sm-2 hidden-xs">
         <figure class="thumbnail">
@@ -317,7 +332,7 @@
         </div>
       </div>
     </article>
-  </section>
+  </section>-->
 
 </div>
 
