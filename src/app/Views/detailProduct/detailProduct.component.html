@@ -260,5 +260,64 @@
       </div>
     </div>
   </div>
+
+  <h2 class="page-header">Comments</h2>
+  <section class="comment-list">
+    <!-- First Comment -->
+    <article class="row" *ngFor="let rates of this.producte.ratings | slice:0:10">
+      <div class="col-md-2 col-sm-2 hidden-xs">
+        <figure class="thumbnail">
+          <img class="img-responsive" src='{{ rates.userId?.profileImage }}' />
+          <figcaption class="text-center">
+            <div class="opRating-bar">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(rates.rate)>
+                </div>
+              </div>
+            </div>
+            <h5>{{ rates.rate}}</h5>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-10 col-sm-10">
+        <div class="panel panel-default arrow left">
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-4 col-sm-4">
+                <header class="text-center">
+                <div class="comment-user opinionsForm"><h3>{{ rates.title }}</h3> </div>
+                </header>
+              </div>
+              <div class="col-md-8 col-sm-8">
+                <header class="text-right">
+                  <div class="comment-user"><i class="fa fa-user"></i> {{ rates.userId?.name }} </div>
+                  <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{ rates.date | date: 'longDate'}}</time>
+                </header>
+              </div>
+            </div>
+            <div class="row">
+              <div class="comment-post">
+                <p>
+                  {{ rates.comment }}
+                </p>
+              </div>
+            </div>
+            <div class="row" id="outer">
+              <div class="inner">
+                <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-down"></i></a></p>
+              </div>
+              <div class="inner">
+                <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-up"></i></a></p>
+              </div>
+              <div class="inner">
+                <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
 </div>
 

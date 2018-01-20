@@ -208,3 +208,13 @@ h5{
   background: #464646;
   cursor: pointer;
 }
+
+#outer
+{
+  width:100%;
+  text-align: right;
+}
+.inner
+{
+  display: inline-block;
+}
