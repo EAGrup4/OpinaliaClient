@@ -87,6 +87,7 @@
   padding-top: 0.5%;
   padding-bottom: 0.5%;
   height: 65px;
+  max-height: 65px;
 }
 .opRate{
   font-size: 150%;
@@ -215,7 +216,7 @@ h5{
   cursor: pointer;
 }
 
-#outer
+.outer
 {
   text-align: right;
   padding-left: 3%;
@@ -230,7 +231,7 @@ h5{
   text-align: center;
 }
 @media screen and (max-width: 991px){
-  #outer{
+  .outer{
     text-align: center;
   }
   .inner
@@ -242,8 +243,7 @@ h5{
   }
 }
 .limitName{
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-height: 65px;
-}
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+ }

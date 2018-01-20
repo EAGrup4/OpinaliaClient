@@ -21,10 +21,10 @@ export class DetailProductComponent implements OnInit {
   prod = new Product('', '', '', [], null, [], null, '', null, null, null);
   producte = new Product('', '', '', [], null, [], null, '', null, null, null);
   user = new User('', '', '', '', false, '', '');
-  rating = new Ratings('', '', '', 0, null);
+  rating = new Ratings('', '', '', 0, null, 0, 0, 0, null, '', '', '', false, false);
   ratingSend = {userId: '', title: '', comment: '', rate: 0};
-  ratin = new Ratings('', '', '', 0, null);
-  ratin2 = new Ratings('', '', '', 0, null);
+  ratin = new Ratings('', '', '', 0, null, 0, 0, 0, null, '', '', '', false, false);
+  ratin2 = new Ratings('', '', '', 0, null, 0, 0, 0, null, '', '', '', false, false);
   ratings: any;
   rate: any;
   product: any;
@@ -48,7 +48,10 @@ export class DetailProductComponent implements OnInit {
   spec1= false; spec2 = false; spec3 = false; spec4 = false; spec5 = false; spec6 = false; spec7 = false; spec8 = false;
   numRatings: number;
   codeServer: any;
-  image: any;
+  image: any; imageen: any;
+  whiteButton = true;
+  redButton = false;
+  greenButton = false;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -70,6 +73,7 @@ export class DetailProductComponent implements OnInit {
         if (this.product.avgRate === -1) {
           this.product.avgRate = 0;
         }
+        this.searchLikeDislike();
       });
     this.productService.getBestRatings(this.prod._id).subscribe(
       (data) => {
@@ -169,6 +173,25 @@ export class DetailProductComponent implements OnInit {
     console.log('AQUIII', name);
     sessionStorage.setItem('userClick', name);
   }
+
+  likeButton1(rates) {
+    this.productService.likeButton(this.prod._id, rates._id).subscribe(
+      (data) => {
+        this.producte = data;
+        this.searchLikeDislike();
+      }
+    );
+  }
+
+  dislikeButton1(rates) {
+    this.productService.dislikeButton(this.prod._id, rates._id).subscribe(
+      (data) => {
+        console.log(data);
+        this.producte = data;
+        this.searchLikeDislike();
+      }
+    );
+  }
   /*public showDate(date: string) {
     const parts = date.split('-');
     this.year = parts[0];
@@ -177,6 +200,30 @@ export class DetailProductComponent implements OnInit {
     this.day = moreParts[0];
     console.log(this.year + '-' + this.month + '-' + this.day);
   }*/
+  public searchLikeDislike() {
+    let users = JSON.parse(sessionStorage.getItem('user'));
+    let id = users._id;
+    for (let rate  of this.producte.ratings) {
+      let likes: any = [{}];
+      likes = rate.likes;
+      let dislikes: any = [{}];
+      dislikes = rate.dislikes;
+
+      for (let i = 0; i < likes.length; i++) {
+        if (likes[i].userId === id) {
+          rate.liked = true;
+          i = likes.length;
+        }
+      }
+
+      for (let i = 0; i < dislikes.length; i++) {
+        if (dislikes[i].userId === id) {
+          rate.disliked = true;
+          i = dislikes.length;
+        }
+      }
+    }
+  }
   public iconsSpecifications(spec) {
     if (spec !== ['']) {
       if (spec.procesador !== '') {

@@ -64,24 +64,30 @@ export class ProductService {
     console.log(productId);
     console.log('token', this.sendtoken);
     return this.http.post(this.url + '/rating/' + productId, rating, options)
-      .map((res: Response) => {
-        res.json();
-        /*console.log('h');
-        if (res.status === 409) {
-          this.passCode = res.status;
-          console.log(res.status);
-          console.log(this.passCode);
-          sessionStorage.setItem('codeServer', this.passCode);
-          return [{ status: res.status, json: res }];
-        }   */
-      }) // ...and calling .json() on the response to return data
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  likeButton(productId, ratingId) {
+    const headers = new Headers({ 'Content-Type': 'application/json', 'authorization': this.sendtoken });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.url + '/rating/like/' + productId + '/' + ratingId, null, options)
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+  dislikeButton(productId, ratingId) {
+    const headers = new Headers({ 'Content-Type': 'application/json', 'authorization': this.sendtoken });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.url + '/rating/dislike/' + productId + '/' + ratingId, null, options)
+      .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   searchProduct(text: string, category: string) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(text);
-    return this.http.get(this.url + '/category/' + text + '/' + category, options)
+    return this.http.get(this.url + '/category/' + text + '/' + category ,options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
