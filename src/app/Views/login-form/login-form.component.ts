@@ -1,22 +1,12 @@
 import {Component, Input, NgModule, OnInit, ViewChild} from '@angular/core';
 import { User } from '../../classes/user.model';
 import { UserService } from '../../services/user.service';
-import {CloseGuard, DialogRef, ModalComponent} from 'angular2-modal';
-import {BSModalContext} from 'angular2-modal/plugins/bootstrap';
 import {IAlert} from '../adminPage/table-users/table-users.component';
 import {Router} from '@angular/router';
 import {NavbarComponent} from '../navbar/navbar.component';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {
-  Pipe,
-} from '@angular/core';
-import {
-  ReactiveFormsModule,
-  FormsModule,
-  FormBuilder
-} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { CustomValidators } from 'ng2-validation';
+
 
 declare const FB: any;
 
@@ -37,6 +27,7 @@ export class LoginFormComponent implements OnInit {
   public myform: FormGroup;
   public emailControl: FormControl;
   public passwordControl: FormControl;
+  public passwordControl2: FormControl;
   public nameControl: FormControl;
   @Input()
   public alerts: Array<IAlert> = [];
@@ -272,7 +263,14 @@ export class LoginFormComponent implements OnInit {
     ]);
     this.passwordControl = new FormControl('', [
       Validators.required,
-      Validators.minLength(8)
+     // Validators.minLength(8),
+      CustomValidators.rangeLength([3, 12])
+    ]);
+    this.passwordControl2 = new FormControl('', [
+      Validators.required,
+      // Validators.minLength(8),
+      CustomValidators.rangeLength([5, 9]),
+      CustomValidators.equalTo(this.passwordControl)
     ]);
   }
 
@@ -281,6 +279,7 @@ export class LoginFormComponent implements OnInit {
       nameControl: this.nameControl,
       emailControl: this.emailControl,
       passwordControl: this.passwordControl,
+      passwordControl2: this.passwordControl2
     });
   }
 }

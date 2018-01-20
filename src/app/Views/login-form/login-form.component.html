@@ -58,10 +58,8 @@
             }">
               <label for="email2" class="control-label">Correo</label>
               <input type="email" class="form-control" formControlName="emailControl" required id="email2" title="Introduzca su correo" placeholder="exemplo@gmail.com" #email2>
-              <div class="form-control-feedback" *ngIf="emailControl.errors && (emailControl.dirty || emailControl.touched)">
-                <p *ngIf="emailControl.errors.required">Email is required</p>
-                <p *ngIf="emailControl.errors.pattern">The email address must contain at least the @ character</p>
-              </div>
+                <p *ngIf="(emailControl.errors && (emailControl.dirty || emailControl.touched)) && emailControl.errors.required">Email is required</p>
+                <p *ngIf="(emailControl.errors && (emailControl.dirty || emailControl.touched)) && emailControl.errors.pattern">The email address must contain at least the @ character</p>
               <span class="help-block"></span>
             </div>
 
@@ -71,20 +69,22 @@
           }">
               <label for="password2" class="control-label">Contraseña</label>
               <input type="password" class="form-control" formControlName="passwordControl" required id="password2" title="Introduzca su contraseña" #password2>
-              <div class="form-control-feedback" *ngIf="passwordControl.errors && (passwordControl.dirty || passwordControl.touched)">
-                <p *ngIf="passwordControl.errors.required">Password is required</p>
-                <p *ngIf="passwordControl.errors.minlength">Password must be 8 characters long, we need another {{passwordControl.errors.minlength.requiredLength - passwordControl.errors.minlength.actualLength}} characters </p>
-              </div>
+              <p *ngIf="(passwordControl.errors && (passwordControl.dirty || passwordControl.touched)) && passwordControl?.errors?.required">Password is required</p>
+              <p *ngIf="(passwordControl.errors && (passwordControl.dirty || passwordControl.touched)) && passwordControl?.errors?.rangeLength">Password must be 8 characters long, we need another {{passwordControl?.errors?.rangeLength.actualLength}} characters </p>
               <span class="help-block"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" [ngClass]="{
+            'has-danger': passwordControl2.invalid && (passwordControl2.dirty || passwordControl2.touched),
+            'has-success': passwordControl2.valid && (passwordControl2.dirty || passwordControl2.touched)
+            }">
               <label for="password22" class="control-label">Confirmar Contraseña</label>
-              <input type="password" class="form-control" id="password22" name="password" value="" required="" title="Introduzca su contraseña" #password22>
+              <input type="password" class="form-control" formControlName="passwordControl2" id="password22" name="password" required title="Introduzca su contraseña" #password22>
+              <p *ngIf="(passwordControl2.errors && (passwordControl2.dirty || passwordControl2.touched)) && passwordControl2?.errors?.required">Password is required</p>
+              <p *ngIf="(passwordControl2.errors && (passwordControl2.dirty || passwordControl2.touched)) && passwordControl2?.errors?.equalTo">Contraseña no coincide </p>
               <span class="help-block"></span>
             </div>
-            <p><a class="btn btn-info btn-block" id="register" (click)="addUser(username2.value, email2.value, password2.value, password22.value)">Registrar</a></p>
-            <pre>{{myform.value | json}}</pre>
+            <p><a class="btn btn-info btn-block" id="register" (click)="addUser(username2.value, email2.value, password2.value, password22.value)" >Registrar</a></p>
           </form>
 
         </div>
