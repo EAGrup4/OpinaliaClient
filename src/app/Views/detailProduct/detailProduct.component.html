@@ -128,7 +128,7 @@
                 <h3>{{ ratin.title }}</h3>
               </div>
               <div class="opComment">
-                <h5>{{ ratin.comment }}</h5>
+                <h5  class="limitName">{{ ratin.comment }}</h5>
               </div>
             </div>
           </div>
@@ -216,20 +216,8 @@
       </div>
     </div>
   </div>
-  <div class="col-md-2">
-    <h2 style="padding-top: 2%">Opiniones:</h2>
-  </div>
-  <div class="col-md-10" style="padding-bottom: 1%; padding-top: 0.2%">
-    <h2>
-      <button class='btn btn-default' disabled="disabled">Ordenar toda la lista de productos por:</button>
-      <button class='btn btn-default' (click)="bestRatings()">Puntuación <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
-      <button class='btn btn-default' (click)="worstRatings()">Puntuación <img src="../../../assets/images/arrowdown.png" height="16" width="16"/></button>
-      <button class='btn btn-default' (click)="newRatings()">Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
-      <button class='btn btn-default' (click)="oldRatings()">Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
-    </h2>
-  </div>
-    <h6 style="color: #666666; padding-left: 1.5%; padding-bottom: 0.5%; padding-top: 3%">Nº de opiniones: {{this.numb}}</h6>
-  <div class="row opinionsForm" *ngFor="let rates of this.producte.ratings | slice:0:10">
+
+  <!--<div class="row opinionsForm" *ngFor="let rates of this.producte.ratings | slice:0:10">
     <div class="col-md-4 col-sm-4">
       <div class="opinionTitle">
         <div class="opTitile">
@@ -275,15 +263,30 @@
       {{ rates.date | date: 'longDate'}}
       </div>
     </div>
-  </div>
+  </div>-->
 
-  <!--<h2 class="page-header">Comments</h2>
+  <div class="col-md-2">
+    <h2 style="padding-top: 2%">Opiniones:</h2>
+  </div>
+  <div class="col-md-10" style="padding-bottom: 1%; padding-top: 0.2%">
+    <h2>
+      <button class='btn btn-default' disabled="disabled">Ordenar toda la lista de productos por:</button>
+      <button class='btn btn-default' (click)="bestRatings()">Puntuación <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
+      <button class='btn btn-default' (click)="worstRatings()">Puntuación <img src="../../../assets/images/arrowdown.png" height="16" width="16"/></button>
+      <button class='btn btn-default' (click)="newRatings()">Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
+      <button class='btn btn-default' (click)="oldRatings()">Fecha <img src="../../../assets/images/arrowup.png" height="16" width="16"/></button>
+    </h2>
+  </div>
+  <h6 style="color: #666666; padding-left: 1.5%; padding-bottom: 0.5%; padding-top: 3%">Nº de opiniones: {{this.numb}}</h6>
   <section class="comment-list">
     <article class="row" *ngFor="let rates of this.producte.ratings | slice:0:10">
       <div class="col-md-2 col-sm-2 hidden-xs">
         <figure class="thumbnail">
-          <img class="img-responsive" src='{{ rates.userId?.profileImage }}' />
-          <figcaption class="text-center">
+          <img class="img-responsive" src='{{ rates.userId?.profileImage }}'/>
+          <div class="writtenBy" routerLink="/profile" #myElement (click)="saveUserName(myElement.innerText)">
+            <div class="comment-user"><i class="fa fa-user"></i>  {{ rates.userId?.name }}</div>
+          </div>
+          <!--<figcaption class="text-center">
             <div class="opRating-bar">
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(rates.rate)>
@@ -291,48 +294,61 @@
               </div>
             </div>
             <h5>{{ rates.rate}}</h5>
-          </figcaption>
+          </figcaption>-->
         </figure>
       </div>
       <div class="col-md-10 col-sm-10">
         <div class="panel panel-default arrow left">
           <div class="panel-body">
             <div class="row">
-              <div class="col-md-4 col-sm-4">
-                <header class="text-center">
-                <div class="comment-user opinionsForm"><h3>{{ rates.title }}</h3> </div>
-                </header>
-              </div>
               <div class="col-md-8 col-sm-8">
-                <header class="text-right">
-                  <div class="comment-user"><i class="fa fa-user"></i> {{ rates.userId?.name }} </div>
-                  <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{ rates.date | date: 'longDate'}}</time>
-                </header>
+                <div class="opinionTitle">
+                  <div class="opTitile">
+                    <h3>{{ rates.title }}</h3>
+                  </div>
+                  <div class="opComment">
+                    <h5>{{ rates.comment }}</h5>
+                  </div>
+                </div>
+                <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{ rates.date | date: 'longDate'}}</time>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="col-md-12 rating">
+                  <div class="opRate">
+                    {{ rates.rate}}
+                  </div>
+                  <div class="opRating-bar">
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(rates.rate)>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="outer">
+                  <div class="inner">
+                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-up"></i>0</a></p>
+                  </div>
+                  <div class="inner">
+                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-down"></i>0</a></p>
+                  </div>
+                  <div class="inner">
+                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="row">
+            <!--<div class="row">
               <div class="comment-post">
                 <p>
                   {{ rates.comment }}
                 </p>
               </div>
-            </div>
-            <div class="row" id="outer">
-              <div class="inner">
-                <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-down"></i></a></p>
-              </div>
-              <div class="inner">
-                <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-up"></i></a></p>
-              </div>
-              <div class="inner">
-                <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>
-              </div>
-            </div>
+            </div>-->
           </div>
         </div>
       </div>
     </article>
-  </section>-->
+  </section>
 
 </div>
 
