@@ -54,47 +54,57 @@ export class LoginFormComponent implements OnInit {
     return JSON.stringify(this.user);
   }
   addUser(name: string, email: string, password: string, password2: string, id: string) {
-    this.user.email = email;
-    this.user.name = name;
-    this.user.password = password;
-    this.user._id = id;
-    console.log(this.user);
-    if (password === password2) {
-      this.userService.addUser(this.user).subscribe(
-        (data) => {
-          console.log(data);
-          this.alerts.pop();
-          this.alerts.push({
-            id: 1,
-            type: 'success',
-            message: 'Usuario Registrado!',
-          });
-          let getData: any = {};
-          getData = data;
-          const token = getData.token;
-          const userTmp = getData;
-          sessionStorage.setItem('user', JSON.stringify(userTmp));
-          sessionStorage.setItem('token', JSON.stringify(token));
-          this.router.navigate(['']);
-          window.location.reload();
-        },
-        (err) => {
-          console.log(err);
-          this.alerts.pop();
-          this.alerts.push({
-            id: 2,
-            type: 'danger',
-            message: 'No se ha podido registrar!',
-          });
-        }
-      );
+    if (this.myform.valid) {
+      this.user.email = email;
+      this.user.name = name;
+      this.user.password = password;
+      this.user._id = id;
+      console.log(this.user);
+      if (password === password2) {
+        this.userService.addUser(this.user).subscribe(
+          (data) => {
+            console.log(data);
+            this.alerts.pop();
+            this.alerts.push({
+              id: 1,
+              type: 'success',
+              message: 'Usuario Registrado!',
+            });
+            let getData: any = {};
+            getData = data;
+            const token = getData.token;
+            const userTmp = getData;
+            sessionStorage.setItem('user', JSON.stringify(userTmp));
+            sessionStorage.setItem('token', JSON.stringify(token));
+            this.router.navigate(['']);
+            window.location.reload();
+          },
+          (err) => {
+            console.log(err);
+            this.alerts.pop();
+            this.alerts.push({
+              id: 2,
+              type: 'danger',
+              message: 'No se ha podido registrar!',
+            });
+          }
+        );
+      } else {
+        this.alerts.pop();
+        this.alerts.push({
+          id: 2,
+          type: 'danger',
+          message: 'Las contraseñas no coinciden!',
+        });
+      }
     } else {
       this.alerts.pop();
       this.alerts.push({
         id: 2,
         type: 'danger',
-        message: 'Las contraseñas no coinciden!',
+        message: 'El formulario no se ha rellenado correctamente',
       });
+      setTimeout(() => this.alerts.pop(), 5000);
     }
   }
   enterUser(email: string, password: string) {
@@ -256,15 +266,18 @@ export class LoginFormComponent implements OnInit {
     });
   }
   createFormControls() {
-    this.nameControl = new FormControl('', Validators.required);
+    this.nameControl = new FormControl('', [
+      Validators.required,
+      CustomValidators.rangeLength([4, 20])
+    ]);
     this.emailControl = new FormControl('', [
       Validators.required,
-      Validators.pattern('[^ @]*@[^ @]*')
+      CustomValidators.email
     ]);
     this.passwordControl = new FormControl('', [
       Validators.required,
      // Validators.minLength(8),
-      CustomValidators.rangeLength([3, 12])
+      CustomValidators.rangeLength([6, 20])
     ]);
     this.passwordControl2 = new FormControl('', [
       Validators.required,
