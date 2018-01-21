@@ -203,10 +203,10 @@
             'has-danger': titleControl.invalid && (titleControl.dirty || titleControl.touched),
             'has-success': titleControl.valid && (titleControl.dirty || titleControl.touched)
             }">
-          <label for="titleControl" class="control-label">Nombre de usuario:</label>
+          <label for="titleControl" class="control-label">Introduzca el titulo</label>
           <input type="text" class="form-control" formControlName="titleControl" id="titleControl" required title="Escribe aqui el título" placeholder="Escribe aqui el título" #titletControl>
-          <p *ngIf="(titleControl.errors && (titleControl.dirty || titleControl.touched)) && titleControl.errors.required">Introduzca nombre</p>
-          <p *ngIf="(titleControl.errors && (titleControl.dirty || titleControl.touched)) && titleControl.errors.rangeLength">Tiene que tener minimo 4 letras</p>
+          <p *ngIf="(titleControl.errors && (titleControl.dirty || titleControl.touched)) && titleControl.errors.required">El titulo es obligatorio</p>
+          <p *ngIf="(titleControl.errors && (titleControl.dirty || titleControl.touched)) && titleControl.errors.rangeLength">Tiene que tener minimo 4 letras y maximo de 15</p>
           <span class="help-block"></span>
         </div>
       </form>
@@ -227,7 +227,7 @@
             'has-danger': commentControl.invalid && (commentControl.dirty || commentControl.touched),
             'has-success': commentControl.valid && (commentControl.dirty || commentControl.touched)
             }">
-          <label for="commentControl" class="control-label">Nombre de usuario:</label>
+          <label for="commentControl" class="control-label">Introduzca el comentario</label>
           <textarea type="text" rows="3" class="form-control" formControlName="commentControl" id="commentControl" required title="Escribe aqui tu comentario" placeholder="Escribe aqui tu comentario" #commenttControl></textarea>
           <p *ngIf="(commentControl.errors && (commentControl.dirty || commentControl.touched)) && commentControl.errors.required">Introduzca un comentario</p>
           <p *ngIf="(commentControl.errors && (commentControl.dirty || commentControl.touched)) && commentControl.errors.rangeLength">Tiene que tener minimo 6 letras y maximo de 300 letras</p>
