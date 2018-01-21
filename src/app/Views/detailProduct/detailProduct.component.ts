@@ -7,6 +7,8 @@ import {Router} from '@angular/router';
 import {ProductShareService} from '../../services/productShare.service';
 import {Location} from '@angular/common';
 import {NavbarComponent} from '../navbar/navbar.component';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CustomValidators } from 'ng2-validation';
 
 @Component({
   moduleId: module.id,
@@ -52,6 +54,9 @@ export class DetailProductComponent implements OnInit {
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
+  public myform: FormGroup;
+  public titleControl: FormControl;
+  public commentControl: FormControl;
   constructor(private _location: Location, private productService: ProductService, private productShareService: ProductShareService,
               private navbarComponent: NavbarComponent) {}
   ngOnInit() {
@@ -80,6 +85,8 @@ export class DetailProductComponent implements OnInit {
       }
     );
     this.chVal = 5;
+    this.createFormControls();
+    this.createForm();
   }
   getAvgRate() {
     this.numberProgressBar = this.averageRatingPerCent + '%';
@@ -245,6 +252,24 @@ export class DetailProductComponent implements OnInit {
   public closeAlert(alert: IAlert) {
     const index: number = this.alerts.indexOf(alert);
     this.alerts.splice(index, 1);
+  }
+
+  createFormControls() {
+    this.titleControl = new FormControl('', [
+      Validators.required,
+      CustomValidators.rangeLength([4, 12])
+    ]);
+    this.commentControl = new FormControl('', [
+      Validators.required,
+      CustomValidators.rangeLength([6, 300])
+    ]);
+  }
+
+  createForm() {
+    this.myform = new FormGroup({
+      titleControl: this.titleControl,
+      commentControl: this.commentControl
+    });
   }
 }
 export interface IAlert {
