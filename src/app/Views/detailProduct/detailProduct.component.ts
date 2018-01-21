@@ -73,7 +73,7 @@ export class DetailProductComponent implements OnInit {
         this.producte = this.product;
         this.averageRatingPerCent = this.product.avgRate * 10;
         this.summaryOpinions(this.product);
-        this.iconsSpecifications(this.product.specifications[this.product.specifications.length - 1]);
+        this.iconsSpecifications(this.product.specifications[this.product.specifications.length - 1], this.product.category);
         this.numb = this.product.ratings.length;
         if (this.product.avgRate === -1) {
           this.product.avgRate = 0;
@@ -174,6 +174,7 @@ export class DetailProductComponent implements OnInit {
     this.productService.getBestRatings(this.prod._id).subscribe(
       (data) => {
         this.product.ratings = data;
+        this.searchLikeDislike();
       }
     );
   }
@@ -181,6 +182,7 @@ export class DetailProductComponent implements OnInit {
     this.productService.getWorstRatings(this.prod._id).subscribe(
       (data) => {
         this.product.ratings = data;
+        this.searchLikeDislike();
       }
     );
   }
@@ -188,6 +190,7 @@ export class DetailProductComponent implements OnInit {
     this.productService.getNewRatings(this.prod._id).subscribe(
       (data) => {
         this.product.ratings = data;
+        this.searchLikeDislike();
       }
     );
   }
@@ -195,6 +198,7 @@ export class DetailProductComponent implements OnInit {
     this.productService.getOldRatings(this.prod._id).subscribe(
       (data) => {
         this.product.ratings = data;
+        this.searchLikeDislike();
       }
     );
   }
@@ -256,10 +260,15 @@ export class DetailProductComponent implements OnInit {
       }
     }
   }
-  public iconsSpecifications(spec) {
+  public iconsSpecifications(spec, category) {
     if (spec !== ['']) {
-      for (let i = 0; i < spec.length ; i++) {
-        console.log(i);
+      let number;
+      if (category === 'desktop') {
+        number = 5;
+      } else {
+        number = 7;
+      }
+      for (let i = 0; i < number ; i++) {
         if (spec[i].name === 'Procesador') {
           this.specProcesador = spec[i].spec;
           this.spec1 = true;
