@@ -66,4 +66,7 @@ export class PrincipalComponent implements OnInit, DoCheck {
     localStorage.setItem('searchedProd', searchedProduct);
     this.boolsearch = true;
   }
+  skipClass() {
+    document.querySelector('video').style.display = 'none';
+  }
 }

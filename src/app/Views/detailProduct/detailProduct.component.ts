@@ -54,6 +54,8 @@ export class DetailProductComponent implements OnInit {
   whiteButton = true;
   redButton = false;
   greenButton = false;
+  idComment: string;
+  reportToSend = { comment: '', reason: ''};
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -73,7 +75,7 @@ export class DetailProductComponent implements OnInit {
         this.producte = this.product;
         this.averageRatingPerCent = this.product.avgRate * 10;
         this.summaryOpinions(this.product);
-        this.iconsSpecifications(this.product.specifications[this.product.specifications.length - 1]);
+        this.iconsSpecifications(this.product.specifications[this.product.specifications.length - 1], this.product.category);
         this.numb = this.product.ratings.length;
         if (this.product.avgRate === -1) {
           this.product.avgRate = 0;
@@ -174,6 +176,7 @@ export class DetailProductComponent implements OnInit {
     this.productService.getBestRatings(this.prod._id).subscribe(
       (data) => {
         this.product.ratings = data;
+        this.searchLikeDislike();
       }
     );
   }
@@ -181,6 +184,7 @@ export class DetailProductComponent implements OnInit {
     this.productService.getWorstRatings(this.prod._id).subscribe(
       (data) => {
         this.product.ratings = data;
+        this.searchLikeDislike();
       }
     );
   }
@@ -188,6 +192,7 @@ export class DetailProductComponent implements OnInit {
     this.productService.getNewRatings(this.prod._id).subscribe(
       (data) => {
         this.product.ratings = data;
+        this.searchLikeDislike();
       }
     );
   }
@@ -195,6 +200,7 @@ export class DetailProductComponent implements OnInit {
     this.productService.getOldRatings(this.prod._id).subscribe(
       (data) => {
         this.product.ratings = data;
+        this.searchLikeDislike();
       }
     );
   }
@@ -204,7 +210,7 @@ export class DetailProductComponent implements OnInit {
   }
 
   likeButton1(rates) {
-    console.log('ID RATES1',rates._id);
+    console.log('ID RATES1', rates._id);
     this.productService.likeButton(this.prod._id, rates._id).subscribe(
       (data) => {
         this.producte = data;
@@ -214,12 +220,24 @@ export class DetailProductComponent implements OnInit {
   }
 
   dislikeButton1(rates) {
-    console.log('ID RATES2',rates._id);
+    console.log('ID RATES2', rates._id);
     this.productService.dislikeButton(this.prod._id, rates._id).subscribe(
       (data) => {
         console.log(data);
         this.producte = data;
         this.searchLikeDislike();
+      }
+    );
+  }
+  passIdToReport(id: string) {
+    this.idComment = id;
+  }
+  reportComment(comment, reason) {
+    this.reportToSend.comment = comment;
+    this.reportToSend.reason = reason;
+    this.productService.reportComment(this.prod._id, this.idComment, this.reportToSend).subscribe(
+      (data) => {
+        console.log(data);
       }
     );
   }
@@ -256,10 +274,17 @@ export class DetailProductComponent implements OnInit {
       }
     }
   }
-  public iconsSpecifications(spec) {
-    if (spec !== ['']) {
-      for (let i = 0; i < spec.length ; i++) {
-        console.log(i);
+  public iconsSpecifications(spec, category) {
+    console.log(spec);
+    if (spec) {
+      let number;
+      if (category === 'desktop') {
+        number = 5;
+      } else {
+        number = 7;
+      }
+      console.log('Numbeeeer', number);
+      for (let i = 0; i < number ; i++) {
         if (spec[i].name === 'Procesador') {
           this.specProcesador = spec[i].spec;
           this.spec1 = true;
@@ -325,7 +350,7 @@ export class DetailProductComponent implements OnInit {
   createFormControls() {
     this.titleControl = new FormControl('', [
       Validators.required,
-      CustomValidators.rangeLength([4, 15])
+      CustomValidators.rangeLength([4, 20])
     ]);
     this.commentControl = new FormControl('', [
       Validators.required,

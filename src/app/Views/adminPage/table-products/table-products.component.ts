@@ -38,6 +38,12 @@ export class TableProductsComponent implements OnInit {
   so4: string;
   names1: string; names2: string; names3: string; names4: string; names5: string; names6: string; names7: string;
   spec1: string; spec2: string; spec3: string; spec4: string; spec5: string; spec6: string; spec7: string;
+  proc11: string; ram11: string; disk11: string; graphic11: string; so11: string; proc12: string; screen12: string;
+  ram12: string; disk12: string; graphic12: string; gr12: string; so12: string; proc13: string; screen13: string; ram13: string; disk13: string;
+  gr13: string; cam13: string; so13: string; proc14: string; screen14: string; ram14: string; disk14: string; gr14: string; cam14: string;
+  so14: string;
+  names11: string; names12: string; names13: string; names14: string; names15: string; names16: string; names17: string;
+  spec11: string; spec12: string; spec13: string; spec14: string; spec15: string; spec16: string; spec17: string;
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();

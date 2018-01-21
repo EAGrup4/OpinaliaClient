@@ -4,6 +4,9 @@
 
   </script>
 </header>
+<div class="clickToSkip">
+  <h6>Pulsa el video para quitarlo</h6>
+</div>
 <form class='navbar-form'>
   <div class='input-group col-md-9'>
     <input class='form-control' type='text' name='search' placeholder='Busque el producto que desee' #searchedProduct />
@@ -17,11 +20,12 @@
 <div>
   <img src="/assets/images/port2.jpg" width="100%" height="100%"/>
 </div>
-<div class="container-fluid video">
+<div class="container-fluid video" (click)="skipClass()">
   <video poster="#" id="bgvid" playsinline autoplay muted>
     <source src="/assets/video/opinalia.mp4" type="video/mp4">
   </video>
 </div>
+
 
 <div class="container">
   <div class="row">

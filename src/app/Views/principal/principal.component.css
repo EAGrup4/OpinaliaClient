@@ -152,3 +152,17 @@
 .anunci1{
   padding-top: 2%;
 }
+.clickToSkip{
+  position: absolute;
+  z-index: 30;
+  color: #464646;
+  text-align: right;
+  padding-top: 24%;
+
+  -webkit-animation: seconds 4.5s forwards;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 15s;
+  animation: seconds 4.5s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 15s;
+}
