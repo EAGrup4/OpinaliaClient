@@ -213,6 +213,7 @@ export class DetailProductComponent implements OnInit {
   }
 
   likeButton1(rates) {
+    console.log('ID RATES1',rates._id);
     this.productService.likeButton(this.prod._id, rates._id).subscribe(
       (data) => {
         this.producte = data;
@@ -222,6 +223,7 @@ export class DetailProductComponent implements OnInit {
   }
 
   dislikeButton1(rates) {
+    console.log('ID RATES2',rates._id);
     this.productService.dislikeButton(this.prod._id, rates._id).subscribe(
       (data) => {
         console.log(data);
@@ -241,6 +243,7 @@ export class DetailProductComponent implements OnInit {
   public searchLikeDislike() {
     let users = JSON.parse(sessionStorage.getItem('user'));
     let id = users._id;
+    console.log('IDDDD', id);
     for (let rate  of this.producte.ratings) {
       let likes: any = [{}];
       likes = rate.likes;
@@ -264,37 +267,33 @@ export class DetailProductComponent implements OnInit {
   }
   public iconsSpecifications(spec) {
     if (spec !== ['']) {
-      if (spec.procesador !== '') {
-        this.specProcesador = spec.procesador;
-        this.spec1 = true;
-      }
-      if (spec.pantalla !== '') {
-        this.specPantalla = spec.pantalla;
-        this.spec2 = true;
-      }
-      if (spec.so !== '') {
-        this.specSo = spec.so;
-        this.spec8 = true;
-      }
-      if (spec.ram !== '') {
-        this.specRam = spec.ram;
-        this.spec3 = true;
-      }
-      if (spec.disco !== '') {
-        this.specDisco = spec.disco;
-        this.spec4 = true;
-      }
-      if (spec.peso !== '') {
-        this.specPeso = spec.peso;
-        this.spec6 = true;
-      }
-      if (spec.camara !== '') {
-        this.specCamara = spec.camara;
-        this.spec5 = true;
-      }
-      if (spec.tarjetaGrafica !== '') {
-        this.specTarjetaGrafica = spec.tarjetaGrafica;
-        this.spec7 = true;
+      for (let i=0; i < 7; i++) {
+        if (spec[i].name === 'Procesador') {
+          this.specProcesador = spec[i].spec;
+          this.spec1 = true;
+        }else if (spec[i].name === 'Pantalla') {
+          this.specPantalla = spec[i].spec;
+          this.spec2 = true;
+        }else if (spec[i].name === 'Sistema Operativo') {
+          this.specSo = spec[i].spec;
+          this.spec8 = true;
+        }else if (spec[i].name === 'Memoria Ram') {
+          this.specRam = spec[i].spec;
+          this.spec3 = true;
+        }else if (spec[i].name === 'Disco Duro') {
+          this.specDisco = spec[i].spec;
+          this.spec4 = true;
+        }else if (spec[i].name === 'Peso') {
+          this.specPeso = spec[i].spec;
+          this.spec6 = true;
+        }else if (spec[i].name === 'Camara') {
+          this.specCamara = spec[i].spec;
+          this.spec5 = true;
+        }
+        if (spec.tarjetaGrafica !== '') {
+          this.specTarjetaGrafica = spec.tarjetaGrafica;
+          this.spec7 = true;
+        }
       }
     }
   }

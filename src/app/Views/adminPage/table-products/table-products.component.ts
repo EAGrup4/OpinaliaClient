@@ -5,6 +5,7 @@ import {ProductService} from '../../../services/product.service';
 import {IAlert} from '../table-users/table-users.component';
 import {Specifications} from '../../../classes/specifications.model';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-table-products',
@@ -14,16 +15,32 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 })
 
 export class TableProductsComponent implements OnInit {
+  desktop: FormGroup;
+  laptop: FormGroup;
+  tablet: FormGroup;
+  phone: FormGroup;
   products = new Product('', '', '', [], null, [], null, '', null, null, null);
-  productsSend = {name: '', category: '', company: '', specifications: Specifications['']};
+  productsSend = {name: '', category: '', company: ''};
   objectsFilter = {name: '', category: '', company: ''};
-  productsMody = {name: '', category: '', company: '', specifications: Specifications[''], _id: ''};
+  productsMody = {name: '', category: '', company: '', _id: ''};
+  specs: { name: string, spec: string } = { name: '', spec: '' };
+  specs1: { name: string, spec: string } = { name: '', spec: '' };
+  specs2: { name: string, spec: string } = { name: '', spec: '' };
+  specs3: { name: string, spec: string } = { name: '', spec: '' };
+  specs4: { name: string, spec: string } = { name: '', spec: '' };
+  specs5: { name: string, spec: string } = { name: '', spec: '' };
+  specs6: { name: string, spec: string } = { name: '', spec: '' };
+  specs7: { name: string, spec: string } = { name: '', spec: '' };
+  spec: any = [];
+  proc1: string; ram1: string; disk1: string; graphic1: string; so1: string; proc2: string; screen2: string;
+  ram2: string; disk2: string; graphic2: string; gr2: string; so2: string; proc3: string; screen3: string; ram3: string; disk3: string;
+  gr3: string; cam3: string; so3: string; proc4: string; screen4: string; ram4: string; disk4: string; gr4: string; cam4: string;
+  so4: string;
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();
   private backup: Array<IAlert>;
-  spec = new Specifications('', '', '', '', '', '', '', '');
-  constructor(private productService: ProductService, private http: Http) {
+  constructor(private productService: ProductService, private http: Http, private fb: FormBuilder) {
     this.backup = this.alerts.map((alert: IAlert) => Object.assign({}, alert));
   }
   product: any;
@@ -115,6 +132,7 @@ export class TableProductsComponent implements OnInit {
       });
   }
   addProduct(name: string, category: string, company: string) {
+    console.log('SPEC', this.spec);
     this.productsSend.category = category;
     this.productsSend.name = name;
     this.productsSend.company = company;
@@ -128,7 +146,6 @@ export class TableProductsComponent implements OnInit {
     this.productService.addProduct(this.productsSend).subscribe(
       (data) => {
         console.log(data);
-        // this.error = data.name; ARREGLAR SI SE PRODUCE ALGUN ERROR
         if (this.error === 'CastError') {
           this.alerts.pop();
           this.alerts.push({
@@ -316,6 +333,107 @@ export class TableProductsComponent implements OnInit {
       .map((res: Response) => res.json())
       .subscribe(data => {console.log(data);
       });
+  }
+  /*private category: string, proc1: string, ram1: string, disk1: string, graphic1: string, so1: string, proc2: string, screen2: string,
+  ram2: string, disk2, graphic2: string, gr2: string, so2: string, proc3: string, screen3: string, ram3: string, disk3: string,
+  gr3: string, cam3: string, so3: string, proc4: string, screen4: string, ram4: string, disk4: string, gr4: string, cam4: string,
+  so4: string*/
+  passSpec(category) {
+    console.log(category, this.proc1, this.ram1);
+    for (let i = 0; i < 7; i++) {
+      this.spec.pop();
+    }
+
+    if (category === 'desktop') {
+      this.specs.name = 'Procesador';
+      this.specs.spec = this.proc1;
+      this.spec.push(this.specs);
+      this.specs1.name = 'Memoria Ram';
+      this.specs1.spec = this.ram1;
+      this.spec.push(this.specs1);
+      this.specs2.name = 'Disco Duro';
+      this.specs2.spec = this.disk1;
+      this.spec.push(this.specs2);
+      this.specs3.name = 'Tarjeta Grafica';
+      this.specs3.spec = this.graphic1;
+      this.spec.push(this.specs3);
+      this.specs4.name = 'Sistema Operativo';
+      this.specs4.spec = this.so1;
+      this.spec.push(this.specs4);
+      console.log(this.spec);
+    } else if ( category === 'laptop') {
+      this.specs.name = 'Procesador';
+      this.specs.spec = this.proc2;
+      this.spec.push(this.specs);
+      this.specs1.name = 'Pantalla';
+      this.specs1.spec = this.screen2;
+      this.spec.push(this.specs1);
+      this.specs2.name = 'Memoria Ram';
+      this.specs2.spec = this.ram2;
+      this.spec.push(this.specs2);
+      this.specs3.name = 'Disco Duro';
+      this.specs3.spec = this.disk2;
+      this.spec.push(this.specs3);
+      this.specs4.name = 'Tarjeta Grafica';
+      this.specs4.spec = this.graphic2;
+      this.spec.push(this.specs4);
+      this.specs5.name = 'Peso';
+      this.specs5.spec = this.gr2;
+      this.spec.push(this.specs5);
+      this.specs6.name = 'Sistema Operativo';
+      this.specs6.spec = this.so2;
+      this.spec.push(this.specs6);
+    } else if ( category === 'tablet') {
+      this.specs.name = 'Procesador';
+      this.specs.spec = this.proc3;
+      this.spec.push(this.specs);
+      this.specs1.name = 'Pantalla';
+      this.specs1.spec = this.screen3;
+      this.spec.push(this.specs1);
+      this.specs2.name = 'Memoria Ram';
+      this.specs2.spec = this.ram3;
+      this.spec.push(this.specs2);
+      this.specs3.name = 'Disco Duro';
+      this.specs3.spec = this.disk3;
+      this.spec.push(this.specs3);
+      this.specs4.name = 'Peso';
+      this.specs4.spec = this.gr3;
+      this.spec.push(this.specs4);
+      this.specs5.name = 'Camara';
+      this.specs5.spec = this.cam3;
+      this.spec.push(this.specs5);
+      this.specs6.name = 'Sistema Operativo';
+      this.specs6.spec = this.so3;
+      this.spec.push(this.specs6);
+    } else if ( category === 'phone') {
+      this.specs.name = 'Procesador';
+      this.specs.spec = this.proc4;
+      this.spec.push(this.specs);
+      this.specs1.name = 'Pantalla';
+      this.specs1.spec = this.screen4;
+      this.spec.push(this.specs1);
+      this.specs2.name = 'Memoria Ram';
+      this.specs2.spec = this.ram4;
+      this.spec.push(this.specs2);
+      this.specs3.name = 'Disco Duro';
+      this.specs3.spec = this.disk4;
+      this.spec.push(this.specs3);
+      this.specs4.name = 'Peso';
+      this.specs4.spec = this.gr4;
+      this.spec.push(this.specs4);
+      this.specs5.name = 'Camara';
+      this.specs5.spec = this.cam4;
+      this.spec.push(this.specs5);
+      this.specs6.name = 'Sistema Operativo';
+      this.specs6.spec = this.so4;
+      this.spec.push(this.specs6);
+    }
+    console.log(this.spec);
+    this.productService.addSpecs(this.id, this.spec).subscribe(
+      (data) => {
+        console.log(data);
+      }
+    );
   }
   private clearArrayOfObjects() {
     for (let i = -1; i <= this.arrayObjects.length + 1; i++) {
