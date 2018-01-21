@@ -34,7 +34,7 @@ export class DetailProductComponent implements OnInit {
   data2: any;
   id: String;
   val = 50;
-  chVal: number = null;
+  chVal: number;
   averageRatingPerCent: number;
   numberProgressBar: string;
   opNumberProgressBar: string;
@@ -56,6 +56,9 @@ export class DetailProductComponent implements OnInit {
   greenButton = false;
   idComment: string;
   reportToSend = { comment: '', reason: ''};
+  showSpecTitle: any;
+  specSave: { name: string, spec: string } = { name: '', spec: '' };
+  specShow: any = [];
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -285,31 +288,41 @@ export class DetailProductComponent implements OnInit {
       }
       console.log('Numbeeeer', number);
       for (let i = 0; i < number ; i++) {
-        if (spec[i].name === 'Procesador') {
-          this.specProcesador = spec[i].spec;
-          this.spec1 = true;
-        }else if (spec[i].name === 'Pantalla') {
-          this.specPantalla = spec[i].spec;
-          this.spec2 = true;
-        }else if (spec[i].name === 'Sistema Operativo') {
-          this.specSo = spec[i].spec;
-          this.spec8 = true;
-        }else if (spec[i].name === 'Memoria Ram') {
-          this.specRam = spec[i].spec;
-          this.spec3 = true;
-        }else if (spec[i].name === 'Disco Duro') {
-          this.specDisco = spec[i].spec;
-          this.spec4 = true;
-        }else if (spec[i].name === 'Peso') {
-          this.specPeso = spec[i].spec;
-          this.spec6 = true;
-        }else if (spec[i].name === 'Camara') {
-          this.specCamara = spec[i].spec;
-          this.spec5 = true;
-        }else if (spec[i].name === 'Tarjeta Grafica') {
-          this.specTarjetaGrafica = spec[i].spec;
-          this.spec7 = true;
+        if (spec[i].name) {
+          if (spec[i].name === 'Procesador') {
+            this.specProcesador = spec[i].spec;
+            this.spec1 = true;
+          } else if (spec[i].name === 'Pantalla') {
+            this.specPantalla = spec[i].spec;
+            this.spec2 = true;
+          } else if (spec[i].name === 'Sistema Operativo') {
+            this.specSo = spec[i].spec;
+            this.spec8 = true;
+          } else if (spec[i].name === 'Memoria Ram') {
+            this.specRam = spec[i].spec;
+            this.spec3 = true;
+          } else if (spec[i].name === 'Disco Duro') {
+            this.specDisco = spec[i].spec;
+            this.spec4 = true;
+          } else if (spec[i].name === 'Peso') {
+            this.specPeso = spec[i].spec;
+            this.spec6 = true;
+          } else if (spec[i].name === 'Camara') {
+            this.specCamara = spec[i].spec;
+            this.spec5 = true;
+          } else if (spec[i].name === 'Tarjeta Grafica') {
+            this.specTarjetaGrafica = spec[i].spec;
+            this.spec7 = true;
+          } else {
+            this.specSave.name = spec[i].name;
+            this.specSave.spec = spec[i].spec;
+            this.specShow.push(this.specSave);
+          }
         }
+      }
+      console.log('AAAAAAA', this.specShow);
+      for (let i = 0; i < number ; i++) {
+        this.specShow.pop();
       }
     }
   }
