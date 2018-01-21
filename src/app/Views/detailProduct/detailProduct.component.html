@@ -170,7 +170,7 @@
             </div>
             <div class="opRating-bar">
               <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(ratin.rate)>
+                <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(ratin2.rate)>
                 </div>
               </div>
             </div>
@@ -357,7 +357,7 @@
                     <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates.numDislike}}</a></p>
                   </div>
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalReport"><i class="fa fa-bullhorn"></i>Report</button>
                   </div>
                 </div>
                 <div class="outer" *ngIf="rates.liked">
@@ -368,7 +368,7 @@
                     <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates.numDislike}}</a></p>
                   </div>
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalReport"><i class="fa fa-bullhorn"></i>Report</button>
                   </div>
                 </div>
                 <div class="outer" *ngIf="rates.disliked">
@@ -379,7 +379,7 @@
                     <p class="text-right"><a class="btn btn-danger btn-sm"><i class="fa fa-thumbs-down"></i>{{rates.numDislike}}</a></p>
                   </div>
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalReport" (click)="passIdToReport(rates._id)"><i class="fa fa-bullhorn"></i>Report</button>
                   </div>
                 </div>
               </div>
@@ -396,6 +396,34 @@
       </div>
     </article>
   </section>
-
 </div>
 
+<div class="modal fade" id="modalReport" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="reason" class="control-label">Razón:</label>
+          <select name="reason" id="reason" class="form-control" #reason>
+            <option value="Contenido sexual">Contenido sexual</option>
+            <option value="Contenido inadecuado">Contenido inadecuado</option>
+            <option value="Contenido violento o que incita al odio">Contenido violento o que incita al odio</option>
+            <option value="Contenido engañoso o con spam">Contenido engañoso o con spam</option>
+            <option value="Contenido para trollear">Contenido para trollear</option>
+            <option value="Contenido repetitivo o flood">Contenido repetitivo o flood</option>
+            <option value="Otros">Otros</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="comment" class="control-label">Comentario:</label>
+          <input type="text" class="form-control" id="comment" name="comment" title="Introduzca su comentario" placeholder="Comentario" #comment>
+          <span class="help-block"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="reportComment(comment.value, reason.value)">Reportar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -54,6 +54,8 @@ export class DetailProductComponent implements OnInit {
   whiteButton = true;
   redButton = false;
   greenButton = false;
+  idComment: string;
+  reportToSend = { comment: '', reason: ''};
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -218,12 +220,24 @@ export class DetailProductComponent implements OnInit {
   }
 
   dislikeButton1(rates) {
-    console.log('ID RATES2',rates._id);
+    console.log('ID RATES2', rates._id);
     this.productService.dislikeButton(this.prod._id, rates._id).subscribe(
       (data) => {
         console.log(data);
         this.producte = data;
         this.searchLikeDislike();
+      }
+    );
+  }
+  passIdToReport(id: string) {
+    this.idComment = id;
+  }
+  reportComment(comment, reason) {
+    this.reportToSend.comment = comment;
+    this.reportToSend.reason = reason;
+    this.productService.reportComment(this.prod._id, this.idComment, this.reportToSend).subscribe(
+      (data) => {
+        console.log(data);
       }
     );
   }
@@ -268,6 +282,7 @@ export class DetailProductComponent implements OnInit {
       } else {
         number = 7;
       }
+      console.log('Numbeeeer', number);
       for (let i = 0; i < number ; i++) {
         if (spec[i].name === 'Procesador') {
           this.specProcesador = spec[i].spec;
@@ -334,7 +349,7 @@ export class DetailProductComponent implements OnInit {
   createFormControls() {
     this.titleControl = new FormControl('', [
       Validators.required,
-      CustomValidators.rangeLength([4, 15])
+      CustomValidators.rangeLength([4, 20])
     ]);
     this.commentControl = new FormControl('', [
       Validators.required,
