@@ -204,7 +204,7 @@ export class DetailProductComponent implements OnInit {
   }
 
   likeButton1(rates) {
-    console.log('ID RATES1',rates._id);
+    console.log('ID RATES1', rates._id);
     this.productService.likeButton(this.prod._id, rates._id).subscribe(
       (data) => {
         this.producte = data;
