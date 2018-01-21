@@ -114,38 +114,69 @@ export class DetailProductComponent implements OnInit {
   passID(id: string) {
     this.id = id;
   }
+  private checkComment (comment: string) {
+    const banned = ['MMM', 'XXX', 'xxx', 'mmm', 'caca', 'culo']; // se necesita que el server mande un array de palabras a banear
+      for (let x = 0; x < banned.length; x++) {
+        const regExp = new RegExp(banned[x]);
+        comment = comment.replace(regExp, '***');
+      }
+      return comment;
+  }
   sendComments(title: string, comment: string, mark: number) {
-    this.user = JSON.parse(sessionStorage.getItem('user'));
-    if (this.user !== null) {
-      this.ratingSend.userId = this.user._id;
-      this.ratingSend.title = title;
-      this.ratingSend.comment = comment;
-      this.ratingSend.rate = mark;
-      console.log(this.ratingSend);
-      this.productService.sendComment(this.ratingSend, this.prod._id).subscribe(// ng -g component name
-        (data) => {
-          console.log(data);
-          this.product = data;
-          this.producte = this.product;
-          this.averageRatingPerCent = this.product.avgRate * 10;
-          this.summaryOpinions(this.product);
-          this.numb = this.product.ratings.length;
-          this.alerts.pop();
-          this.alerts.push({
-            id: 1,
-            type: 'success',
-            message: 'OPINION REALIZADA',
+    comment = this.checkComment(comment);// check if comment have censored words
+    if (this.myform.valid && this.myform.touched) {
+      this.user = JSON.parse(sessionStorage.getItem('user'));
+      if (this.user !== null) {
+        this.ratingSend.userId = this.user._id;
+        this.ratingSend.title = title;
+        this.ratingSend.comment = comment;
+        this.ratingSend.rate = mark;
+        console.log(this.ratingSend);
+        this.productService.sendComment(this.ratingSend, this.prod._id).subscribe(// ng -g component name
+          (data) => {
+            console.log(data);
+            this.product = data;
+            this.producte = this.product;
+            this.averageRatingPerCent = this.product.avgRate * 10;
+            this.summaryOpinions(this.product);
+            this.numb = this.product.ratings.length;
+            this.alerts.pop();
+            this.alerts.push({
+              id: 1,
+              type: 'success',
+              message: 'OPINION REALIZADA',
+            });
+            setTimeout(() => this.alerts.pop(), 5000);
+          }, (err) => {
+            if (err.status = 409) {
+              this.alerts.pop();
+              this.alerts.push({
+                id: 1,
+                type: 'danger',
+                message: 'Ya has comentado',
+              });
+              setTimeout(() => this.alerts.pop(), 5000);
+            }else {
+              console.log(err);
+            }
           });
-        }, (err) => {
-          console.log(err);
+      } else {
+        this.alerts.pop();
+        this.alerts.push({
+          id: 2,
+          type: 'danger',
+          message: 'PARA PODER OPINAR TIENES QUE ENTRAR EN TU CUENTA DE OPINALIA',
         });
-    } else {
+        setTimeout(() => this.alerts.pop(), 8000);
+      }
+    }else {
       this.alerts.pop();
       this.alerts.push({
         id: 2,
         type: 'danger',
-        message: 'PARA PODER OPINAR TIENES QUE ENTRAR EN TU CUENTA DE OPINALIA',
+        message: 'Rellena correctamente los campos',
       });
+      setTimeout(() => this.alerts.pop(), 5000);
     }
   }
   bestRatings() {
@@ -304,7 +335,7 @@ export class DetailProductComponent implements OnInit {
   createFormControls() {
     this.titleControl = new FormControl('', [
       Validators.required,
-      CustomValidators.rangeLength([4, 12])
+      CustomValidators.rangeLength([4, 15])
     ]);
     this.commentControl = new FormControl('', [
       Validators.required,

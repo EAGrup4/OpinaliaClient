@@ -6,7 +6,7 @@
     <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
   </p>
   <form id="editForm" class="col-md-7" novalidate [formGroup]="myform">
-    <div class="form-group"[ngClass]="{
+    <div class="form-group" [ngClass]="{
     'has-danger': nameControl.invalid && (nameControl.dirty || nameControl.touched),
     'has-success': nameControl.valid && (nameControl.dirty || nameControl.touched)}">
       <label for="username3" class="control-label">Nombre de usuario:</label>
