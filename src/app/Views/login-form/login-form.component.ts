@@ -166,7 +166,7 @@ export class LoginFormComponent implements OnInit {
     FB.getLoginStatus((response) => {
       if (response.status === 'connected') {
         sessionStorage.setItem('socialToken', JSON.stringify(response.authResponse.accessToken));
-        const sendUser = {id: '', userr: {name: '', _id: '', admin: false, token: '', email: '', password: ''}};
+        const sendUser = {id: '', userr: {name: '', _id: '', admin: false, token: '', email: '', password: '', profileImage: ''}};
         FB.api('/me?fields=id,name,first_name,email,gender,picture.width(150).height(150),age_range,friends',
           (result) => {
             if (result && !result.error) {
@@ -175,6 +175,7 @@ export class LoginFormComponent implements OnInit {
               sendUser.userr._id = null;
               sendUser.userr.email = result.email;
               sendUser.userr.password = result.id;
+              sendUser.userr.profileImage = result.picture.data.url;
               console.log(result);
               this.userService.loginUserFB(sendUser).subscribe(
                 (data) => {
@@ -221,13 +222,14 @@ export class LoginFormComponent implements OnInit {
             FB.api('/me?fields=id,name,first_name,email,gender,picture.width(150).height(150),age_range,friends',
               (result) => {
                 console.log('--------------------' + result);
-                const sendUser = {id: '', userr: {name: '', _id: '', admin: false, token: '', email: '', password: ''}};
+                const sendUser = {id: '', userr: {name: '', _id: '', admin: false, token: '', email: '', password: '', profileImage: ''}};
               sendUser.id = result.id;
               sendUser.userr.name = result.name;
               sendUser.userr._id = null;
               sendUser.userr.email = result.email;
               sendUser.userr.password = result.id;
-              console.log(result);
+              sendUser.userr.profileImage = result.picture.data.url;
+                console.log(result);
               this.userService.loginUserFB(sendUser).subscribe(
                 (data) => {
                   console.log(data);
