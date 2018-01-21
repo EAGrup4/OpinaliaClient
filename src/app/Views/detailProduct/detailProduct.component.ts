@@ -275,7 +275,8 @@ export class DetailProductComponent implements OnInit {
     }
   }
   public iconsSpecifications(spec, category) {
-    if (spec !== ['']) {
+    console.log(spec);
+    if (spec) {
       let number;
       if (category === 'desktop') {
         number = 5;

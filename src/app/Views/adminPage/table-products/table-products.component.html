@@ -4,6 +4,7 @@
   <button class="btn btn-lg" (click)="showProducts()">ACTUALIZAR</button>
   <button class="btn btn-lg" data-toggle="modal" data-target="#myModal2">AÑADIR PRODUCTO</button>
   <button class="btn btn-danger btn-xs" data-title="DeleteSelected" data-target="#deleteSelected" (click)="deleteSelected()" ><span class="glyphicon glyphicon-trash"></span></button>
+  <h5>Despues de añadir producto, editalo para subir la imagen y las especificaciones.</h5>
   <div class="col-md-10 form-group">
     <input class="form-control" type='text' name='search2' placeholder='Busque el producto que desee' #searcher2 [(ngModel)]="objectsFilter.name"/>
     <p *ngFor="let alert of alerts" id="alertType">
@@ -466,88 +467,117 @@
           <!--<div class="form-group">
             <label for="company" class="control-label">Especificaciones: </label>
               <table class="table table-striped table-bordered" *ngIf="tableAccessories">
-                <thead>
-                  <tr>
-                    <th>Titulo</th>
-                    <th>Especificación</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let field of fieldArray; let i = index">
-                    <td>
-                      <input [(ngModel)]="field.name" class="form-control" type="text" name="{{field.name}}" />
-                    </td>
-                    <td>
-                      <input [(ngModel)]="field.spec" class="form-control" type="text" name="{{field.spec}}" />
-                    </td>
-                    <td>
-                      <button class="btn btn-default"  type="button" (click)="deleteFieldValue(i)">Delete</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <input class="form-control" type="text" name="newAttributeName" />
-                    </td>
-                    <td>
-                      <input class="form-control" type="text" name="newAttributeSpec" />
-                    </td>
-                    <td>
-                      <button class="btn btn-default" type="button" (click)="addFieldValue()">Add</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            <form [formGroup]="desktop" (submit)="save(desktop.value)">
+              <thead>
+              <tr>
+                <th>Titulo</th>
+                <th>Especificación</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <input  class="form-control" type="text" id="names11" name="names11" [(ngModel)]="names11">
+                </td>
+                <td>
+                  <input  class="form-control" type="text" id="spec11" name="spec11" [(ngModel)]="spec11">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input  class="form-control" type="text" id="names12" name="names12" [(ngModel)]="names12">
+                <td>
+                  <input  class="form-control" type="text" id="spec12" name="spec12" [(ngModel)]="spec12">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input  class="form-control" type="text" id="names13" name="names13" [(ngModel)]="names13">
+                <td>
+                  <input  class="form-control" type="text" id="spec13" name="spec13" [(ngModel)]="spec13">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input  class="form-control" type="text" id="names14" name="names14" [(ngModel)]="names14">
+                <td>
+                  <input  class="form-control" type="text" id="spec14" name="spec14" [(ngModel)]="spec14">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input  class="form-control" type="text" id="names15" name="names15" [(ngModel)]="names15">
+                <td>
+                  <input  class="form-control" type="text" id="spec15" name="spec15" [(ngModel)]="spec15">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input  class="form-control" type="text" id="names16" name="names16" [(ngModel)]="names16">
+                <td>
+                  <input  class="form-control" type="text" id="spec16" name="spec16" [(ngModel)]="spec16">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input  class="form-control" type="text" id="names17" name="names17" [(ngModel)]="names17">
+                <td>
+                  <input  class="form-control" type="text" id="spec17" name="spec17" [(ngModel)]="spec17">
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <form>
             <table class="table table-striped table-bordered" *ngIf="tableDesktop">
-                <thead>
-                  <tr>
-                    <th>Titulo</th>
-                    <th>Especificación</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <label class="form-control" type="text">Procesador</label>
-                    </td>
-                    <td>
-                      <input  class="form-control" type="text" formControlName="procesador1"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-control" type="text">Memoria Ram</label>
-                    <td>
-                    <input  class="form-control" type="text" [(ngModel)]="spec[1].spec" [ngModelOptions]="{standalone: true}"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-control" [(ngModel)]="spec[2].name" type="text">Disco Duro</label>
-                    </td>
-                    <td>
-                      <input  class="form-control" type="text" [(ngModel)]="spec[2].spec" [ngModelOptions]="{standalone: true}"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-control" [(ngModel)]="spec[3].name" type="text" >Tarjeta Gràfica</label>
-                    </td>
-                    <td>
-                      <input  class="form-control" type="text" [(ngModel)]="spec[3].spec" [ngModelOptions]="{standalone: true}"/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="form-control" [(ngModel)]="spec[4].name" type="text" >Sistema Operativo</label>
-                    </td>
-                    <td>
-                      <input  class="form-control" type="text" [(ngModel)]="spec[4].spec" [ngModelOptions]="{standalone: true}"/>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+              <thead>
+              <tr>
+                <th>Titulo</th>
+                <th>Especificación</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>
+                  <label class="form-control" for="proc1" type="text">Procesador</label>
+                </td>
+                <td>
+                  <input class="form-control" type="text" id="proc11" name="proc11" [(ngModel)]="proc11" >
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="ram1" type="text">Memoria Ram (GB)</label>
+                <td>
+                  <input  class="form-control" type="text" id="ram11" name="ram11" [(ngModel)]="ram11">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="disk1" type="text">Disco Duro (GB)</label>
+                </td>
+                <td>
+                  <input  class="form-control" type="text" id="disk11" name="disk11" [(ngModel)]="disk11">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="graphic1" type="text" >Tarjeta Gràfica</label>
+                </td>
+                <td>
+                  <input  class="form-control" type="text" id="graphic11" name="graphic11" [(ngModel)]="graphic11">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="so1" type="text" >Sistema Operativo</label>
+                </td>
+                <td>
+                  <input  class="form-control" type="text" id="so11" name="so11" [(ngModel)]="so11">
+                </td>
+              </tr>
+              </tbody>
+            </table>
             </form>
+            <form>
             <table class="table table-striped table-bordered" *ngIf="tableLaptop">
               <thead>
               <tr>
@@ -558,59 +588,61 @@
               <tbody>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Procesador</span>
+                  <label class="form-control" for="proc2" type="text">Procesador</label>
                 </td>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.procesador" [ngModelOptions]="{standalone: true}"/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="form-control" type="text">Pantalla</span>
-                <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.pantalla" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="proc12" name="proc12" [(ngModel)]="proc12">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Memoria Ram</span>
+                  <label class="form-control" for="screen2" type="text">Pantalla</label>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.ram" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="screen12" name="screen12" [(ngModel)]="screen12">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Disco Duro</span>
-                </td>
+                  <label class="form-control" for="ram2" type="text">Memoria Ram (GB)</label>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.disco" [ngModelOptions]="{standalone: true}"/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="form-control" type="text">Tarjeta Gràfica</span>
-                </td>
-                <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.tarjetaGrafica" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="ram12" name="ram12" [(ngModel)]="ram12">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Peso</span>
+                  <label class="form-control" for="disk2" type="text">Disco Duro (GB)</label>
+                </td>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.peso" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="disk12" name="disk12" [(ngModel)]="disk12">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Sistema Operativo</span>
+                  <label class="form-control" for="graphic2" type="text">Tarjeta Gràfica</label>
                 </td>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.so" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="graphic12" name="graphic12" [(ngModel)]="graphic12">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="gr2" type="text">Peso (gr)</label>
+                <td>
+                  <input  class="form-control" type="text" id="gr12" name="gr12" [(ngModel)]="gr12">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="so2" type="text">Sistema Operativo</label>
+                </td>
+                <td>
+                  <input  class="form-control" type="text" id="so12" name="so12" [(ngModel)]="so12">
                 </td>
               </tr>
               </tbody>
             </table>
+            </form>
+            <form>
             <table class="table table-striped table-bordered" *ngIf="tableTablet">
               <thead>
               <tr>
@@ -621,59 +653,61 @@
               <tbody>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Procesador</span>
+                  <label class="form-control" for="proc3" type="text">Procesador</label>
                 </td>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.procesador" [ngModelOptions]="{standalone: true}"/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="form-control" type="text">Pantalla</span>
-                <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.pantalla" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="proc13" name="proc13" [(ngModel)]="proc13">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Memoria Ram</span>
+                  <label class="form-control" for="screen3" type="text">Pantalla</label>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.ram" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="screen13" name="screen13" [(ngModel)]="screen13">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Disco Duro</span>
-                </td>
+                  <label class="form-control" for="ram3" type="text">Memoria Ram (GB)</label>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.disco" [ngModelOptions]="{standalone: true}"/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="form-control" type="text">Peso</span>
-                <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.peso" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="ram13" name="ram13" [(ngModel)]="ram13">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Camara</span>
+                  <label class="form-control" for="disk3" type="text">Disco Duro (GB)</label>
                 </td>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.camara" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="disk13" name="disk13" [(ngModel)]="disk13">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Sistema Operativo</span>
+                  <label class="form-control" for="gr3" type="text">Peso (gr)</label>
+                <td>
+                  <input  class="form-control" type="text" id="gr13" name="gr13" [(ngModel)]="gr13">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="cam3" type="text">Camara (Mpx)</label>
                 </td>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.so" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="cam13" name="cam13" [(ngModel)]="cam13">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="so3" type="text">Sistema Operativo</label>
+                </td>
+                <td>
+                  <input  class="form-control" type="text" id="so13" name="so13" [(ngModel)]="so13">
                 </td>
               </tr>
               </tbody>
             </table>
+            </form>
+            <form>
             <table class="table table-striped table-bordered" *ngIf="tableMobile">
               <thead>
               <tr>
@@ -684,59 +718,60 @@
               <tbody>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Procesador</span>
+                  <label class="form-control" for="proc4" type="text">Procesador</label>
                 </td>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.procesador" [ngModelOptions]="{standalone: true}"/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="form-control" type="text">Pantalla</span>
-                <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.pantalla" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="proc14" name="proc14" [(ngModel)]="proc14">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Memoria Ram</span>
+                  <label class="form-control" for="screen4" type="text">Pantalla</label>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.ram" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="screen14" name="screen14" [(ngModel)]="screen14">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Disco Duro</span>
-                </td>
+                  <label class="form-control" for="ram4" type="text">Memoria Ram (GB)</label>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.disco" [ngModelOptions]="{standalone: true}"/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <span class="form-control" type="text">Peso</span>
-                <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.peso" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="ram14" name="ram14" [(ngModel)]="ram14">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Camara</span>
+                  <label class="form-control" for="disk4" type="text">Disco Duro (GB)</label>
                 </td>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.camara" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="disk14" name="disk14" [(ngModel)]="disk14">
                 </td>
               </tr>
               <tr>
                 <td>
-                  <span class="form-control" type="text">Sistema Operativo</span>
+                  <label class="form-control" for="gr4" type="text">Peso (gr)</label>
+                <td>
+                  <input  class="form-control" type="text" id="gr14" name="gr14" [(ngModel)]="gr14">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="cam4" type="text">Camara (Mpx)</label>
                 </td>
                 <td>
-                  <input  class="form-control" type="text" [(ngModel)]="spec.so" [ngModelOptions]="{standalone: true}"/>
+                  <input  class="form-control" type="text" id="cam14" name="cam14" [(ngModel)]="cam14">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label class="form-control" for="so4" type="text">Sistema Operativo</label>
+                </td>
+                <td>
+                  <input  class="form-control" type="text" id="so14" name="so14" [(ngModel)]="so14">
                 </td>
               </tr>
               </tbody>
             </table>
+            </form>
           </div>-->
           <p><a class="btn btn-info btn-block" (click)="addProduct(name2.value, category2.value, company2.value)" data-dismiss="modal">Añadir Producto</a></p>
         </form>

@@ -6,7 +6,7 @@
   <div class="row imageForm">
     <div class="col-md-4">
       <div class="image">
-        <img src="{{ this.producte.images[this.producte.images.length - 1].src }}" width="288px" height="288px">
+        <img src="{{ this.producte.images[this.producte.images.length - 1]?.src }}" width="288px" height="288px">
       </div>
     </div>
     <div class="col-md-4 putMarginBot">
@@ -76,7 +76,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 sumRate">{{ this.opinions9 }}</div>
+          <div class="col-md-3 sumRate">{{ this?.opinions9 }}</div>
         </div>
         <div class="col-md-12">
           <div class="col-md-3 opRate">7-8</div>
@@ -86,7 +86,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 sumRate">{{ this.opinions7 }}</div>
+          <div class="col-md-3 sumRate">{{ this?.opinions7 }}</div>
         </div>
         <div class="col-md-12">
           <div class="col-md-3 opRate">5-6</div>
@@ -96,7 +96,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 sumRate">{{ this.opinions5 }}</div>
+          <div class="col-md-3 sumRate">{{ this?.opinions5 }}</div>
         </div>
         <div class="col-md-12">
           <div class="col-md-3 opRate">3-4</div>
@@ -106,7 +106,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 sumRate">{{ this.opinions3 }}</div>
+          <div class="col-md-3 sumRate">{{ this?.opinions3 }}</div>
         </div>
         <div class="col-md-12">
           <div class="col-md-3 opRate">0-2</div>
@@ -116,7 +116,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 sumRate">{{ this.opinions0 }}</div>
+          <div class="col-md-3 sumRate">{{ this?.opinions0 }}</div>
         </div>
       </div>
       <div class="col-md-6 col-sm-6">
@@ -212,12 +212,12 @@
       </form>
      </div>
 
-    <div class="col-md-4 col-sm-6 ratingMarkForm">
+    <div class="col-md-4 col-sm-6 ratingMark">
       <div id="ratingMark">
-        {{this.chVal}}
+        {{this?.chVal}}
       </div>
       <div class="rating-bar">
-        <input type="range" min="0" max="10" name="chVal" class="slider" id="myRange" [(ngModel)]="chVal" #mark>
+        <input type="range" min="0" max="10" name="chVal" class="slider" id="myRange" [(ngModel)]="chVal">
       </div>
     </div>
 
@@ -329,32 +329,32 @@
               <div class="col-md-8 col-sm-8">
                 <div class="opinionTitle">
                   <div class="opTitile">
-                    <h3>{{ rates.title }}</h3>
+                    <h3>{{ rates?.title }}</h3>
                   </div>
                   <div class="opComment">
-                    <h5>{{ rates.comment }}</h5>
+                    <h5>{{ rates?.comment }}</h5>
                   </div>
                 </div>
-                <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{ rates.date | date: 'longDate'}}</time>
+                <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{ rates?.date | date: 'longDate'}}</time>
               </div>
               <div class="col-md-4 col-sm-4">
                 <div class="col-md-12 rating">
                   <div class="opRate">
-                    {{ rates.rate}}
+                    {{ rates?.rate}}
                   </div>
                   <div class="opRating-bar">
                     <div class="progress">
-                      <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(rates.rate)>
+                      <div class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10" [style.width]= getRate(rates?.rate)>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="outer" *ngIf="!rates.liked && !rates.disliked">
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="likeButton1(rates)"><i class="fa fa-thumbs-up"></i>{{rates.numLike}}</a></p>
+                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="likeButton1(rates)"><i class="fa fa-thumbs-up"></i>{{rates?.numLike}}</a></p>
                   </div>
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates.numDislike}}</a></p>
+                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates?.numDislike}}</a></p>
                   </div>
                   <div class="inner">
                     <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalReport"><i class="fa fa-bullhorn"></i>Report</button>
@@ -362,10 +362,10 @@
                 </div>
                 <div class="outer" *ngIf="rates.liked">
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-success btn-sm"><i class="fa fa-thumbs-up"></i>{{rates.numLike}}</a></p>
+                    <p class="text-right"><a class="btn btn-success btn-sm"><i class="fa fa-thumbs-up"></i>{{rates?.numLike}}</a></p>
                   </div>
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates.numDislike}}</a></p>
+                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates?.numDislike}}</a></p>
                   </div>
                   <div class="inner">
                     <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalReport"><i class="fa fa-bullhorn"></i>Report</button>
@@ -373,10 +373,10 @@
                 </div>
                 <div class="outer" *ngIf="rates.disliked">
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="likeButton1(rates)"><i class="fa fa-thumbs-up"></i>{{rates.numLike}}</a></p>
+                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="likeButton1(rates)"><i class="fa fa-thumbs-up"></i>{{rates?.numLike}}</a></p>
                   </div>
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-danger btn-sm"><i class="fa fa-thumbs-down"></i>{{rates.numDislike}}</a></p>
+                    <p class="text-right"><a class="btn btn-danger btn-sm"><i class="fa fa-thumbs-down"></i>{{rates?.numDislike}}</a></p>
                   </div>
                   <div class="inner">
                     <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalReport" (click)="passIdToReport(rates._id)"><i class="fa fa-bullhorn"></i>Report</button>

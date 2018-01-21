@@ -103,7 +103,7 @@ export class ProductService {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     const options = new RequestOptions({ headers: headers });
     console.log(text);
-    return this.http.get(this.url + '/category/' + text + '/' + category ,options)
+    return this.http.get(this.url + '/category/' + text + '/' + category , options)
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
@@ -112,9 +112,7 @@ export class ProductService {
     const options = new RequestOptions({ headers: headers });
     console.log(this.url + '/category/' + category);
     return this.http.get(this.url + '/category/' + category, options)
-      .map((res: Response) => {
-        res.json();
-      })
+      .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
   searchProductByCompany(company: string) {
