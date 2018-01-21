@@ -114,16 +114,7 @@ export class DetailProductComponent implements OnInit {
   passID(id: string) {
     this.id = id;
   }
-  private checkComment (comment: string) {
-    const banned = ['MMM', 'XXX', 'xxx', 'mmm', 'caca', 'culo']; // se necesita que el server mande un array de palabras a banear
-      for (let x = 0; x < banned.length; x++) {
-        const regExp = new RegExp(banned[x]);
-        comment = comment.replace(regExp, '***');
-      }
-      return comment;
-  }
   sendComments(title: string, comment: string, mark: number) {
-    comment = this.checkComment(comment);// check if comment have censored words
     if (this.myform.valid && this.myform.touched) {
       this.user = JSON.parse(sessionStorage.getItem('user'));
       if (this.user !== null) {
