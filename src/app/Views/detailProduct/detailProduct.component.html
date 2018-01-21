@@ -6,7 +6,7 @@
   <div class="row imageForm">
     <div class="col-md-4">
       <div class="image">
-        <img src="{{ this.producte.images[prod.images.length - 1].src }}" width="288px" height="288px">
+        <img src="{{ this.producte.images[this.producte.images.length - 1].src }}" width="288px" height="288px">
       </div>
     </div>
     <div class="col-md-4 putMarginBot">
@@ -324,12 +324,34 @@
                     </div>
                   </div>
                 </div>
-                <div id="outer">
+                <div class="outer" *ngIf="!rates.liked && !rates.disliked">
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-up"></i>0</a></p>
+                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="likeButton1(rates)"><i class="fa fa-thumbs-up"></i>{{rates.numLike}}</a></p>
                   </div>
                   <div class="inner">
-                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-thumbs-down"></i>0</a></p>
+                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates.numDislike}}</a></p>
+                  </div>
+                  <div class="inner">
+                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>
+                  </div>
+                </div>
+                <div class="outer" *ngIf="rates.liked">
+                  <div class="inner">
+                    <p class="text-right"><a class="btn btn-success btn-sm"><i class="fa fa-thumbs-up"></i>{{rates.numLike}}</a></p>
+                  </div>
+                  <div class="inner">
+                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates.numDislike}}</a></p>
+                  </div>
+                  <div class="inner">
+                    <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>
+                  </div>
+                </div>
+                <div class="outer" *ngIf="rates.disliked">
+                  <div class="inner">
+                    <p class="text-right"><a class="btn btn-default btn-sm" (click)="likeButton1(rates)"><i class="fa fa-thumbs-up"></i>{{rates.numLike}}</a></p>
+                  </div>
+                  <div class="inner">
+                    <p class="text-right"><a class="btn btn-danger btn-sm"><i class="fa fa-thumbs-down"></i>{{rates.numDislike}}</a></p>
                   </div>
                   <div class="inner">
                     <p class="text-right"><a class="btn btn-default btn-sm"><i class="fa fa-bullhorn"></i>Report</a></p>

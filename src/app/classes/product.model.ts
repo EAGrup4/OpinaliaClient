@@ -13,6 +13,6 @@ export class Product {
     public _id: string,
     public numRates: {type: Number, default: 0},
     public totalRate: {type: Number, default: 0},
-    public avgRate: {type: Number, default: -1}
+    public avgRate: {type: Number, default: -1},
   ) {}
 }
