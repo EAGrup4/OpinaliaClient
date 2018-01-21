@@ -267,7 +267,7 @@ export class DetailProductComponent implements OnInit {
   }
   public iconsSpecifications(spec) {
     if (spec !== ['']) {
-      for (let i=0; i < 7; i++) {
+      for (let i = 0; i < 7; i++) {
         if (spec[i].name === 'Procesador') {
           this.specProcesador = spec[i].spec;
           this.spec1 = true;
@@ -289,9 +289,8 @@ export class DetailProductComponent implements OnInit {
         }else if (spec[i].name === 'Camara') {
           this.specCamara = spec[i].spec;
           this.spec5 = true;
-        }
-        if (spec.tarjetaGrafica !== '') {
-          this.specTarjetaGrafica = spec.tarjetaGrafica;
+        }else if (spec[i].name !== 'Tarjeta Grafica') {
+          this.specTarjetaGrafica = spec[i].spec;
           this.spec7 = true;
         }
       }

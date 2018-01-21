@@ -103,11 +103,6 @@ export class TableProductsComponent implements OnInit {
     this.productsMody.name = name;
     this.productsMody.company = company;
     this.productsMody._id = this.id;
-    this.productsMody.specifications = this.spec;
-    if (this.productsMody.specifications.procesador === '') {
-      this.productsMody.specifications = '';
-      this.productsMody.specifications = this.fieldArray;
-    }
     console.log(this.productsMody);
     this.productService.modifyProduct(this.productsMody).subscribe(
       (data) => {
@@ -136,13 +131,7 @@ export class TableProductsComponent implements OnInit {
     this.productsSend.category = category;
     this.productsSend.name = name;
     this.productsSend.company = company;
-    this.productsSend.specifications = this.spec;
-    if (this.productsSend.specifications.procesador === '') {
-      this.productsSend.specifications = '';
-      this.productsSend.specifications = this.fieldArray;
-    }
     console.log(this.productsSend);
-    console.log('SPECIFIC', this.productsSend.specifications);
     this.productService.addProduct(this.productsSend).subscribe(
       (data) => {
         console.log(data);
