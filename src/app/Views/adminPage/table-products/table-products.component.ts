@@ -36,6 +36,8 @@ export class TableProductsComponent implements OnInit {
   ram2: string; disk2: string; graphic2: string; gr2: string; so2: string; proc3: string; screen3: string; ram3: string; disk3: string;
   gr3: string; cam3: string; so3: string; proc4: string; screen4: string; ram4: string; disk4: string; gr4: string; cam4: string;
   so4: string;
+  names1: string; names2: string; names3: string; names4: string; names5: string; names6: string; names7: string;
+  spec1: string; spec2: string; spec3: string; spec4: string; spec5: string; spec6: string; spec7: string;
   @Input()
   public alerts: Array<IAlert> = [];
   private _success = new Subject<string>();
@@ -90,11 +92,9 @@ export class TableProductsComponent implements OnInit {
   }
   passID(id: string, name: string, category: string, company: string, image: string) {
     this.id = id;
+    console.log('este es el', id);
     this.nameE = name;
     this.categoryE = category;
-    if (category === 'desktop') {
-
-    }
     this.companyE = company;
     this.url = image;
   }
@@ -328,11 +328,9 @@ export class TableProductsComponent implements OnInit {
   gr3: string, cam3: string, so3: string, proc4: string, screen4: string, ram4: string, disk4: string, gr4: string, cam4: string,
   so4: string*/
   passSpec(category) {
-    console.log(category, this.proc1, this.ram1);
     for (let i = 0; i < 7; i++) {
       this.spec.pop();
     }
-
     if (category === 'desktop') {
       this.specs.name = 'Procesador';
       this.specs.spec = this.proc1;
@@ -415,6 +413,28 @@ export class TableProductsComponent implements OnInit {
       this.spec.push(this.specs5);
       this.specs6.name = 'Sistema Operativo';
       this.specs6.spec = this.so4;
+      this.spec.push(this.specs6);
+    } else if (category === 'accessories') {
+      this.specs.name = this.names1;
+      this.specs.spec = this.spec1;
+      this.spec.push(this.specs);
+      this.specs1.name = this.names2;
+      this.specs1.spec = this.spec2;
+      this.spec.push(this.specs1);
+      this.specs2.name = this.names3;
+      this.specs2.spec = this.spec3;
+      this.spec.push(this.specs2);
+      this.specs3.name = this.names4;
+      this.specs3.spec = this.spec4;
+      this.spec.push(this.specs3);
+      this.specs4.name = this.names5;
+      this.specs4.spec = this.spec5;
+      this.spec.push(this.specs4);
+      this.specs5.name = this.names6;
+      this.specs5.spec = this.spec6;
+      this.spec.push(this.specs5);
+      this.specs6.name = this.names7;
+      this.specs6.spec = this.spec7;
       this.spec.push(this.specs6);
     }
     console.log(this.spec);

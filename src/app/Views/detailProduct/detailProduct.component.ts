@@ -73,7 +73,7 @@ export class DetailProductComponent implements OnInit {
         this.producte = this.product;
         this.averageRatingPerCent = this.product.avgRate * 10;
         this.summaryOpinions(this.product);
-        this.iconsSpecifications(this.product.specifications[0]);
+        this.iconsSpecifications(this.product.specifications[this.product.specifications.length - 1]);
         this.numb = this.product.ratings.length;
         if (this.product.avgRate === -1) {
           this.product.avgRate = 0;
@@ -258,7 +258,8 @@ export class DetailProductComponent implements OnInit {
   }
   public iconsSpecifications(spec) {
     if (spec !== ['']) {
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < spec.length ; i++) {
+        console.log(i);
         if (spec[i].name === 'Procesador') {
           this.specProcesador = spec[i].spec;
           this.spec1 = true;
@@ -280,7 +281,7 @@ export class DetailProductComponent implements OnInit {
         }else if (spec[i].name === 'Camara') {
           this.specCamara = spec[i].spec;
           this.spec5 = true;
-        }else if (spec[i].name !== 'Tarjeta Grafica') {
+        }else if (spec[i].name === 'Tarjeta Grafica') {
           this.specTarjetaGrafica = spec[i].spec;
           this.spec7 = true;
         }

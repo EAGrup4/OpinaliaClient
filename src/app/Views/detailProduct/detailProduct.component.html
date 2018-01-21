@@ -52,7 +52,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 col-sm-6 rating">
+    <div class="col-md-4 col-sm-6 rating2">
       <div class="averageRating">
         {{ this.producte.avgRate }}
       </div>
@@ -192,14 +192,15 @@
   </p>
 
   <h2 style="padding-bottom: 1%" #opinion>Escribir una opinion:</h2>
-  <form class="row opinionForm" [formGroup]="myform">
-    <div class="col-md-8 col-sm-6 opinionTitle form-group" [ngClass]="{
+  <form class="row opinionForm" ><!--[formGroup]="myform"-->
+    <div class="col-md-8 col-sm-6 opinionTitle form-group" >
+      <!--[ngClass]="{
     'has-danger': titleControl.invalid && (titleControl.dirty || titleControl.touched),
-    'has-success': titleControl.valid && (titleControl.dirty || titleControl.touched)}">
+    'has-success': titleControl.valid && (titleControl.dirty || titleControl.touched)}"-->
       <label for="titulo">Título:</label>
-      <input type="text" class="form-control" formControlName="titleControl" required id="titulo" placeholder="Escribe aqui el título" >
-      <p *ngIf="(titleControl.errors && (titleControl.dirty || titleControl.touched)) && myform.controls.titleControl.errors?.required">Introduzca un titulo</p>
-      <p *ngIf="(titleControl.errors && (titleControl.dirty || titleControl.touched)) && myform.controls.titleControl.errors?.rangeLength">Tiene que tener minimo 4 letras y maximo de 15 letras</p>
+      <input type="text" class="form-control"  required id="titulo" placeholder="Escribe aqui el título" >
+      <!--formControlName="titleControl"    <p *ngIf="(titleControl.errors && (titleControl.dirty || titleControl.touched)) && myform.controls.titleControl.errors?.required">Introduzca un titulo</p>-->
+      <!--<p *ngIf="(titleControl.errors && (titleControl.dirty || titleControl.touched)) && myform.controls.titleControl.errors?.rangeLength">Tiene que tener minimo 4 letras y maximo de 15 letras</p>-->
     </div>
 
     <div class="col-md-4 col-sm-6 ratingMarkForm">
@@ -211,13 +212,14 @@
       </div>
     </div>
 
-    <div class="col-sm-4 comment form-group" [ngClass]="{
+    <div class="col-sm-4 comment form-group" >
+      <!--[ngClass]="{
     'has-danger': commentControl.invalid && (commentControl.dirty || commentControl.touched),
-    'has-success': commentControl.valid && (commentControl.dirty || commentControl.touched)}">
+    'has-success': commentControl.valid && (commentControl.dirty || commentControl.touched)}"-->
       <label for="comentario2">Comentario:</label>
-      <textarea class="form-control" formControlName="commentControl" rows="3" id="comentario2" placeholder="Escribe aqui tu comentario" ></textarea>
-      <p *ngIf="(commentControl.errors && (commentControl.dirty || commentControl.touched)) && myform.controls.commentControl.errors?.required">Introduzca un comentario</p>
-      <p *ngIf="(commentControl.errors && (commentControl.dirty || commentControl.touched)) && myform.controls.commentControl.errors?.rangeLength">Tiene que tener minimo 6 letras y maximo de 300 letras</p>
+      <textarea class="form-control" rows="3" id="comentario2" placeholder="Escribe aqui tu comentario" ></textarea> <!--  formControlName="commentControl"-->
+      <!--<p *ngIf="(commentControl.errors && (commentControl.dirty || commentControl.touched)) && myform.controls.commentControl.errors?.required">Introduzca un comentario</p>
+      <p *ngIf="(commentControl.errors && (commentControl.dirty || commentControl.touched)) && myform.controls.commentControl.errors?.rangeLength">Tiene que tener minimo 6 letras y maximo de 300 letras</p>-->
     </div>
 
     <div class="col-md-4">
