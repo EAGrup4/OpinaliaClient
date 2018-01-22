@@ -43,6 +43,7 @@ export class EditProfileComponent implements OnInit {
     console.log(this.user);
     this.createFormControls();
     this.createForm();
+    this.url = this.user.profileImage;
   }
   passUser(name: string, email: string, password: string, password22: string) {
     this.currentModal = true;
