@@ -184,7 +184,7 @@ export class EditProfileComponent implements OnInit {
     this.passwordControl2 = new FormControl('', [
       Validators.required,
       // Validators.minLength(8),
-      CustomValidators.rangeLength([5, 9]),
+      CustomValidators.rangeLength([6, 20]),
       CustomValidators.equalTo(this.passwordControl)
     ]);
   }
