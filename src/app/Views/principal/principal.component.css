@@ -152,6 +152,12 @@
 .anunci1{
   padding-top: 2%;
 }
+ .anunci2{
+   padding-top: 3%;
+ }
+ .cssCol{
+   text-align: center;
+ }
 .clickToSkip{
   position: absolute;
   z-index: 30;
