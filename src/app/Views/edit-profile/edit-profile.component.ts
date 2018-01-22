@@ -150,7 +150,7 @@ export class EditProfileComponent implements OnInit {
     formData.append('uploads[]', files[0], files[0]['name']);
     const headers = new Headers({'Authorization': this.sendtoken });
     const options = new RequestOptions({ headers: headers });
-    this.http.post(`http://localhost:3000/users/image/add/${tempId}`, formData, options)
+    this.http.post(`http://147.83.7.159:3000/users/image/add/${tempId}`, formData, options)
       .map((res: Response) => {
         res.json();
         this.alerts.pop();
