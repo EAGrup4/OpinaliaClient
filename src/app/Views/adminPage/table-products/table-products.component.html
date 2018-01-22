@@ -421,7 +421,11 @@
               </tbody>
             </table>
             </form>
+
             <a class="btn btn-default btn-block" (click)="passSpec(category?.value)">Añadir Especificaciones</a>
+            <p *ngFor="let alert of alerts" id="alertType">
+              <ngb-alert [type]="alert.type" (close)="closeAlert(alert)">{{ alert.message }}</ngb-alert>
+            </p>
           <!--, proc1?.value, ram1?.value, disk1?.value, graphic1?.value, so1?.value, proc2?.value, screen2?.value, ram2?.value, disk2?.value, graphic2?.value,gr2?.value, so2?.value, proc3?.value, screen3?.value, ram3?.value, disk3?.value, gr3?.value, cam3?.value, so3?.value, proc4?.value,  screen4?.value, ram4?.value, disk4?.value, gr4?.value, cam4?.value, so4?.value-->
           </div>
           <p><a class="btn btn-info btn-block" (click)="modifyProducts(name.value, category.value, company.value)" data-dismiss="modal">Editar Producto</a></p>

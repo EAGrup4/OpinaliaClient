@@ -14,7 +14,7 @@
         <h1>{{ this.producte.name }}</h1>
         <h3>{{ this.producte.category }} - {{ this.producte.company }}</h3>
       </div>
-      <h3 class="specName">Especificaciones:</h3>
+      <h3 class="specName" *ngIf="showSpecTitle">Especificaciones:</h3>
       <div class="col-md-6 specifications">
         <div class="icons" *ngIf="spec1">
           <img class="iconsImage" src="../../../assets/images/iconsStadistics/cpu.png" height="20%" width="20%"/>
@@ -31,6 +31,17 @@
         <div class="icons" *ngIf="spec4">
           <img class="iconsImage" src="../../../assets/images/iconsStadistics/disc.png" height="20%" width="20%"/>
           <span class="iconsName">{{ this?.specDisco }} GB</span>
+        </div>
+        <div *ngIf="accessoriesSpecs">
+          <div *ngFor="let specific of this.specsWillShow">
+            <h4>{{specific[0]?.name}} <span style="display:inline-block; width: 5px"></span> {{specific[0]?.spec}}</h4>
+            <h4>{{specific[1]?.name}} <span style="display:inline-block; width: 5px"></span>  {{specific[1]?.spec}}</h4>
+            <h4>{{specific[2]?.name}} <span style="display:inline-block; width: 5px"></span>  {{specific[2]?.spec}}</h4>
+            <h4>{{specific[3]?.name}} <span style="display:inline-block; width: 5px"></span>  {{specific[3]?.spec}}</h4>
+            <h4>{{specific[4]?.name}} <span style="display:inline-block; width: 5px"></span>  {{specific[4]?.spec}}</h4>
+            <h4>{{specific[5]?.name}} <span style="display:inline-block; width: 5px"></span>  {{specific[5]?.spec}}</h4>
+            <h4>{{specific[6]?.name}} <span style="display:inline-block; width: 5px"></span>  {{specific[6]?.spec}}</h4>
+          </div>
         </div>
       </div>
       <div class="col-md-6 specifications">
@@ -144,7 +155,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="writtenBy"  routerLink="/profile" #myElement (click)="saveUserName(myElement.innerText)">
+            <div class="writtenBy"  routerLink="/profile" #myElement (click)="saveUserName(ratin.userId?._id)">
               <h4>{{ ratin.userId?.name }}</h4>
             </div>
             <div class="rateDate">
@@ -176,7 +187,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="writtenBy" routerLink="/profile" #myElement (click)="saveUserName(myElement.innerText)">
+            <div class="writtenBy" routerLink="/profile" #myElement (click)="saveUserName(ratin.userId?._id)">
               <h4>{{ ratin2.userId?.name }}</h4>
             </div>
             <div class="rateDate">
@@ -217,7 +228,7 @@
         {{this?.chVal}}
       </div>
       <div class="rating-bar">
-        <input type="range" min="0" max="10" name="chVal" class="slider" id="myRange" [(ngModel)]="chVal">
+        <input type="range" min="0" max="10" name="chVal" class="slider" id="myRange" [(ngModel)]="chVal" #mark>
       </div>
     </div>
 
@@ -308,7 +319,7 @@
       <div class="col-md-2 col-sm-2 hidden-xs">
         <figure class="thumbnail">
           <img class="img-responsive" src='{{ rates.userId?.profileImage }}'/>
-          <div class="writtenBy" routerLink="/profile" #myElement (click)="saveUserName(myElement.innerText)">
+          <div class="writtenBy" routerLink="/profile" #myElement (click)="saveUserName(rates.userId?._id)">
             <div class="comment-user"><i class="fa fa-user"></i>  {{ rates.userId?.name }}</div>
           </div>
           <!--<figcaption class="text-center">

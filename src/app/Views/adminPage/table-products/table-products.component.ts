@@ -326,7 +326,14 @@ export class TableProductsComponent implements OnInit {
     const options = new RequestOptions({ headers: headers });
     this.http.post(`http://localhost:3000/products/image/add/${tempId}`, formData, options)
       .map((res: Response) => res.json())
-      .subscribe(data => {console.log(data);
+      .subscribe(data => {
+        console.log(data);
+        this.alerts.pop();
+        this.alerts.push({
+          id: 1,
+          type: 'success',
+          message: 'Imagen actualizada!',
+        });
       });
   }
   /*private category: string, proc1: string, ram1: string, disk1: string, graphic1: string, so1: string, proc2: string, screen2: string,
@@ -447,6 +454,12 @@ export class TableProductsComponent implements OnInit {
     this.productService.addSpecs(this.id, this.spec).subscribe(
       (data) => {
         console.log(data);
+        this.alerts.pop();
+        this.alerts.push({
+          id: 1,
+          type: 'success',
+          message: 'Especificaciones añadidas!',
+        });
       }
     );
   }
