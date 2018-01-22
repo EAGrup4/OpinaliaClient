@@ -160,7 +160,7 @@ export class EditProfileComponent implements OnInit {
           message: 'Imagen cambiada!',
         });
       })
-      .subscribe(data => {console.log(data);
+      .subscribe(data => { console.log(data); sessionStorage.setItem('user', JSON.stringify(data));
       });
   }
   public closeAlert(alert: IAlert) {
