@@ -58,7 +58,10 @@ export class DetailProductComponent implements OnInit {
   reportToSend = { comment: '', reason: ''};
   showSpecTitle: any;
   specSave: { name: string, spec: string } = { name: '', spec: '' };
-  specShow: any = [];
+  specShow = [{name: '', spec: ''}];
+  accessoriesSpecs = false;
+  specsWillShow = [];
+  boolSpec1 = true; boolSpec2 = true; boolSpec3 = true; boolSpec4 = true; boolSpec5 = true; boolSpec6 = true; boolSpec7 = true;
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
@@ -279,48 +282,75 @@ export class DetailProductComponent implements OnInit {
   }
   public iconsSpecifications(spec, category) {
     console.log(spec);
-    if (spec) {
-      let number;
-      if (category === 'desktop') {
-        number = 5;
-      } else {
-        number = 7;
-      }
-      console.log('Numbeeeer', number);
-      for (let i = 0; i < number ; i++) {
-        if (spec[i].name) {
-          if (spec[i].name === 'Procesador') {
-            this.specProcesador = spec[i].spec;
-            this.spec1 = true;
-          } else if (spec[i].name === 'Pantalla') {
-            this.specPantalla = spec[i].spec;
-            this.spec2 = true;
-          } else if (spec[i].name === 'Sistema Operativo') {
-            this.specSo = spec[i].spec;
-            this.spec8 = true;
-          } else if (spec[i].name === 'Memoria Ram') {
-            this.specRam = spec[i].spec;
-            this.spec3 = true;
-          } else if (spec[i].name === 'Disco Duro') {
-            this.specDisco = spec[i].spec;
-            this.spec4 = true;
-          } else if (spec[i].name === 'Peso') {
-            this.specPeso = spec[i].spec;
-            this.spec6 = true;
-          } else if (spec[i].name === 'Camara') {
-            this.specCamara = spec[i].spec;
-            this.spec5 = true;
-          } else if (spec[i].name === 'Tarjeta Grafica') {
-            this.specTarjetaGrafica = spec[i].spec;
-            this.spec7 = true;
-          } else {
-            this.specSave.name = spec[i].name;
-            this.specSave.spec = spec[i].spec;
-            this.specShow.push(this.specSave);
-          }
+      if (spec[0]) {
+        let number;
+        this.showSpecTitle = true;
+        if (category === 'desktop') {
+          number = 5;
+        } else {
+          number = 7;
         }
+        console.log('Numbeeeer', number);
+        if (category !== 'accessories') {
+          this.accessoriesSpecs = false;
+          for (let i = 0; i < number; i++) {
+            if (spec[i]) {
+              if (spec[i].name === 'Procesador') {
+                this.specProcesador = spec[i].spec;
+                this.spec1 = true;
+              } else if (spec[i].name === 'Pantalla') {
+                this.specPantalla = spec[i].spec;
+                this.spec2 = true;
+              } else if (spec[i].name === 'Sistema Operativo') {
+                this.specSo = spec[i].spec;
+                this.spec8 = true;
+              } else if (spec[i].name === 'Memoria Ram') {
+                this.specRam = spec[i].spec;
+                this.spec3 = true;
+              } else if (spec[i].name === 'Disco Duro') {
+                this.specDisco = spec[i].spec;
+                this.spec4 = true;
+              } else if (spec[i].name === 'Peso') {
+                this.specPeso = spec[i].spec;
+                this.spec6 = true;
+              } else if (spec[i].name === 'Camara') {
+                this.specCamara = spec[i].spec;
+                this.spec5 = true;
+              } else if (spec[i].name === 'Tarjeta Grafica') {
+                this.specTarjetaGrafica = spec[i].spec;
+                this.spec7 = true;
+              }
+            }
+          }
+
+      } else {
+          this.accessoriesSpecs = true;
+          this.specsWillShow.push(this.product.specifications[this.product.specifications.length - 1]);
+          console.log('PORFAVOOR', this.specsWillShow);
+          /*console.log('000000', this.specsWillShow[0]);
+          if (!this.specsWillShow[0]) {
+            this.boolSpec1 = false;
+          }
+          console.log('11111', this.specsWillShow[1]);
+          if (!this.specsWillShow[1]) {
+            this.boolSpec2 = false;
+          }
+          if (!this.specsWillShow[2]) {
+            this.boolSpec3 = false;
+          }
+          if (!this.specsWillShow[3]) {
+            this.boolSpec4 = false;
+          }
+          if (!this.specsWillShow[4]) {
+            this.boolSpec5 = false;
+          }
+          if (!this.specsWillShow[5]) {
+            this.boolSpec6 = false;
+          }
+          if (!this.specsWillShow[6]) {
+            this.boolSpec1 = false;
+          }*/
       }
-      console.log('AAAAAAA', this.specShow);
       for (let i = 0; i < number ; i++) {
         this.specShow.pop();
       }
