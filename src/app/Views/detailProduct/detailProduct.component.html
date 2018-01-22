@@ -368,7 +368,7 @@
                     <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates?.numDislike}}</a></p>
                   </div>
                   <div class="inner">
-                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalReport"><i class="fa fa-bullhorn"></i>Report</button>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" (click)="passIdToReport(rates._id)" data-target="#modalReport"><i class="fa fa-bullhorn"></i>Report</button>
                   </div>
                 </div>
                 <div class="outer" *ngIf="rates.liked">
@@ -379,7 +379,7 @@
                     <p class="text-right"><a class="btn btn-default btn-sm" (click)="dislikeButton1(rates)"><i class="fa fa-thumbs-down"></i>{{rates?.numDislike}}</a></p>
                   </div>
                   <div class="inner">
-                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalReport"><i class="fa fa-bullhorn"></i>Report</button>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" (click)="passIdToReport(rates._id)" data-target="#modalReport"><i class="fa fa-bullhorn"></i>Report</button>
                   </div>
                 </div>
                 <div class="outer" *ngIf="rates.disliked">
@@ -390,7 +390,7 @@
                     <p class="text-right"><a class="btn btn-danger btn-sm"><i class="fa fa-thumbs-down"></i>{{rates?.numDislike}}</a></p>
                   </div>
                   <div class="inner">
-                    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#modalReport" (click)="passIdToReport(rates._id)"><i class="fa fa-bullhorn"></i>Report</button>
+                    <button class="btn btn-default btn-sm" data-toggle="modal" (click)="passIdToReport(rates._id)" data-target="#modalReport"><i class="fa fa-bullhorn"></i>Report</button>
                   </div>
                 </div>
               </div>

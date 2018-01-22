@@ -236,14 +236,31 @@ export class DetailProductComponent implements OnInit {
     );
   }
   passIdToReport(id: string) {
+    console.log('lllll', id);
     this.idComment = id;
   }
   reportComment(comment, reason) {
     this.reportToSend.comment = comment;
     this.reportToSend.reason = reason;
+    console.log(this.idComment);
     this.productService.reportComment(this.prod._id, this.idComment, this.reportToSend).subscribe(
       (data) => {
         console.log(data);
+        this.alerts.pop();
+        this.alerts.push({
+          id: 1,
+          type: 'success',
+          message: 'Report realizado correctamente',
+        });
+      },
+      (err) => {
+        console.log(err);
+        this.alerts.pop();
+        this.alerts.push({
+          id: 2,
+          type: 'danger',
+          message: 'No se ha podido hacer el report, asegurate de entrar en tu sesión de Opinalia',
+        });
       }
     );
   }
