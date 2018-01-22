@@ -3,7 +3,7 @@
   <form class='navbar-form'>
     <div class="col-md-1"></div>
     <div class='input-group col-md-10'>
-      <input class='form-control' type='text' name='search' placeholder='Buscar' #searcher/>
+      <input class='form-control' type='text' name='search' placeholder='Buscar' #searcher [(ngModel)]="objectsFilter.name"/>
       <span class="input-group-btn">
           <button type='submit' class='btn btn-default'>
             <span class='glyphicon glyphicon-search' (click)="search(searcher.value)"></span>
@@ -27,7 +27,7 @@
     </p>
   </div>
   <div class="row">
-    <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product" (click)="productClicked(prod)" routerLink="/productDetail">
+    <div class="col-6 col-sm-3 formProduct" *ngFor="let prod of product | filterBy: {name: objectsFilter.name};" (click)="productClicked(prod)" routerLink="/productDetail">
       <div class="imgForm">
         <img src="{{prod.images[prod.images.length -1].src}}" width="100.6px" height="100.6px">
       </div>

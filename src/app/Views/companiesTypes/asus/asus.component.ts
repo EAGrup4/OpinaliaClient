@@ -18,6 +18,7 @@ export class CompaniesAsusComponent implements OnInit {
   product: any;
   products: any;
   data: any;
+  objectsFilter = {name: '', category: '', company: ''};
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;

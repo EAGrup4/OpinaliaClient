@@ -14,6 +14,7 @@ export class CompaniesComponent implements OnInit {
   prodClicked = new Product('', '', '', [], null, [], null, '', null, null, null);
   product: any;
   data2: any;
+  objectsFilter = {name: '', category: '', company: ''};
   @Input()
   public alerts: Array<IAlert> = [];
   private backup: Array<IAlert>;
